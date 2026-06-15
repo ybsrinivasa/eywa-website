@@ -769,12 +769,26 @@ section { padding: 7rem 4rem; }
 
 .filter-btn:hover { background: var(--leaf); }
 
-/* Simulated graph canvas */
+/* Live visualization iframe container */
 .vis-canvas {
   flex: 1;
   position: relative;
-  min-height: 55vh;
-  margin: 1rem 0;
+  margin: 2rem auto 1rem;
+  max-width: 1280px;
+}
+.vis-canvas-iframe {
+  /* iframe needs an explicit height — desktop gets generous, mobile shrinks */
+  height: 70vh;
+  min-height: 520px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.18);
+}
+@media (max-width: 880px) {
+  .vis-canvas-iframe { height: 65vh; min-height: 440px; }
+}
+@media (max-width: 480px) {
+  .vis-canvas-iframe { height: 60vh; min-height: 380px; }
 }
 
 .vis-canvas-inner {
@@ -1458,55 +1472,29 @@ footer {
 
 <!-- ── Visualisation ──────────────────────────────────────────────────────── -->
 <section class="visualisation" id="explore">
-  <div class="vis-header">
+  <div class="vis-header" style="grid-template-columns: 1fr; max-width: 860px; margin: 0 auto;">
     <div>
       <p class="section-eyebrow">Explore Cosh</p>
       <div class="ruled-line"></div>
       <h2 class="section-title">See the knowledge. Navigate the graph.</h2>
       <p class="section-body">
-        Every dot is a knowledge node. Every connection carries meaning. 
-        Filter by domain, category, or crop — and watch the knowledge graph 
-        unfold around your point of interest. Hold it. Rotate it. Follow a connection.
+        Every dot is a knowledge node. Every connection carries meaning.
+        Pick a Core or a Connect, anchor on a crop or symptom, and watch
+        the knowledge graph unfold. Hold a node, drag, rotate. Follow a
+        connection — see where it leads.
       </p>
-    </div>
-    <div class="vis-filters">
-      <div class="filter-row">
-        <span class="filter-label">Domain</span>
-        <select class="filter-select">
-          <option>Agronomy</option>
-          <option>Products</option>
-          <option>Both</option>
-        </select>
-      </div>
-      <div class="filter-row">
-        <span class="filter-label">Category</span>
-        <select class="filter-select">
-          <option>All Categories</option>
-          <option>Crops</option>
-          <option>Pests</option>
-          <option>Nutrients</option>
-          <option>Pesticides</option>
-        </select>
-      </div>
-      <div class="filter-row">
-        <span class="filter-label">Specific</span>
-        <select class="filter-select">
-          <option>All</option>
-          <option>Tomato</option>
-          <option>Paddy</option>
-          <option>Cotton</option>
-        </select>
-      </div>
-      <div class="filter-row">
-        <span class="filter-label"></span>
-        <button class="filter-btn">Explore →</button>
-      </div>
     </div>
   </div>
 
-  <!-- Animated graph preview -->
-  <div class="vis-canvas" id="visCanvas">
-    <svg id="graphSvg" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0"></svg>
+  <!-- Live Cosh visualization embedded from cosh2.eywa.farm/embed/explore -->
+  <div class="vis-canvas vis-canvas-iframe">
+    <iframe
+      src="https://cosh2.eywa.farm/embed/explore"
+      title="Cosh Knowledge Graph — live visualization"
+      loading="lazy"
+      allow="fullscreen"
+      style="width:100%; height:100%; border:0; display:block; background:#05080a;">
+    </iframe>
   </div>
 
   <p class="vis-footer-note">
@@ -1674,129 +1662,6 @@ footer {
   });
 })();
 
-// ── Graph visualisation preview ──────────────────────────────────────────
-(function() {
-  const svg = document.getElementById('graphSvg');
-  const W = svg.parentElement.offsetWidth  || 800;
-  const H = svg.parentElement.offsetHeight || 500;
-  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-
-  // Generate a beautiful random graph
-  const numNodes = 80;
-  const gnodes = [];
-  const center = { x: W/2, y: H/2 };
-  
-  // Types with colors
-  const types = [
-    { color: '#52B788', glow: '#52B788', r: 6 },  // core leaf
-    { color: '#E8B84B', glow: '#E8B84B', r: 5 },  // amber connect
-    { color: '#95D5B2', glow: '#95D5B2', r: 4 },  // shoot
-    { color: '#2D6A4F', glow: '#52B788', r: 7 },  // moss hub
-    { color: 'rgba(149,213,178,0.5)', glow:'#95D5B2', r:3 }, // small
-  ];
-
-  // Cluster arrangement
-  const clusters = [
-    { cx: W*0.25, cy: H*0.3,  spread: 140, count: 16 },
-    { cx: W*0.75, cy: H*0.3,  spread: 120, count: 14 },
-    { cx: W*0.5,  cy: H*0.65, spread: 150, count: 18 },
-    { cx: W*0.15, cy: H*0.7,  spread: 100, count: 12 },
-    { cx: W*0.85, cy: H*0.7,  spread: 110, count: 12 },
-    { cx: W*0.5,  cy: H*0.2,  spread: 90,  count: 8  },
-  ];
-
-  clusters.forEach(cl => {
-    for (let i = 0; i < cl.count; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const dist  = Math.random() * cl.spread;
-      const type  = types[Math.floor(Math.random() * types.length)];
-      gnodes.push({
-        x: cl.cx + Math.cos(angle) * dist,
-        y: cl.cy + Math.sin(angle) * dist,
-        r: type.r + Math.random() * 2,
-        color: type.color,
-        glow: type.glow,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-      });
-    }
-  });
-
-  // Draw edges first
-  const edgeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  svg.appendChild(edgeGroup);
-
-  // Draw nodes
-  const nodeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  svg.appendChild(nodeGroup);
-
-  const edgeEls = [];
-  const nodeEls = [];
-
-  // Connect nodes within and between clusters
-  for (let i = 0; i < gnodes.length; i++) {
-    for (let j = i + 1; j < gnodes.length; j++) {
-      const dx = gnodes[i].x - gnodes[j].x;
-      const dy = gnodes[i].y - gnodes[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 180 && Math.random() > 0.55) {
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        const opacity = Math.max(0.05, 0.25 - dist/900);
-        line.setAttribute('stroke', `rgba(82,183,136,${opacity})`);
-        line.setAttribute('stroke-width', '0.6');
-        edgeGroup.appendChild(line);
-        edgeEls.push({ el: line, i, j });
-      }
-    }
-  }
-
-  gnodes.forEach((n, idx) => {
-    // Glow
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-    const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
-    filter.setAttribute('id', `glow${idx}`);
-    const feGlow = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
-    feGlow.setAttribute('stdDeviation', '3');
-    feGlow.setAttribute('result', 'coloredBlur');
-    const feMerge = document.createElementNS('http://www.w3.org/2000/svg', 'feMerge');
-    const m1 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
-    m1.setAttribute('in', 'coloredBlur');
-    const m2 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
-    m2.setAttribute('in', 'SourceGraphic');
-    feMerge.appendChild(m1); feMerge.appendChild(m2);
-    filter.appendChild(feGlow); filter.appendChild(feMerge);
-    defs.appendChild(filter);
-    svg.insertBefore(defs, edgeGroup);
-
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    circle.setAttribute('cx', n.x);
-    circle.setAttribute('cy', n.y);
-    circle.setAttribute('r', n.r);
-    circle.setAttribute('fill', n.color);
-    circle.setAttribute('filter', `url(#glow${idx})`);
-    circle.style.cursor = 'pointer';
-    nodeGroup.appendChild(circle);
-    nodeEls.push(circle);
-  });
-
-  // Animate
-  function animate() {
-    gnodes.forEach((n, i) => {
-      n.x += n.vx; n.y += n.vy;
-      // Soft boundary
-      if (n.x < 20 || n.x > W-20) n.vx *= -1;
-      if (n.y < 20 || n.y > H-20) n.vy *= -1;
-      nodeEls[i].setAttribute('cx', n.x);
-      nodeEls[i].setAttribute('cy', n.y);
-    });
-    edgeEls.forEach(({ el, i, j }) => {
-      el.setAttribute('x1', gnodes[i].x); el.setAttribute('y1', gnodes[i].y);
-      el.setAttribute('x2', gnodes[j].x); el.setAttribute('y2', gnodes[j].y);
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
 
 // ── Scroll reveal ─────────────────────────────────────────────────────────
 const observer = new IntersectionObserver(entries => {
