@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Editor noise
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Logs and tmp
+*.log
+.tmp/

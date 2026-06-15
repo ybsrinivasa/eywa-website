@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Neytiri Eywafarm &middot; Neytiri Eywafarm Agritech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --soil: #1A1208; --bark: #2C1F0E; --moss: #1B4332; --fern: #2D6A4F;
+  --leaf: #52B788; --shoot: #95D5B2; --mist: #D8F3DC; --parchment: #FAF6EE;
+  --amber: #C8893A; --gold: #E8B84B; --cream: #F5EDD8;
+  --ink: #1A1208; --body-text: #3D2E1A; --light-text: #6B5740;
+  --rule: rgba(44,31,14,0.12); --teal: #085041;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--body-text); overflow-x: hidden; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.93); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--moss); text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.85rem; color: var(--light-text); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--moss); }
+.nav-cta { background: var(--moss); color: white !important; padding: 0.55rem 1.3rem; border-radius: 2px; font-weight: 500; }
+.nav-cta:hover { background: var(--fern) !important; }
+footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4rem 0; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-style: italic; }
+.footer-contact-line { font-size: 0.85rem; margin-bottom: 0.6rem; }
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.25); margin-top: 0.5rem; }
+.footer-col-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+.footer-link { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { display: flex; justify-content: space-between; padding: 1.5rem 0; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+
+.page-hero {
+  background: var(--moss);
+  padding: 10rem 4rem 6rem;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(82,183,136,0.12), transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(27,67,50,0.5), transparent 60%);
+}
+.page-hero-inner { position: relative; z-index: 1; max-width: 640px; }
+.page-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--shoot); text-transform: uppercase; margin-bottom: 1rem; }
+.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem,4vw,3.5rem); color: white; line-height: 1.15; margin-bottom: 1rem; }
+.page-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
+.contact-main { padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-card {
+  padding: 1.75rem 2rem; background: white; border-radius: 4px;
+  border: 1px solid var(--rule); display: flex; gap: 1.25rem; align-items: flex-start;
+  transition: transform 0.2s;
+}
+.contact-card:hover { transform: translateY(-2px); }
+.contact-card-icon { font-size: 1.5rem; flex-shrink: 0; }
+.contact-card-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; }
+.contact-card-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
+.contact-card-val { font-size: 0.88rem; color: var(--light-text); line-height: 1.55; }
+.contact-card-val a { color: var(--moss); text-decoration: none; font-weight: 500; }
+.hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+.hours-item { background: var(--cream); padding: 1rem 1.25rem; border-radius: 3px; }
+.hours-day { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.25rem; }
+.hours-time { font-size: 0.88rem; color: var(--body-text); font-weight: 500; }
+.contact-forms { display: flex; flex-direction: column; gap: 2.5rem; }
+.form-card { background: white; padding: 2.5rem; border-radius: 4px; border: 1px solid var(--rule); }
+.form-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.form-sub { font-size: 0.875rem; color: var(--light-text); margin-bottom: 1.75rem; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-field.full { grid-column: 1/-1; }
+.form-label { font-size: 0.78rem; font-weight: 500; color: var(--body-text); letter-spacing: 0.03em; }
+.form-req { color: var(--amber); margin-left: 0.15rem; }
+.form-input, .form-select, .form-textarea {
+  padding: 0.65rem 0.9rem; border: 1px solid rgba(44,31,14,0.18);
+  border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  color: var(--ink); background: var(--parchment);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none; border-color: var(--moss);
+  box-shadow: 0 0 0 3px rgba(27,67,50,0.08);
+}
+.form-textarea { min-height: 90px; resize: vertical; }
+.form-btn {
+  margin-top: 1.25rem; padding: 0.8rem 2rem;
+  background: var(--moss); color: white; border: none; border-radius: 3px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+  cursor: pointer; transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.03em;
+}
+.form-btn:hover { background: var(--fern); transform: translateY(-1px); }
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Neytiri Eywafarm</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="rootstalk.html">RootsTalk</a></li>
+    <li><a href="cosh.html">Cosh</a></li>
+    <li><a href="contact.html" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Contact Us</p>
+    <h1 class="page-title">Let's talk about your farmers.</h1>
+    <p class="page-sub">Whether you are exploring RootsTalk for the first time or ready to get started — we would like to understand your work and show you what we have built.</p>
+  </div>
+</div>
+
+<div class="contact-main">
+  <!-- Contact Info -->
+  <div class="contact-info">
+    <div class="contact-card">
+      <div class="contact-card-icon">✉️</div>
+      <div>
+        <p class="contact-card-label">Email</p>
+        <p class="contact-card-title">Write to us</p>
+        <p class="contact-card-val"><a href="mailto:info@eywa.farm">info@eywa.farm</a><br>We respond within 24 hours.</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">📞</div>
+      <div>
+        <p class="contact-card-label">Phone</p>
+        <p class="contact-card-title">Call us directly</p>
+        <p class="contact-card-val"><a href="tel:08042107702">080 4210 7702</a><br>Monday – Saturday, 9 AM – 6 PM IST</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">🏢</div>
+      <div>
+        <p class="contact-card-label">Office</p>
+        <p class="contact-card-title">Visit us</p>
+        <p class="contact-card-val">
+          Neytiri Eywafarm Agritech Pvt. Ltd.<br>
+          #1238, 4th Floor, HIG, B Sector<br>
+          Yelahanka New Town<br>
+          Bengaluru 560064, Karnataka, India
+        </p>
+      </div>
+    </div>
+    <div style="padding:1.75rem 2rem;background:white;border-radius:4px;border:1px solid var(--rule)">
+      <p class="contact-card-label" style="margin-bottom:1rem">Office Hours</p>
+      <div class="hours-grid">
+        <div class="hours-item">
+          <p class="hours-day">Mon – Fri</p>
+          <p class="hours-time">9:00 AM – 6:30 PM IST</p>
+        </div>
+        <div class="hours-item">
+          <p class="hours-day">Saturday</p>
+          <p class="hours-time">9:00 AM – 1:00 PM IST</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forms -->
+  <div class="contact-forms">
+    <div class="form-card">
+      <p class="form-title">Request a Demo</p>
+      <p class="form-sub">See RootsTalk in action for your organisation.</p>
+      <div class="form-grid">
+        <div class="form-field">
+          <label class="form-label">Name<span class="form-req">*</span></label>
+          <input class="form-input" type="text" placeholder="Your full name">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email<span class="form-req">*</span></label>
+          <input class="form-input" type="email" placeholder="Work email">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Company<span class="form-req">*</span></label>
+          <input class="form-input" type="text" placeholder="Organisation name">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Phone<span class="form-req">*</span></label>
+          <input class="form-input" type="tel" placeholder="Mobile number">
+        </div>
+        <div class="form-field full">
+          <label class="form-label">Organisation Type<span class="form-req">*</span></label>
+          <select class="form-select">
+            <option value="">Select type…</option>
+            <option>Seed Company</option>
+            <option>Pesticide Company</option>
+            <option>Fertiliser / Plant Nutrition Company</option>
+            <option>Government Department</option>
+            <option>NGO / Development Organisation</option>
+            <option>Extension Service / KVK</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label class="form-label">Approximate Number of Farmers Reached</label>
+          <input class="form-input" type="text" placeholder="e.g. 5,000 or 1,00,000">
+        </div>
+        <div class="form-field full">
+          <label class="form-label">Additional Notes</label>
+          <textarea class="form-textarea" placeholder="Tell us about your crops, regions, and what you are hoping to achieve…"></textarea>
+        </div>
+      </div>
+      <button class="form-btn" onclick="alert('Thank you. We will be in touch within 24 hours.')">Request Demo</button>
+    </div>
+
+    <div class="form-card">
+      <p class="form-title">Quick Message</p>
+      <p class="form-sub">A shorter question or just want to say hello?</p>
+      <div class="form-grid">
+        <div class="form-field">
+          <label class="form-label">Name<span class="form-req">*</span></label>
+          <input class="form-input" type="text" placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email<span class="form-req">*</span></label>
+          <input class="form-input" type="email" placeholder="Your email">
+        </div>
+        <div class="form-field full">
+          <label class="form-label">Message<span class="form-req">*</span></label>
+          <textarea class="form-textarea" style="min-height:120px" placeholder="Your message…"></textarea>
+        </div>
+      </div>
+      <button class="form-btn" onclick="alert('Thank you for your message. We will respond within 24 hours.')">Send Message</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri Eywafarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">&middot;</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru&nbsp;560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="rootstalk.html" class="footer-link">RootsTalk</a>
+      <a href="cosh.html" class="footer-link">Cosh</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="index.html#about" class="footer-link">About Neytiri</a>
+      <a href="index.html#team" class="footer-link">Team</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+      <a href="cancellations.html" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri Eywafarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+</body>
+</html>

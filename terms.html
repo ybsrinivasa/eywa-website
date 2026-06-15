@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms and Conditions · Neytiri Eywafarm &middot; Neytiri Eywafarm Agritech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --soil: #1A1208; --bark: #2C1F0E; --moss: #1B4332; --fern: #2D6A4F;
+  --leaf: #52B788; --shoot: #95D5B2; --mist: #D8F3DC; --parchment: #FAF6EE;
+  --amber: #C8893A; --gold: #E8B84B; --cream: #F5EDD8;
+  --ink: #1A1208; --body-text: #3D2E1A; --light-text: #6B5740;
+  --rule: rgba(44,31,14,0.12); --teal: #085041;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--body-text); overflow-x: hidden; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.93); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--moss); text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.85rem; color: var(--light-text); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--moss); }
+.nav-cta { background: var(--moss); color: white !important; padding: 0.55rem 1.3rem; border-radius: 2px; font-weight: 500; }
+.nav-cta:hover { background: var(--fern) !important; }
+footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4rem 0; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-style: italic; }
+.footer-contact-line { font-size: 0.85rem; margin-bottom: 0.6rem; }
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.25); margin-top: 0.5rem; }
+.footer-col-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+.footer-link { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { display: flex; justify-content: space-between; padding: 1.5rem 0; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+
+.legal-hero {
+  background: var(--soil);
+  padding: 10rem 4rem 5rem;
+  position: relative; overflow: hidden;
+}
+.legal-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(27,67,50,0.4), transparent 55%),
+              radial-gradient(ellipse at 80% 20%, rgba(200,137,58,0.06), transparent 50%);
+}
+.legal-hero-inner { position: relative; z-index: 1; }
+.legal-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--shoot); text-transform: uppercase; margin-bottom: 1rem; }
+.legal-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,4vw,3.2rem); color: white; margin-bottom: 1rem; }
+.legal-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 620px; }
+.legal-updated { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); text-transform: uppercase; margin-top: 1.5rem; }
+.legal-body { max-width: 860px; margin: 0 auto; padding: 6rem 4rem; }
+.legal-section { margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--rule); }
+.legal-section:last-child { border-bottom: none; }
+.legal-section-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.75rem; }
+.legal-section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 1.25rem; }
+.legal-section-sub { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 1.5rem 0 0.75rem; }
+.legal-p { font-size: 0.95rem; line-height: 1.8; color: var(--body-text); margin-bottom: 0.9rem; }
+.legal-list { list-style: none; margin: 0.75rem 0 1rem 0; }
+.legal-list li { font-size: 0.9rem; line-height: 1.7; color: var(--body-text); padding: 0.3rem 0 0.3rem 1.5rem; position: relative; }
+.legal-list li::before { content: '·'; position: absolute; left: 0; color: var(--amber); font-weight: 700; }
+.legal-contact-box { background: var(--cream); padding: 2rem 2.5rem; border-radius: 4px; border-left: 3px solid var(--amber); margin-top: 1.5rem; }
+.legal-contact-box p { font-size: 0.9rem; line-height: 1.7; color: var(--body-text); margin-bottom: 0.4rem; }
+.legal-contact-box a { color: var(--moss); text-decoration: none; }
+.legal-highlight { background: var(--cream); padding: 1.5rem 2rem; border-radius: 4px; margin: 1.25rem 0; font-size: 0.92rem; line-height: 1.7; color: var(--body-text); font-style: italic; border-left: 3px solid var(--moss); }
+.rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+.right-card { padding: 1.25rem; background: white; border: 1px solid var(--rule); border-radius: 4px; }
+.right-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.right-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+.right-body { font-size: 0.82rem; color: var(--light-text); line-height: 1.55; }
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Neytiri Eywafarm</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="rootstalk.html">RootsTalk</a></li>
+    <li><a href="cosh.html">Cosh</a></li>
+    <li><a href="contact.html" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<div class="legal-hero">
+  <div class="legal-hero-inner">
+    <p class="legal-eyebrow">Legal Agreement</p>
+    <h1 class="legal-title">Terms and Conditions</h1>
+    <p class="legal-sub">Please read these terms carefully before using RootsTalk and its associated applications.</p>
+    <p class="legal-updated">Last updated: February 5, 2026 &nbsp;·&nbsp; 21 sections</p>
+  </div>
+</div>
+<div class="legal-body">
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 01</p>
+    <h2 class="legal-section-title">Introduction and Acceptance</h2>
+    <p class="legal-p">This Terms and Conditions Agreement ("Agreement") governs the access to and use of the RootsTalk platform and related services ("Platform" or "Services") provided by Neytiri Eywafarm Agritech Private Limited, a company incorporated under the laws of India ("Company").</p>
+     <p class="legal-p">This Agreement is entered into between the Company and the entity or individual registering for or using the Platform ("Client"). By accessing, registering for, or using the Platform, the Client acknowledges that it has read, understood, and agrees to be bound by the terms of this Agreement.</p>
+     <p class="legal-p">If the Client does not agree to this Agreement, it shall not access or use the Platform. This Agreement constitutes a legally binding contract between the Parties.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 02</p>
+    <h2 class="legal-section-title">Definitions and Interpretation</h2>
+    <h3 class="legal-section-sub">Definitions</h3>
+    <p class="legal-p">Unless the context otherwise requires, the following terms shall have the meanings set forth below:</p>
+    <ul class="legal-list">
+      <li>(a) "Agreement" means this Terms and Conditions document, including all schedules and exhibits.</li>
+      <li>(b) "Client" means any company or entity that registers for and uses the Platform.</li>
+      <li>(c) "Company" means Neytiri Eywafarm Agritech Private Limited.</li>
+      <li>(d) "Platform" means the RootsTalk web application, mobile applications, backend systems, and associated services.</li>
+      <li>(e) "Services" means the functionalities and services provided through the Platform.</li>
+      <li>(f) "Subscription" means a time-bound access right for a specific crop cycle, not exceeding three hundred sixty-five (365) days.</li>
+      <li>(g) "User" means any authorised individual accessing the Platform, including farmers, dealers, facilitators, experts, and Client representatives.</li>
+      <li>(h) "Confidential Information" shall have the meaning set forth in Section 9.</li>
+      <li>(i) "Force Majeure Event" means any event beyond the reasonable control of a Party, including natural disasters, government actions, pandemics, or network failures.</li>
+    </ul>
+    <h3 class="legal-section-sub">Interpretation</h3>
+    <ul class="legal-list">
+      <li>(a) Headings are for convenience only and shall not affect interpretation.</li>
+      <li>(b) Words in the singular include the plural and vice versa.</li>
+      <li>(c) References to statutes include amendments and replacements.</li>
+      <li>(d) The term "including" means "including without limitation".</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 03</p>
+    <h2 class="legal-section-title">Scope of Services</h2>
+    <h3 class="legal-section-sub">Description of Services</h3>
+    <p class="legal-p">The Company shall provide the Client with access to the Platform and related Services, which may include, without limitation:</p>
+    <ul class="legal-list">
+      <li>(a) digital tools for creation, management, and dissemination of agricultural advisories;</li>
+      <li>(b) guided diagnostic and decision-support workflows;</li>
+      <li>(c) order management and execution coordination features;</li>
+      <li>(d) interfaces for farmers, dealers, facilitators, and experts;</li>
+      <li>(e) reporting and monitoring functionalities;</li>
+      <li>(f) communication and notification tools;</li>
+      <li>(g) administrative and configuration capabilities.</li>
+    </ul>
+    <p class="legal-p">The specific features available to the Client may vary based on the subscription model, configuration, and ongoing platform development.</p>
+    <h3 class="legal-section-sub">Platform as an Enabling Infrastructure</h3>
+    <ul class="legal-list">
+      <li>(a) The Platform is intended to serve as a digital infrastructure that enables the Client to design, deliver, and manage its agricultural engagement processes.</li>
+      <li>(b) The Company provides technological tools and workflows but does not control, supervise, or guarantee the content, quality, or outcomes of the Client's advisories, products, or services.</li>
+      <li>(c) Responsibility for business strategy, advisory policies, and operational decisions remains with the Client.</li>
+    </ul>
+    <h3 class="legal-section-sub">Client Responsibilities</h3>
+    <p class="legal-p">The Client shall be responsible for:</p>
+    <ul class="legal-list">
+      <li>(a) creation, verification, approval and accuracy of all advisory content and recommendations;</li>
+      <li>(b) onboarding, training, and management of its users;</li>
+      <li>(c) compliance with applicable agricultural, commercial, and regulatory requirements;</li>
+      <li>(d) ensuring that products and services offered through the Platform are lawful and appropriate;</li>
+      <li>(e) maintaining accurate and up-to-date information on the Platform.</li>
+    </ul>
+    <h3 class="legal-section-sub">Exclusions from Scope</h3>
+    <p class="legal-p">Unless expressly agreed in writing, the Company shall not be responsible for:</p>
+    <ul class="legal-list">
+      <li>(a) guaranteeing agricultural yields, pest control effectiveness, or financial outcomes;</li>
+      <li>(b) procurement, manufacturing, storage, or physical delivery of products;</li>
+      <li>(c) credit management, collections, or financial disputes between the Client and third parties;</li>
+      <li>(d) field-level supervision or physical inspections;</li>
+      <li>(e) resolution of disputes between farmers, dealers, facilitators, or experts;</li>
+      <li>(f) compliance failures attributable to the Client or its partners.</li>
+    </ul>
+    <h3 class="legal-section-sub">No Agency or Partnership</h3>
+    <ul class="legal-list">
+      <li>(a) Nothing in this Agreement shall be construed as creating any partnership, joint venture, agency, or employment relationship between the Parties.</li>
+      <li>(b) Neither Party shall have authority to bind the other without prior written consent.</li>
+    </ul>
+    <h3 class="legal-section-sub">Changes to Services</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may enhance, modify, or update the Platform from time to time to improve functionality, security, or compliance.</li>
+      <li>(b) The Company shall use reasonable efforts to avoid material adverse impact on existing Services.</li>
+      <li>(c) Significant changes affecting core functionality shall be communicated in advance where practicable.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 04</p>
+    <h2 class="legal-section-title">Accounts and Authorised Users</h2>
+    <h3 class="legal-section-sub">Account Registration</h3>
+    <ul class="legal-list">
+      <li>(a) To access the Platform, the Client shall create an authorised account through the registration process prescribed by the Company.</li>
+      <li>(b) The Client shall designate a primary administrative contact responsible for account management and communication with the Company.</li>
+      <li>(c) All information provided during registration shall be accurate, complete, and kept up to date.</li>
+    </ul>
+    <h3 class="legal-section-sub">User Authorisation and Roles</h3>
+    <ul class="legal-list">
+      <li>(a) The Client may authorise individual users, including farmers, dealers, facilitators, experts, and employees, to access the Platform in accordance with assigned roles and permissions.</li>
+      <li>(b) The Client shall be solely responsible for determining user eligibility, access levels, and role assignments.</li>
+      <li>(c) The Company may provide role-based access controls to facilitate appropriate segregation of responsibilities.</li>
+    </ul>
+    <h3 class="legal-section-sub">Credential Management</h3>
+    <ul class="legal-list">
+      <li>(a) Each authorised user shall be issued unique login credentials.</li>
+      <li>(b) The Client shall ensure that (i) credentials are kept confidential; (ii) credentials are not shared; (iii) appropriate password and authentication practices are followed.</li>
+      <li>(c) The Client shall be responsible for all activities conducted using its authorised credentials.</li>
+    </ul>
+    <h3 class="legal-section-sub">User Conduct</h3>
+    <p class="legal-p">The Client shall ensure that its authorised users:</p>
+    <ul class="legal-list">
+      <li>(a) use the Platform only for lawful and authorised purposes;</li>
+      <li>(b) do not attempt to access unauthorised areas of the Platform;</li>
+      <li>(c) do not interfere with system security or integrity;</li>
+      <li>(d) do not upload malicious code, misleading content, or unlawful material;</li>
+      <li>(e) comply with all applicable policies and guidelines.</li>
+    </ul>
+    <h3 class="legal-section-sub">Account Security and Notification</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall promptly notify the Company of any suspected unauthorised access, security breach, or misuse of credentials.</li>
+      <li>(b) The Company may, upon reasonable suspicion of compromise, require password resets, suspend access, or implement additional security measures.</li>
+    </ul>
+    <h3 class="legal-section-sub">User Onboarding and Training</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall be responsible for onboarding and training its authorised users.</li>
+      <li>(b) The Company may provide onboarding tools, documentation, or training materials, but does not assume responsibility for user proficiency.</li>
+    </ul>
+    <h3 class="legal-section-sub">Account Suspension and Deactivation</h3>
+    <ul class="legal-list">
+      <li>(a) The Client may request deactivation of any authorised user account at any time.</li>
+      <li>(b) The Company may suspend or deactivate user accounts that: (i) violate this Agreement; (ii) pose security risks; (iii) engage in misuse of the Platform.</li>
+      <li>(c) Where practicable, the Company shall notify the Client prior to such action.</li>
+      <li>(d) The Client shall remain fully responsible for the acts and omissions of its authorised users.</li>
+    </ul>
+    <h3 class="legal-section-sub">Responsibility for Users</h3>
+    <p class="legal-p">Any breach of this Agreement by an authorised user shall be deemed a breach by the Client.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 05</p>
+    <h2 class="legal-section-title">Pricing, Subscriptions, and Payments</h2>
+    <h3 class="legal-section-sub">Subscription Models</h3>
+    <ul class="legal-list">
+      <li>(a) The Company offers the Platform under multiple subscription models, including: (i) Client-Paid Subscription ("Company Pays"); and (ii) Farmer-Paid Subscription ("Farmer Pays").</li>
+      <li>(b) The applicable subscription model shall be selected by the Client at the time of account creation and may be modified in accordance with this Agreement.</li>
+    </ul>
+    <h3 class="legal-section-sub">Subscription Unit</h3>
+    <ul class="legal-list">
+      <li>(a) Each Subscription unit shall correspond to a single crop cycle for a specific farmer, with a maximum validity period of three hundred sixty-five (365) days.</li>
+      <li>(b) Subscriptions shall be independent of acreage, location, or crop species, unless otherwise agreed in writing.</li>
+    </ul>
+    <h3 class="legal-section-sub">Pricing Structure</h3>
+    <ul class="legal-list">
+      <li>(a) Subscription pricing shall be published on the Company's website or communicated separately to the Client.</li>
+      <li>(b) Pricing may vary based on volume, purchase batches, and commercial arrangements.</li>
+      <li>(c) Any discounts or special pricing shall be subject to written confirmation.</li>
+    </ul>
+    <h3 class="legal-section-sub">Purchase and Allocation of Subscriptions</h3>
+    <ul class="legal-list">
+      <li>(a) Under the Company Pays model, the Client may purchase Subscriptions credits in advance.</li>
+      <li>(b) Under the Farmer Pays model, Subscriptions may be purchased directly by farmers through authorised channels.</li>
+      <li>(c) The Client shall be responsible for allocating purchased Subscriptions to eligible farmers through the Platform.</li>
+      <li>(d) Unused Subscriptions shall not expire except as otherwise specified.</li>
+    </ul>
+    <h3 class="legal-section-sub">Payment Terms</h3>
+    <ul class="legal-list">
+      <li>(a) All fees shall be payable in Indian Rupees unless otherwise agreed.</li>
+      <li>(b) Payments shall be made through approved electronic payment methods.</li>
+      <li>(c) Invoices, where applicable, shall specify applicable taxes in accordance with law.</li>
+      <li>(d) Unless otherwise agreed, payments shall be due within thirty (30) days from the invoice date.</li>
+    </ul>
+    <h3 class="legal-section-sub">Taxes</h3>
+    <ul class="legal-list">
+      <li>(a) Subscription prices are inclusive of applicable taxes, duties, or levies.</li>
+      <li>(b) The Client shall be responsible for payment of all applicable taxes.</li>
+    </ul>
+    <h3 class="legal-section-sub">Price Revisions</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may revise pricing from time to time.</li>
+      <li>(b) Any material pricing changes shall be communicated to the Client with at least thirty (30) days' prior notice.</li>
+      <li>(c) Revised pricing shall apply only to future purchases and renewals.</li>
+    </ul>
+    <h3 class="legal-section-sub">Late Payments and Suspension</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may charge reasonable interest on overdue amounts as permitted by law.</li>
+      <li>(b) The Company may suspend Services for continued non-payment after reasonable notice.</li>
+      <li>(c) Suspension shall not relieve the Client of payment obligations.</li>
+    </ul>
+    <h3 class="legal-section-sub">Refunds and Cancellations</h3>
+    <ul class="legal-list">
+      <li>(a) Except as expressly agreed in writing, all fees paid are non-refundable.</li>
+      <li>(b) In exceptional circumstances, the Company may consider refund requests at its discretion.</li>
+      <li>(c) Cancellation of unused Subscriptions shall not automatically entitle the Client to refunds.</li>
+    </ul>
+    <h3 class="legal-section-sub">Switching of Subscription Models</h3>
+    <ul class="legal-list">
+      <li>(a) The Client may switch between subscription models, subject to technical feasibility and written confirmation.</li>
+      <li>(b) Such switching shall not affect historical data, records, or completed subscriptions.</li>
+      <li>(c) The Company does not guarantee that switching models will have no commercial or operational impact.</li>
+    </ul>
+    <h3 class="legal-section-sub">No Minimum Commitment</h3>
+    <ul class="legal-list">
+      <li>(a) There shall be no mandatory minimum purchase, volume commitment, or long-term lock-in, unless expressly agreed in writing.</li>
+      <li>(b) Fees shall be payable only for Subscriptions purchased or assigned.</li>
+    </ul>
+    <h3 class="legal-section-sub">Prepaid and Non-Refundable Nature of Subscriptions</h3>
+    <ul class="legal-list">
+      <li>(a) All Subscriptions and Subscription credits under the Platform operate strictly on a prepaid basis.</li>
+      <li>(b) Upon purchase or assignment of a Subscription to a farmer, the corresponding fee shall be deemed fully earned.</li>
+      <li>(c) Except as expressly agreed in writing, all payments made for Subscriptions or Subscription credits are non-refundable.</li>
+      <li>(d) No refunds, credits, or adjustments shall be provided for partially used, unused, suspended, or prematurely discontinued Subscriptions.</li>
+      <li>(e) The Client acknowledges that system resources, advisory workflows, expert services, and operational commitments are activated upon Subscription assignment.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 06</p>
+    <h2 class="legal-section-title">Data Protection and Privacy</h2>
+    <h3 class="legal-section-sub">Definitions</h3>
+    <p class="legal-p">For the purposes of this Agreement:</p>
+    <ul class="legal-list">
+      <li>(a) "Personal Data" means any data relating to an identified or identifiable individual, including farmers, dealers, facilitators, experts, and representatives of the Client, as defined under applicable data protection laws.</li>
+      <li>(b) "Client Data" means all business, operational, advisory, and transactional data generated, uploaded, stored, or processed by the Client or its authorised users on the Platform.</li>
+      <li>(c) "Usage Data" means anonymised and aggregated data relating to the use, performance, and functioning of the Platform.</li>
+      <li>(d) "Applicable Data Protection Laws" means the Information Technology Act, 2000, the Digital Personal Data Protection Act, 2023, and any rules, regulations, or amendments thereto.</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Ownership</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall retain all rights, title, and interest in and to the Client Data.</li>
+      <li>(b) Each individual user shall retain ownership of his or her Personal Data.</li>
+      <li>(c) The Company does not own ownership over Client Data or Personal Data and shall act solely as a data processor and service provider in relation thereto.</li>
+      <li>(d) The Company shall have all rights in and to the Platform, its underlying technology, and Usage Data.</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Processing and Use</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall process Client Data and Personal Data solely for the purposes of: (i) providing the Services under this Agreement; (ii) maintaining and improving the Platform; (iii) complying with legal and regulatory obligations.</li>
+      <li>(b) The Company shall not: (i) sell, rent, lease, or commercially exploit Client Data or Personal Data; (ii) disclose such data to third parties except as permitted under this Agreement or required by law; (iii) use such data for advertising, profiling, or unrelated commercial purposes.</li>
+      <li>(c) The Company may use Usage Data in aggregated and anonymised form for analytics, research, system improvement, and business reporting, provided that such data does not identify the Client or any individual.</li>
+    </ul>
+    <h3 class="legal-section-sub">Legal Compliance and Consent</h3>
+    <ul class="legal-list">
+      <li>(a) Each Party shall comply with all Applicable Data Protection Laws in relation to its obligations under this Agreement.</li>
+      <li>(b) The Client represents and warrants that it has obtained all necessary consents, authorisations, and approvals from its users for the collection, processing, and use of Personal Data on the Platform.</li>
+      <li>(c) The Company shall assist the Client, to the extent reasonably practicable, in responding to lawful data subject requests.</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Security Measures</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall implement and maintain reasonable technical and organisational measures to protect Client Data and Personal Data, including: (i) access controls; (ii) encryption where appropriate; (iii) regular system monitoring; (iv) secure data storage; (v) periodic backups.</li>
+      <li>(b) The Company shall restrict access to such data to authorised personnel on a need-to-know basis.</li>
+      <li>(c) The Company shall regularly review and update its security practices in line with industry standards.</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Breach Management</h3>
+    <ul class="legal-list">
+      <li>(a) In the event of any actual or suspected unauthorised access, loss, alteration, or disclosure of Client Data or Personal Data ("Data Breach"), the Company shall: (i) promptly investigate the incident; (ii) take reasonable steps to contain and mitigate its effects; (iii) notify the Client without undue delay, and where practicable, within seventy-two (72) hours of becoming aware of such Data Breach.</li>
+      <li>(b) The Company shall cooperate with the Client in complying with any legal reporting or notification obligations arising from a Data Breach.</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Retention and Deletion</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall retain Client Data and Personal Data only for as long as is necessary to fulfil the purposes of this Agreement or as required by law.</li>
+      <li>(b) Upon termination or expiry of this Agreement, the Company shall: (i) permanently delete or return Client Data and Personal Data, except as required by law to retain; (ii) retain anonymised Usage Data within a reasonable period.</li>
+      <li>(c) The Company may retain anonymised Usage Data for internal analytical purposes.</li>
+    </ul>
+    <h3 class="legal-section-sub">Cross-Border Data Transfers</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall not transfer Client Data outside India except in compliance with Applicable Data Protection Laws and with appropriate safeguards.</li>
+      <li>(b) Where cross-border transfers are required, the Company shall ensure contractual and technical protections equivalent to those under Indian law.</li>
+    </ul>
+    <h3 class="legal-section-sub">Privacy Policy</h3>
+    <ul class="legal-list">
+      <li>(a) The Company's Privacy Policy, as published on its website and updated from time to time, forms an integral part of this Agreement.</li>
+      <li>(b) In the event of any inconsistency between this Agreement and the Privacy Policy, this Agreement shall prevail.</li>
+    </ul>
+    <h3 class="legal-section-sub">Survival</h3>
+    <p class="legal-p">The obligations under this Section 6 shall survive termination or expiry of this Agreement.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 07</p>
+    <h2 class="legal-section-title">Information Security and Cybersecurity</h2>
+    <h3 class="legal-section-sub">Security Governance</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall establish and maintain an information security program designed to protect the confidentiality, integrity, and availability of the Platform and all data processed thereon.</li>
+      <li>(b) Such program shall be proportionate to the nature and sensitivity of the data processed and shall be reviewed periodically.</li>
+      <li>(c) The Company shall designate responsible personnel for overseeing information security and cybersecurity practices.</li>
+    </ul>
+    <h3 class="legal-section-sub">Technical and Organisational Safeguards</h3>
+    <p class="legal-p">The Company shall implement reasonable administrative, technical, and physical safeguards, including but not limited to:</p>
+    <ul class="legal-list">
+      <li>(a) secure authentication and access controls;</li>
+      <li>(b) role-based access management;</li>
+      <li>(c) firewalls and network security mechanisms;</li>
+      <li>(d) intrusion detection and prevention measures where appropriate;</li>
+      <li>(e) secure software development practices;</li>
+      <li>(f) periodic vulnerability assessments;</li>
+      <li>(g) protection against malware and unauthorised access.</li>
+    </ul>
+    <h3 class="legal-section-sub">Access Management</h3>
+    <ul class="legal-list">
+      <li>(a) Access to systems, databases, and data shall be granted only to authorised personnel whose responsibilities require such access.</li>
+      <li>(b) The Company shall ensure that: (i) access rights are reviewed periodically; (ii) dormant or unnecessary accounts are disabled; (iii) access is promptly revoked upon termination of employment or engagement.</li>
+      <li>(c) Multi-factor authentication may be implemented for sensitive systems, where appropriate.</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Storage and Backup</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall maintain secure data storage environments with appropriate safeguards against unauthorised access, loss, or corruption.</li>
+      <li>(b) The Company shall conduct regular backups of critical systems and data.</li>
+      <li>(c) Backup data shall be stored securely and dated periodically for recoverability.</li>
+    </ul>
+    <h3 class="legal-section-sub">System Availability and Resilience</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall take reasonable measures to ensure the continuous availability and resilience of the Platform.</li>
+      <li>(b) Such measures may include: (i) redundancy of critical systems; (ii) disaster recovery procedures; (iii) business continuity planning.</li>
+      <li>(c) The Company shall periodically review and test its recovery and continuity processes.</li>
+    </ul>
+    <h3 class="legal-section-sub">Security Incident Management</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall maintain procedures for identifying, reporting, responding to, and resolving security incidents.</li>
+      <li>(b) In the event of a security incident affecting the Platform or Client Data, the Company shall: (i) promptly investigate the incident; (ii) take reasonable steps to mitigate harm; (iii) coordinate with the Client where necessary.</li>
+      <li>(c) Security incidents involving Personal Data shall be handled in accordance with Section 6.6 (Data Breach Management).</li>
+    </ul>
+    <h3 class="legal-section-sub">Third-Party Security</h3>
+    <ul class="legal-list">
+      <li>(a) Where the Company engages third-party service providers that may access or process Client Data, the Company shall: (i) conduct reasonable due diligence; (ii) impose appropriate contractual security obligations; (iii) monitor compliance on a reasonable basis.</li>
+      <li>(b) The Company shall remain responsible for the acts and omissions of such service providers in relation to data security.</li>
+    </ul>
+    <h3 class="legal-section-sub">Security Audits and Assessments</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may conduct internal or external security assessments from time to time.</li>
+      <li>(b) Upon reasonable request by the Client, and subject to confidentiality obligations, the Company may provide summary information regarding its security practices.</li>
+      <li>(c) Nothing herein shall require the Company to disclose confidential security architecture or sensitive technical details.</li>
+    </ul>
+    <h3 class="legal-section-sub">Client Responsibilities</h3>
+    <p class="legal-p">The Client shall:</p>
+    <ul class="legal-list">
+      <li>(a) ensure that its users follow reasonable security practices;</li>
+      <li>(b) safeguard login credentials;</li>
+      <li>(c) promptly notify the Company of any suspected unauthorised access or misuse;</li>
+      <li>(d) refrain from introducing malicious code or security vulnerabilities.</li>
+    </ul>
+    <h3 class="legal-section-sub">Continuous Improvement</h3>
+    <p class="legal-p">The Company shall endeavour to continuously improve its security posture in response to:</p>
+    <ul class="legal-list">
+      <li>(a) emerging threats;</li>
+      <li>(b) technological developments;</li>
+      <li>(c) regulatory requirements;</li>
+      <li>(d) industry best practices.</li>
+    </ul>
+    <h3 class="legal-section-sub">Survival</h3>
+    <p class="legal-p">The obligations under this Section 7 shall survive termination or expiry of this Agreement.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 08</p>
+    <h2 class="legal-section-title">Intellectual Property Rights</h2>
+    <h3 class="legal-section-sub">Ownership of Platform</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall retain all rights, title, and interest in and to the Platform, including: (i) software, source code, and object code; (ii) databases, system architecture, and workflows; (iii) user interfaces and designs; (iv) algorithms, models, and logic; (v) documentation and training materials.</li>
+      <li>(b) Nothing in this Agreement shall be construed as transferring any ownership rights in the Platform to the Client.</li>
+    </ul>
+    <h3 class="legal-section-sub">Ownership of Client Content</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall retain all rights, title, and interest in and to all content, advisories, data, and materials created or provided by the Client through the Platform ("Client Content").</li>
+      <li>(b) The Client grants the Company a limited, non-exclusive, royalty-free licence to host, process, transmit, and display Client Content solely for the purpose of providing the Services.</li>
+    </ul>
+    <h3 class="legal-section-sub">Knowledge Systems and Derived Works</h3>
+    <ul class="legal-list">
+      <li>(a) All rights in and to the Company's proprietary knowledge systems, including taxonomies, data structures, translation frameworks, and interconnected knowledge repositories, shall remain the exclusive property of the Company.</li>
+      <li>(b) Any enhancements, refinements, or derivative works arising from use of the Platform shall vest solely in the Company, except for Client Content.</li>
+    </ul>
+    <h3 class="legal-section-sub">Feedback and Suggestions</h3>
+    <ul class="legal-list">
+      <li>(a) The Client may provide feedback, suggestions, or improvement ideas relating to the Platform.</li>
+      <li>(b) The Company may freely use, implement, and incorporate such feedback without obligation, attribution, or compensation.</li>
+    </ul>
+    <h3 class="legal-section-sub">Restrictions on Use</h3>
+    <p class="legal-p">The Client shall not, and shall not permit any third party to:</p>
+    <ul class="legal-list">
+      <li>(a) copy, modify, or create derivative works of the Platform;</li>
+      <li>(b) reverse engineer, decompile, or disassemble the Platform;</li>
+      <li>(c) remove or alter proprietary notices;</li>
+      <li>(d) sublicense, resell, or commercially exploit the Platform without authorisation;</li>
+      <li>(e) use the Platform to develop competing products or services.</li>
+    </ul>
+    <h3 class="legal-section-sub">Branding and Trademarks</h3>
+    <ul class="legal-list">
+      <li>(a) All trademarks, logos, and brand identifiers of the Company shall remain its exclusive property.</li>
+      <li>(b) The Client may use such marks solely for identification of the Platform in accordance with brand guidelines, if any.</li>
+      <li>(c) No licence is granted to use Company trademarks for promotional purposes without prior written consent.</li>
+    </ul>
+    <h3 class="legal-section-sub">Open-Source Components</h3>
+    <ul class="legal-list">
+      <li>(a) The Platform may include third-party open-source software components.</li>
+      <li>(b) Such components shall be governed by their respective licences.</li>
+      <li>(c) Nothing in this Agreement limits the Client's rights under applicable open-source licences.</li>
+    </ul>
+    <h3 class="legal-section-sub">Reservation of Rights</h3>
+    <p class="legal-p">All rights not expressly granted herein, all rights not granted to the Client are reserved by the Company.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 09</p>
+    <h2 class="legal-section-title">Confidentiality</h2>
+    <h3 class="legal-section-sub">Definition of Confidential Information</h3>
+    <p class="legal-p">For the purposes of this Agreement, "Confidential Information" means any non-public, proprietary, or sensitive information disclosed by one Party ("Disclosing Party") to the other Party ("Receiving Party"), whether in written, oral, electronic, or other form, including but not limited to:</p>
+    <ul class="legal-list">
+      <li>(a) business plans, strategies, and forecasts;</li>
+      <li>(b) pricing, commercial terms, and contracts;</li>
+      <li>(c) technical information, system architecture, and documentation;</li>
+      <li>(d) product roadmaps and development plans;</li>
+      <li>(e) Client Data and non-public usage information;</li>
+      <li>(f) financial and operational information.</li>
+    </ul>
+    <h3 class="legal-section-sub">Exclusions</h3>
+    <p class="legal-p">Confidential Information shall not include information that:</p>
+    <ul class="legal-list">
+      <li>(a) is or becomes publicly available through no breach of this Agreement;</li>
+      <li>(b) was lawfully known to the Receiving Party prior to disclosure;</li>
+      <li>(c) is lawfully received from a third party without breach of confidentiality;</li>
+      <li>(d) is independently developed without use of the Disclosing Party's Confidential Information.</li>
+    </ul>
+    <h3 class="legal-section-sub">Obligations of Confidentiality</h3>
+    <p class="legal-p">The Receiving Party shall:</p>
+    <ul class="legal-list">
+      <li>(a) use Confidential Information solely for purposes of performing under this Agreement;</li>
+      <li>(b) not disclose Confidential Information to third parties except as permitted herein;</li>
+      <li>(c) protect Confidential Information using at least the same degree of care it uses to protect its own materially similar Confidential Information, and in no event less than reasonable care;</li>
+      <li>(d) restrict access to Confidential Information to employees, contractors, and advisors who have a legitimate need to know and are bound by confidentiality obligations.</li>
+    </ul>
+    <h3 class="legal-section-sub">Permitted Disclosures</h3>
+    <p class="legal-p">The Receiving Party may disclose Confidential Information:</p>
+    <ul class="legal-list">
+      <li>(a) to its professional advisors, auditors, or consultants, subject to confidentiality obligations;</li>
+      <li>(b) as required by law, regulation, or court order, provided that the Receiving Party gives prompt notice to the Disclosing Party where legally permissible.</li>
+    </ul>
+    <h3 class="legal-section-sub">Protection of Client Data</h3>
+    <p class="legal-p">Without limiting the generality of this Section, Client Data and Personal Data shall be treated as Confidential Information and protected in accordance with Sections 6 and 7.</p>
+    <h3 class="legal-section-sub">Return or Destruction</h3>
+    <p class="legal-p">Upon termination of this Agreement or upon written request of the Disclosing Party, the Receiving Party shall, subject to legal retention requirements, promptly return or securely destroy all Confidential Information.</p>
+    <h3 class="legal-section-sub">Remedies</h3>
+    <p class="legal-p">Each Party acknowledges that unauthorised disclosure or misuse of Confidential Information may cause irreparable harm. Accordingly, the Disclosing Party shall be entitled to seek injunctive or equitable relief in addition to any other remedies available under law.</p>
+    <h3 class="legal-section-sub">Duration</h3>
+    <p class="legal-p">The obligations under this Section 9 shall remain in effect during the Term and for a period of five (5) years following termination or expiry of this Agreement, except for trade secrets and Personal Data, which shall be protected indefinitely as required by law.</p>
+    <h3 class="legal-section-sub">No Implied Licence</h3>
+    <p class="legal-p">Nothing in this Agreement shall be construed as granting any licence or rights to Confidential Information except as expressly provided herein.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 10</p>
+    <h2 class="legal-section-title">Ecosystem Participants</h2>
+    <h3 class="legal-section-sub">Independent Status</h3>
+    <ul class="legal-list">
+      <li>(a) Dealers, facilitators, and experts engaged through the Platform ("Ecosystem Participants") shall operate as independent parties and not as employees, agents, or representatives of the Company.</li>
+      <li>(b) Nothing in this Agreement shall be construed as creating any partnership, agency, joint venture, or employment relationship between the Company and any Ecosystem Participant.</li>
+    </ul>
+    <h3 class="legal-section-sub">Client Responsibility for Onboarding and Management</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall be responsible for identifying, onboarding, authorising, and managing its Ecosystem Participants.</li>
+      <li>(b) The Client shall ensure that such participants: (i) are appropriately qualified and trained; (ii) comply with applicable laws and regulations; (iii) adhere to ethical and professional standards.</li>
+      <li>(c) The Company does not verify the credentials, conduct, or performance of Ecosystem Participants.</li>
+    </ul>
+    <h3 class="legal-section-sub">Code of Conduct</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall ensure that Ecosystem Participants comply with reasonable codes of conduct, including requirements relating to: (i) honest representation of products and advisories; (ii) avoidance of misleading or coercive practices; (iii) respect for farmers' rights and interests; (iv) compliance with pricing and subscription policies.</li>
+      <li>(b) The Company may publish platform-level guidelines to promote responsible conduct.</li>
+    </ul>
+    <h3 class="legal-section-sub">Financial Transactions and Collections</h3>
+    <ul class="legal-list">
+      <li>(a) Any financial transactions between the Client, farmers, dealers, facilitators, and other parties shall be governed by separate arrangements.</li>
+      <li>(b) The Company does not act as a collection agent, escrow provider, or guarantor of payments, unless expressly agreed in writing.</li>
+      <li>(c) The Company shall not be responsible for non-payment, delayed payment, or financial disputes among ecosystem participants.</li>
+    </ul>
+    <h3 class="legal-section-sub">Product Handling and Delivery</h3>
+    <ul class="legal-list">
+      <li>(a) Procurement, storage, transportation, and delivery of physical products shall be the sole responsibility of the Client and its authorised dealers.</li>
+      <li>(b) The Company does not assume custody, possession, or control of any physical goods.</li>
+      <li>(c) The Company shall not be liable for defects, shortages, damages, or delays in product delivery.</li>
+    </ul>
+    <h3 class="legal-section-sub">Expert Services and Opinions</h3>
+    <ul class="legal-list">
+      <li>(a) Experts providing advisory or support services through the Platform act in their independent professional capacity.</li>
+      <li>(b) The Company does not guarantee the accuracy, completeness, or outcomes of expert opinions.</li>
+      <li>(c) Responsibility for verification and implementation of expert recommendations rests with the Client and end users.</li>
+    </ul>
+    <h3 class="legal-section-sub">Dispute Resolution within the Ecosystem</h3>
+    <ul class="legal-list">
+      <li>(a) Disputes between farmers, dealers, facilitators, experts, and the Client shall be resolved directly between the concerned parties.</li>
+      <li>(b) The Company may, at its discretion, provide tools or logs to facilitate resolution but shall not be obligated to arbitrate or adjudicate such disputes.</li>
+    </ul>
+    <h3 class="legal-section-sub">Monitoring and Corrective Actions</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may monitor platform usage for compliance with this Agreement and published guidelines.</li>
+      <li>(b) In the event of serious or repeated misconduct, the Company may suspend or restrict access of Ecosystem Participants.</li>
+      <li>(c) Where practicable, the Company shall notify the Client prior to taking such action.</li>
+    </ul>
+    <h3 class="legal-section-sub">Compliance with Laws</h3>
+    <p class="legal-p">The Client shall ensure that all Ecosystem Participants comply with applicable laws, including those relating to:</p>
+    <ul class="legal-list">
+      <li>(a) agricultural inputs and chemicals;</li>
+      <li>(b) consumer protection;</li>
+      <li>(c) taxation and invoicing;</li>
+      <li>(d) labour and commercial practices.</li>
+    </ul>
+    <h3 class="legal-section-sub">No Assumption of Liability</h3>
+    <p class="legal-p">The Company shall not be liable for acts, omissions, negligence, misconduct, or breaches by Ecosystem Participants. All such risks shall be borne by the Client and relevant participants.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 11</p>
+    <h2 class="legal-section-title">Regulatory and Advisory Compliance</h2>
+    <h3 class="legal-section-sub">Compliance with Agricultural Laws</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall ensure that all products, advisories, and services offered through the Platform comply with applicable laws and regulations, including, without limitation: (i) The Insecticides Act, 1968 and rules thereunder; (ii) The Fertiliser (Control) Order, 1985; (iii) The Seeds Act, 1966 and related regulations; (iv) Applicable environmental, safety, and consumer protection laws; (v) Any successor or amended legislation.</li>
+      <li>(b) The Company does not certify, approve, or validate the regulatory compliance of any product or input.</li>
+    </ul>
+    <h3 class="legal-section-sub">Responsibility for Advisory Content</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall be solely responsible for the accuracy, legality, and appropriateness of all advisory content, recommendations, and management plans disseminated through the Platform.</li>
+      <li>(b) All advisories shall be peer-reviewed, approved, and supported by suitably qualified personnel of the Client.</li>
+      <li>(c) The Company does not independently verify the scientific, agronomic, or regulatory correctness of such content.</li>
+    </ul>
+    <h3 class="legal-section-sub">Product Registration and Licensing</h3>
+    <ul class="legal-list">
+      <li>(a) The Client represents and warrants that all products promoted, recommended, or sold through the Platform are duly registered, licensed, and approved under applicable laws.</li>
+      <li>(b) The Client shall maintain valid licences, permits, and certifications required for its operations.</li>
+    </ul>
+    <h3 class="legal-section-sub">Marketing, Labelling, and Claims</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall ensure that all marketing communications, labels, and claims made through the Platform are accurate, truthful, and compliant with applicable regulations.</li>
+      <li>(b) The Client shall not make unsubstantiated performance, yield, or efficacy claims.</li>
+    </ul>
+    <h3 class="legal-section-sub">Restricted and Prohibited Substances</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall not promote, recommend, or distribute any banned, restricted, or unapproved substances through the Platform.</li>
+      <li>(b) The Company reserves the right to suspend access where such violations are detected.</li>
+    </ul>
+    <h3 class="legal-section-sub">Environmental and Safety Compliance</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall ensure compliance with applicable environmental, health, and safety standards relating to the storage, handling, application, and disposal of agricultural inputs.</li>
+      <li>(b) The Company shall not supervise or monitor physical field practices.</li>
+    </ul>
+    <h3 class="legal-section-sub">Record-Keeping and Audit Cooperation</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall maintain records as required under applicable laws.</li>
+      <li>(b) Where required by law, the Client shall cooperate with regulatory authorities.</li>
+      <li>(c) The Company may provide technical records from the Platform to authorities only in accordance with law.</li>
+    </ul>
+    <h3 class="legal-section-sub">Farmer Awareness and Instructions</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall ensure that advisories include appropriate usage instructions, safety precautions, and warnings.</li>
+      <li>(b) The Company does not assume responsibility for dissemination beyond the Platform.</li>
+    </ul>
+    <h3 class="legal-section-sub">Regulatory Changes</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall remain responsible for monitoring changes in applicable regulations.</li>
+      <li>(b) The Company may update Platform features to support compliance but does not guarantee regulatory completeness.</li>
+    </ul>
+    <h3 class="legal-section-sub">Indemnity for Regulatory Violations</h3>
+    <p class="legal-p">Any penalties, losses, or liabilities arising from regulatory non-compliance by the Client or its partners shall be borne solely by the Client and relevant participants, in accordance with Section 14.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 12</p>
+    <h2 class="legal-section-title">Service Levels and Support</h2>
+    <h3 class="legal-section-sub">Service Availability</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall use commercially reasonable efforts to ensure that the Platform is available on a continuous basis, excluding Scheduled Maintenance and Force Majeure Events.</li>
+      <li>(b) The Company shall target a minimum monthly uptime of ninety-nine percent (99%) ("Service Availability").</li>
+      <li>(c) Service Availability shall be measured on a monthly basis and excludes downtime resulting from: (i) Scheduled Maintenance; (ii) emergency maintenance; (iii) Client-side Internet, hardware, or software failures; (iv) third-party service provider outages; (v) security incidents not caused by the Company's negligence.</li>
+    </ul>
+    <h3 class="legal-section-sub">Scheduled Maintenance</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may conduct Scheduled Maintenance from time to time to maintain and improve the Platform.</li>
+      <li>(b) Where reasonably practicable, the Company shall provide advance notice of Scheduled Maintenance.</li>
+      <li>(c) Scheduled Maintenance shall, where possible, be conducted during off-peak hours.</li>
+    </ul>
+    <h3 class="legal-section-sub">Support Services</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall provide technical support to the Client through designated support channels, which may include email, ticketing systems, or in-app support.</li>
+      <li>(b) Support services shall be available during standard business hours on business days, unless otherwise agreed.</li>
+      <li>(c) The Company may update support channels from time to time.</li>
+    </ul>
+    <h3 class="legal-section-sub">Incident Classification and Response Targets</h3>
+    <p class="legal-p">The Company shall use reasonable efforts to respond to support requests in accordance with the following indicative timelines:</p>
+    <ul class="legal-list">
+      <li>Critical (Platform unavailable or major functionality impaired): Within 4 business hours</li>
+      <li>High (Significant degradation of service): Within 8 business hours</li>
+      <li>Medium (Limited functionality affected): Within 24 business hours</li>
+      <li>Low (General inquiries / minor issues): Within 48 business hours</li>
+    </ul>
+    <p class="legal-p">Response time refers to acknowledgement and initial assessment, not necessarily resolution.</p>
+    <h3 class="legal-section-sub">Issue Resolution</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall use commercially reasonable efforts to resolve reported issues in a timely manner.</li>
+      <li>(b) Resolution time may vary depending on the nature, complexity, and cause of the issue.</li>
+      <li>(c) The Company does not guarantee resolution within any specific timeframe.</li>
+    </ul>
+    <h3 class="legal-section-sub">Client Responsibilities</h3>
+    <p class="legal-p">The Client shall:</p>
+    <ul class="legal-list">
+      <li>(a) promptly report issues with sufficient detail;</li>
+      <li>(b) cooperate in troubleshooting;</li>
+      <li>(c) provide access to relevant information where necessary;</li>
+      <li>(d) ensure that its systems and connectivity meet minimum requirements.</li>
+    </ul>
+    <p class="legal-p">Failure to do so may affect resolution timelines.</p>
+    <h3 class="legal-section-sub">Escalation Procedure</h3>
+    <ul class="legal-list">
+      <li>(a) If a reported issue is not addressed within reasonable time, the Client may request escalation through designated channels.</li>
+      <li>(b) The Company shall make reasonable efforts to prioritise escalated matters.</li>
+    </ul>
+    <h3 class="legal-section-sub">Service Credits</h3>
+    <ul class="legal-list">
+      <li>(a) Unless expressly agreed in writing, the Company does not provide service credits for failure to meet Service Availability targets.</li>
+      <li>(b) Any agreed service credit mechanism shall be set out in a separate written agreement.</li>
+    </ul>
+    <h3 class="legal-section-sub">Exclusions</h3>
+    <p class="legal-p">The Company shall not be responsible for service interruptions or failures caused by:</p>
+    <ul class="legal-list">
+      <li>(a) misuse of the Platform;</li>
+      <li>(b) unauthorised modifications;</li>
+      <li>(c) third-party integrations;</li>
+      <li>(d) network failures beyond Company control;</li>
+      <li>(e) Force Majeure Events.</li>
+    </ul>
+    <h3 class="legal-section-sub">Continuous Improvement</h3>
+    <p class="legal-p">The Company shall periodically review and improve its service delivery processes, support systems, and infrastructure.</p>
+    <h3 class="legal-section-sub">Survival</h3>
+    <p class="legal-p">The obligations under this Section 12 shall survive termination to the extent necessary for resolution of outstanding support issues.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 13</p>
+    <h2 class="legal-section-title">Warranties and Disclaimers</h2>
+    <h3 class="legal-section-sub">Mutual Authority and Capacity</h3>
+    <p class="legal-p">Each Party represents and warrants that:</p>
+    <ul class="legal-list">
+      <li>(a) it is duly organised and validly existing under applicable laws;</li>
+      <li>(b) it has full power and authority to enter into and perform this Agreement;</li>
+      <li>(c) the execution of this Agreement does not violate any other agreement or legal obligation.</li>
+    </ul>
+    <h3 class="legal-section-sub">Company Warranties</h3>
+    <p class="legal-p">The Company represents and warrants that:</p>
+    <ul class="legal-list">
+      <li>(a) it shall provide the Services in a professional and workmanlike manner, consistent with generally accepted industry standards;</li>
+      <li>(b) it shall use commercially reasonable efforts to ensure that the Platform performs substantially in accordance with its published documentation.</li>
+    </ul>
+    <h3 class="legal-section-sub">Client Warranties</h3>
+    <p class="legal-p">The Client represents and warrants that:</p>
+    <ul class="legal-list">
+      <li>(a) all information, content, and advisories uploaded or disseminated through the Platform are accurate and compliant with applicable laws;</li>
+      <li>(b) it has obtained all necessary rights, licences, and consents for such content;</li>
+      <li>(c) its use of the Platform shall not infringe any third-party rights or violate applicable regulations.</li>
+    </ul>
+    <h3 class="legal-section-sub">Disclaimer of Warranties</h3>
+    <ul class="legal-list">
+      <li>(a) Except as expressly stated in this Agreement, the Company disclaims all implied warranties, including warranties of merchantability, fitness for a particular purpose, accuracy, and non-infringement.</li>
+      <li>(b) To the maximum extent permitted by law, the Company disclaims all warranties, including without limitation: (i) that the Platform will be uninterrupted or error-free; (ii) all defects will be corrected; (iii) the use of the Platform will result in any specific commercial, agricultural, or financial outcome.</li>
+    </ul>
+    <h3 class="legal-section-sub">Agricultural and Advisory Disclaimer</h3>
+    <ul class="legal-list">
+      <li>(a) The Client acknowledges that agricultural outcomes depend on numerous factors beyond the Company's control, including weather, soil conditions, crop varieties, farming practices, and external market conditions.</li>
+      <li>(b) The Company does not guarantee crop yield, pest control effectiveness, profitability, or any specific agronomic result.</li>
+      <li>(c) All advisories, diagnostic tools, and recommendations are intended to assist decision-making and do not replace professional judgment or statutory compliance.</li>
+    </ul>
+    <h3 class="legal-section-sub">No Professional Advice</h3>
+    <p class="legal-p">Nothing in the Platform shall be construed as legal, financial, medical, or regulatory advice.</p>
+    <h3 class="legal-section-sub">Limitation of Reliance</h3>
+    <p class="legal-p">The Client agrees that it has not relied on any representation or warranty not expressly set out in this Agreement.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 14</p>
+    <h2 class="legal-section-title">Indemnification</h2>
+    <h3 class="legal-section-sub">Indemnification by Client</h3>
+    <p class="legal-p">The Client shall indemnify, defend, and hold harmless the Company, its directors, officers, employees, and agents from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising out of or relating to:</p>
+    <ul class="legal-list">
+      <li>(a) the Client's content, advisories, or recommendations distributed through the Platform;</li>
+      <li>(b) the Client's violation of applicable laws, including agricultural, environmental, and product regulations;</li>
+      <li>(c) infringement of intellectual property or proprietary rights caused by Client-provided materials;</li>
+      <li>(d) misuse of the Platform by the Client or its authorised users;</li>
+      <li>(e) disputes between the Client and its farmers, dealers, facilitators, or experts.</li>
+    </ul>
+    <h3 class="legal-section-sub">Indemnification by the Company</h3>
+    <p class="legal-p">The Company shall indemnify and hold harmless the Client from and against any third-party claims alleging that the Platform, as provided by the Company, infringes any valid intellectual property right, provided that:</p>
+    <ul class="legal-list">
+      <li>(a) the Client promptly notifies the Company in writing;</li>
+      <li>(b) the Company is given sole control of the defence and settlement;</li>
+      <li>(c) the Client reasonably cooperates with the defence.</li>
+    </ul>
+    <h3 class="legal-section-sub">Exclusions</h3>
+    <p class="legal-p">The Company's indemnity obligations shall not apply to claims arising from:</p>
+    <ul class="legal-list">
+      <li>(a) Client modifications to the Platform;</li>
+      <li>(b) combination of the Platform with unauthorised systems;</li>
+      <li>(c) use of the Platform in violation of this Agreement.</li>
+    </ul>
+    <h3 class="legal-section-sub">Indemnification Procedure</h3>
+    <ul class="legal-list">
+      <li>(a) The Indemnified Party shall promptly notify the Indemnifying Party of any claim.</li>
+      <li>(b) The Indemnifying Party shall have the right to control the defence and settlement, provided that no settlement adversely affecting the Indemnified Party's consent.</li>
+      <li>(c) The Indemnified Party shall participate in the defence at its own expense.</li>
+    </ul>
+    <h3 class="legal-section-sub">Mitigation</h3>
+    <p class="legal-p">Each Party shall use reasonable efforts to mitigate any damages subject to indemnification.</p>
+    <h3 class="legal-section-sub">Exclusive Remedy</h3>
+    <p class="legal-p">The indemnification obligations under this Section 14 constitute the exclusive remedy for third-party claims covered hereunder.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 15</p>
+    <h2 class="legal-section-title">Limitation of Liability</h2>
+    <h3 class="legal-section-sub">Exclusion of Indirect Damages</h3>
+    <p class="legal-p">To the maximum extent permitted by applicable law, neither Party shall be liable to the other for any:</p>
+    <ul class="legal-list">
+      <li>(a) indirect, incidental, special, consequential, or punitive damages;</li>
+      <li>(b) loss of profits, revenue, business opportunities, goodwill, or reputation;</li>
+      <li>(c) loss or corruption of data;</li>
+      <li>(d) loss arising from business interruption,</li>
+    </ul>
+    <p class="legal-p">whether arising in contract, tort, negligence, strict liability, or otherwise, even if advised of the possibility of such damages.</p>
+    <h3 class="legal-section-sub">Aggregate Liability Cap</h3>
+    <p class="legal-p">Except for liabilities arising under Sections 6 (Data Protection), 8 (Confidentiality), and 14 (Indemnification), the total aggregate liability of either Party under this Agreement shall not exceed the total fees paid or payable by the Client to the Company under this Agreement during the twelve (12) months preceding the event giving rise to the claim.</p>
+    <h3 class="legal-section-sub">Carve-Outs</h3>
+    <p class="legal-p">The limitations set forth in this Section 15 shall not apply to:</p>
+    <ul class="legal-list">
+      <li>(a) wilful misconduct or fraud;</li>
+      <li>(b) gross negligence;</li>
+      <li>(c) breach of confidentiality obligations;</li>
+      <li>(d) violation of applicable data protection laws;</li>
+      <li>(e) infringement of intellectual property rights.</li>
+    </ul>
+    <h3 class="legal-section-sub">Basis of Bargain</h3>
+    <p class="legal-p">The Parties acknowledge that:</p>
+    <ul class="legal-list">
+      <li>(a) the limitations and exclusions of liability set forth herein reflect a fair allocation of risk;</li>
+      <li>(b) the fees charged under this Agreement are based in part upon limitations;</li>
+      <li>(c) absent such limitations, the Company would not have entered into this Agreement.</li>
+    </ul>
+    <h3 class="legal-section-sub">Application of Limitations</h3>
+    <p class="legal-p">The limitations set forth in this Section 15 shall apply regardless of the form of action, whether in contract, tort, negligence, strict liability, or otherwise, and shall survive termination or expiry of this Agreement.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 16</p>
+    <h2 class="legal-section-title">Term, Suspension, and Termination</h2>
+    <h3 class="legal-section-sub">Term of Agreement</h3>
+    <ul class="legal-list">
+      <li>(a) This Agreement shall commence on the Effective Date and shall continue for an initial term of one (1) year, unless otherwise agreed in writing ("Initial Term").</li>
+      <li>(b) Upon expiry of the Initial Term, this Agreement shall automatically renew for successive one (1) year periods ("Renewal Term"), unless either Party provides written notice of non-renewal at least thirty (30) days prior to the end of the then-current term.</li>
+      <li>(c) Each Initial Term and Renewal Term shall collectively be referred to as the "Term".</li>
+    </ul>
+    <h3 class="legal-section-sub">Suspension of Services</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may suspend access to the Platform, in whole or in part, upon prior notice to the Client, if: (i) the Client materially breaches this Agreement; (ii) payment obligations remain overdue beyond a reasonable grace period; (iii) there is a reasonable risk to the security, integrity, or availability of the Platform; (iv) continued access may result in legal or regulatory violation.</li>
+      <li>(b) Where practicable, the Company shall provide the Client with reasonable opportunity to cure the issue prior to suspension.</li>
+      <li>(c) Suspension shall be limited in scope and duration to what is reasonably necessary.</li>
+    </ul>
+    <h3 class="legal-section-sub">Termination for Convenience</h3>
+    <ul class="legal-list">
+      <li>(a) Either Party may terminate this Agreement for convenience by providing not less than sixty (60) days' prior written notice to the other Party.</li>
+      <li>(b) Such termination shall not affect any accrued rights or obligations existing as of the termination date.</li>
+    </ul>
+    <h3 class="legal-section-sub">Termination for Cause</h3>
+    <p class="legal-p">Either Party may terminate this Agreement with immediate effect upon written notice if:</p>
+    <ul class="legal-list">
+      <li>(a) the other Party commits a material breach and fails to remedy such breach within thirty (30) days of receiving written notice;</li>
+      <li>(b) the other Party becomes insolvent, enters liquidation, or ceases business operations;</li>
+      <li>(c) the other Party engages in unlawful, fraudulent, or grossly negligent conduct that materially affects the Agreement.</li>
+    </ul>
+    <h3 class="legal-section-sub">Termination for Regulatory or Legal Reasons</h3>
+    <p class="legal-p">The Company may terminate this Agreement upon written notice if continued performance would result in violation of applicable law, regulation, or government directive.</p>
+    <h3 class="legal-section-sub">Effect of Termination</h3>
+    <p class="legal-p">Upon termination or expiry of this Agreement:</p>
+    <ul class="legal-list">
+      <li>(a) all rights to access and use the Platform shall cease, except as expressly provided herein;</li>
+      <li>(b) all outstanding payments shall become immediately due and payable;</li>
+      <li>(c) each Party shall return or destroy the Confidential Information of the other Party in accordance with Section 9.</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Transition and Transition Support</h3>
+    <ul class="legal-list">
+      <li>(a) Upon written request made within thirty (30) days following termination, the Company shall provide the Client with a reasonable export of Client Data in a commonly used electronic format.</li>
+      <li>(b) The Company shall provide reasonable transition assistance for a period of up to sixty (60) days following termination, subject to mutually agreed commercial terms, if requested by the Client.</li>
+      <li>(c) After completion of data export and transition support, the Company shall process data deletion in accordance with Section 6.7.</li>
+    </ul>
+    <h3 class="legal-section-sub">Survival of Obligations</h3>
+    <p class="legal-p">The following provisions shall survive termination or expiry of this Agreement:</p>
+    <ul class="legal-list">
+      <li>Data Protection and Privacy (Section 6)</li>
+      <li>Information Security (Section 7)</li>
+      <li>Intellectual Property Rights (Section 8)</li>
+      <li>Confidentiality (Section 9)</li>
+      <li>Warranties and Disclaimers (Section 13)</li>
+      <li>Indemnification (Section 14)</li>
+      <li>Limitation of Liability (Section 15)</li>
+      <li>Dispute Resolution (Section 20)</li>
+    </ul>
+    <h3 class="legal-section-sub">No Waiver of Rights</h3>
+    <p class="legal-p">Termination shall not waive any rights or remedies available to either Party under law or equity.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 17</p>
+    <h2 class="legal-section-title">Effects of Termination</h2>
+    <h3 class="legal-section-sub">Cessation of Access</h3>
+    <p class="legal-p">Upon termination or expiry of this Agreement for any reason:</p>
+    <ul class="legal-list">
+      <li>(a) all rights granted to the Client to access and use the Platform shall immediately cease, except as expressly provided herein;</li>
+      <li>(b) all authorised user accounts associated with the Client may be deactivated;</li>
+      <li>(c) the Client shall discontinue all use of the Platform.</li>
+    </ul>
+    <h3 class="legal-section-sub">Settlement of Accounts</h3>
+    <ul class="legal-list">
+      <li>(a) All outstanding fees, charges, and invoices shall become immediately due and payable.</li>
+      <li>(b) The Company shall not reduce the Client of any payment obligations incurred prior to termination.</li>
+      <li>(c) Any agreed refunds or credits shall be processed in accordance with Section 5.</li>
+    </ul>
+    <h3 class="legal-section-sub">Return and Protection of Data</h3>
+    <ul class="legal-list">
+      <li>(a) Subject to Section 6.7, the Client may request export of Client Data within thirty (30) days following termination.</li>
+      <li>(b) The Company shall provide such data in a commonly used electronic format.</li>
+      <li>(c) Following completion of data export and applicable retention periods, the Company shall securely delete or anonymise Client Data.</li>
+      <li>(d) The Company shall continue to protect retained data in accordance with Sections 6 and 7.</li>
+    </ul>
+    <h3 class="legal-section-sub">Return of Confidential Information</h3>
+    <p class="legal-p">Each Party shall return or destroy the Confidential Information of the other Party in accordance with Section 9.</p>
+    <h3 class="legal-section-sub">Transition Assistance</h3>
+    <ul class="legal-list">
+      <li>(a) Upon reasonable request, the Company shall provide limited transition support for a period of up to sixty (60) days following termination.</li>
+      <li>(b) Such support shall be subject to mutually agreed commercial terms.</li>
+      <li>(c) The Company shall not be obligated to provide indefinite or open-ended transition assistance.</li>
+    </ul>
+    <h3 class="legal-section-sub">Survival of Rights and Obligations</h3>
+    <p class="legal-p">Termination or expiry shall not affect:</p>
+    <ul class="legal-list">
+      <li>(a) accrued rights and obligations;</li>
+      <li>(b) payment obligations;</li>
+      <li>(c) indemnification rights;</li>
+      <li>(d) confidentiality obligations;</li>
+      <li>(e) data protection obligations;</li>
+      <li>(f) dispute resolution rights.</li>
+    </ul>
+    <h3 class="legal-section-sub">No Continued Rights</h3>
+    <p class="legal-p">Except as expressly provided herein, termination shall not grant either Party any continuing rights to:</p>
+    <ul class="legal-list">
+      <li>(a) use the other Party's intellectual property;</li>
+      <li>(b) represent any association;</li>
+      <li>(c) access confidential systems or information.</li>
+    </ul>
+    <h3 class="legal-section-sub">No Waiver</h3>
+    <p class="legal-p">Termination shall not constitute a waiver of any breach or legal remedy.</p>
+    <h3 class="legal-section-sub">Treatment of Active Subscriptions</h3>
+    <ul class="legal-list">
+      <li>(a) Upon termination or expiry of this Agreement, any unused Subscription credits shall stand forfeited and shall not be refunded.</li>
+      <li>(b) Any active Subscriptions assigned to farmers prior to termination may, at the Company's discretion, continue until completion of the applicable crop cycle.</li>
+      <li>(c) The Client shall not be entitled to any refund, credit, or compensation in respect of such continued services.</li>
+      <li>(d) Continuation of services under this clause shall not be construed as waiver of termination or reinstatement of this Agreement.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 18</p>
+    <h2 class="legal-section-title">Product Development and Customisation</h2>
+    <h3 class="legal-section-sub">Standard Platform Offering</h3>
+    <ul class="legal-list">
+      <li>(a) The Platform is offered as a standardised, configurable software service.</li>
+      <li>(b) Core functionalities, workflows, and system architecture are determined by the Company.</li>
+      <li>(c) The Company does not guarantee exclusive features or functionality to any Client unless expressly agreed in writing.</li>
+    </ul>
+    <h3 class="legal-section-sub">Configuration and Customisation</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may allow configuration of certain features, workflows, and parameters to suit the Client's requirements.</li>
+      <li>(b) Any custom development, integrations, or enhancements shall be subject to separate written agreement and commercial terms.</li>
+      <li>(c) Unless otherwise agreed, all custom developments shall remain the intellectual property of the Company.</li>
+    </ul>
+    <h3 class="legal-section-sub">Product Roadmap and Enhancements</h3>
+    <ul class="legal-list">
+      <li>(a) The Company shall determine the product roadmap based on technical feasibility, user needs, and business priorities.</li>
+      <li>(b) Client requests and feedback may be considered but shall not be binding.</li>
+      <li>(c) The Company may release updates, patches, and new versions of the Platform from time to time.</li>
+    </ul>
+    <h3 class="legal-section-sub">Compatibility and Upgrades</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may release updates, patches, and new versions of the Platform from time to time.</li>
+      <li>(b) The Client agrees to use supported versions of the Platform.</li>
+      <li>(c) Continued use of the Platform following upgrades constitutes acceptance thereof.</li>
+    </ul>
+    <h3 class="legal-section-sub">Beta and Experimental Features</h3>
+    <ul class="legal-list">
+      <li>(a) The Company may offer certain features on a beta or experimental basis.</li>
+      <li>(b) Such features may be modified, withdrawn, or discontinued without notice.</li>
+      <li>(c) Beta features are provided without warranty and may be subject to limitations.</li>
+    </ul>
+    <h3 class="legal-section-sub">No Exclusivity</h3>
+    <p class="legal-p">Unless expressly agreed in writing, the Company does not grant any Client exclusive rights to any feature, functionality, or market segment.</p>
+    <h3 class="legal-section-sub">Independence of Development</h3>
+    <p class="legal-p">The Company retains sole discretion over design, architecture, and implementation of the Platform.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 19</p>
+    <h2 class="legal-section-title">Force Majeure</h2>
+    <h3 class="legal-section-sub">Definition</h3>
+    <p class="legal-p">Neither Party shall be liable for failure or delay in performance of its obligations under this Agreement due to events beyond its reasonable control ("Force Majeure Event"), including but not limited to:</p>
+    <ul class="legal-list">
+      <li>(a) natural disasters, floods, droughts, earthquakes, or epidemics;</li>
+      <li>(b) war, terrorism, civil unrest, or riots;</li>
+      <li>(c) government actions, lockdowns, or regulatory restrictions;</li>
+      <li>(d) failures of power, telecommunications, or Internet infrastructure;</li>
+      <li>(e) labour strikes or industrial disturbances.</li>
+    </ul>
+    <h3 class="legal-section-sub">Notification</h3>
+    <p class="legal-p">The affected Party shall promptly notify the other Party of the occurrence and expected duration of the Force Majeure Event.</p>
+    <h3 class="legal-section-sub">Suspension of Obligations</h3>
+    <p class="legal-p">During the continuance of a Force Majeure Event:</p>
+    <ul class="legal-list">
+      <li>(a) the affected obligations shall be suspended;</li>
+      <li>(b) the affected Party shall use reasonable efforts to resume performance.</li>
+    </ul>
+    <h3 class="legal-section-sub">Termination for Extended Force Majeure</h3>
+    <p class="legal-p">If a Force Majeure Event continues for more than ninety (90) consecutive days, either Party may terminate this Agreement upon written notice.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 20</p>
+    <h2 class="legal-section-title">Governing Law and Dispute Resolution</h2>
+    <h3 class="legal-section-sub">Governing Law</h3>
+    <p class="legal-p">This Agreement shall be governed by and construed in accordance with the laws of India.</p>
+    <h3 class="legal-section-sub">Amicable Resolution</h3>
+    <p class="legal-p">The Parties shall first attempt to resolve any dispute, controversy, or claim arising out of or relating to this Agreement through good faith negotiations.</p>
+    <h3 class="legal-section-sub">Arbitration</h3>
+    <ul class="legal-list">
+      <li>(a) If the dispute is not resolved within thirty (30) days, it shall be referred to and finally resolved by arbitration in accordance with the Arbitration and Conciliation Act, 1996.</li>
+      <li>(b) The arbitration shall be conducted by a sole arbitrator mutually appointed by the Parties.</li>
+      <li>(c) The seat and venue of arbitration shall be Bengaluru, India.</li>
+      <li>(d) The language of arbitration shall be English.</li>
+    </ul>
+    <h3 class="legal-section-sub">Jurisdiction</h3>
+    <p class="legal-p">Subject to arbitration, courts at Bengaluru, India shall have exclusive jurisdiction.</p>
+    <h3 class="legal-section-sub">Injunctive Relief</h3>
+    <p class="legal-p">Nothing in this Section shall prevent either Party from seeking interim or injunctive relief from a competent court.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 21</p>
+    <h2 class="legal-section-title">General Provisions</h2>
+    <h3 class="legal-section-sub">Entire Agreement</h3>
+    <p class="legal-p">This Agreement constitutes the entire agreement between the Parties and supersedes all prior discussions, understandings, or agreements.</p>
+    <h3 class="legal-section-sub">Amendments</h3>
+    <p class="legal-p">This Agreement may be amended only by a written document signed by authorised representatives of both Parties.</p>
+    <h3 class="legal-section-sub">Assignment</h3>
+    <ul class="legal-list">
+      <li>(a) The Client shall not assign or transfer this Agreement without prior written consent of the Company.</li>
+      <li>(b) The Company may assign this Agreement in connection with merger, acquisition, or business restructuring.</li>
+    </ul>
+    <h3 class="legal-section-sub">Severability</h3>
+    <p class="legal-p">If any provision of this Agreement is held invalid or unenforceable, the remaining provisions shall remain in full force and effect.</p>
+    <h3 class="legal-section-sub">Waiver</h3>
+    <p class="legal-p">Failure by either Party to enforce any provision shall not constitute a waiver.</p>
+    <h3 class="legal-section-sub">Relationship of Parties</h3>
+    <p class="legal-p">The Parties are independent contractors. Nothing creates partnership, agency, or employment.</p>
+    <h3 class="legal-section-sub">Notices</h3>
+    <p class="legal-p">All notices shall be in writing and sent to the registered addresses or designated email addresses of the Parties.</p>
+    <h3 class="legal-section-sub">Electronic Execution</h3>
+    <p class="legal-p">This Agreement may be executed electronically and shall be legally valid.</p>
+    <h3 class="legal-section-sub">Counterparts</h3>
+    <p class="legal-p">This Agreement may be executed in counterparts, each of which shall be deemed an original.</p>
+    <h3 class="legal-section-sub">Survival</h3>
+    <p class="legal-p">Provisions intended to survive shall remain in effect after termination.</p>
+  </div>
+
+  <div class="legal-contact-box" style="margin-top:2rem">
+    <p><strong>Questions about these Terms?</strong></p>
+    <p>Neytiri Eywafarm Agritech Pvt. Ltd., #1238, 4th Floor, HIG, B Sector, Yelahanka New Town, Bengaluru 560064</p>
+    <p>Email: <a href="mailto:support@eywa.farm">support@eywa.farm</a> &nbsp;·&nbsp; Phone: <a href="tel:08042107702">080 4210 7702</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri Eywafarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">&middot;</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru&nbsp;560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="rootstalk.html" class="footer-link">RootsTalk</a>
+      <a href="cosh.html" class="footer-link">Cosh</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="index.html#about" class="footer-link">About Neytiri</a>
+      <a href="index.html#team" class="footer-link">Team</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+      <a href="cancellations.html" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri Eywafarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+</body>
+</html>

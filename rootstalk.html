@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RootsTalk — Advisory & Delivery Platform · Neytiri Eywafarm Agritech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --soil:       #1A1208;
+  --bark:       #2C1F0E;
+  --moss:       #1B4332;
+  --fern:       #2D6A4F;
+  --leaf:       #52B788;
+  --shoot:      #95D5B2;
+  --mist:       #D8F3DC;
+  --parchment:  #FAF6EE;
+  --amber:      #C8893A;
+  --gold:       #E8B84B;
+  --cream:      #F5EDD8;
+  --ink:        #1A1208;
+  --body-text:  #3D2E1A;
+  --light-text: #6B5740;
+  --rule:       rgba(44,31,14,0.12);
+
+  /* RootsTalk accent colours */
+  --teal:       #085041;
+  --teal-mid:   #0D6B56;
+  --teal-light: #1A9B7A;
+  --indigo:     #3C3489;
+  --indigo-l:   #6B63C4;
+  --ochre:      #7D4E00;
+  --ochre-l:    #C47B00;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  background: var(--parchment);
+  color: var(--body-text);
+  overflow-x: hidden;
+}
+
+/* ── Typography ───────────────────────────────────────────────────────────── */
+.display { font-family: 'Playfair Display', serif; }
+.mono    { font-family: 'DM Mono', monospace; }
+
+/* ── Nav ──────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--moss);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--teal);
+  color: white !important;
+  padding: 0.55rem 1.3rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.nav-cta:hover { background: var(--teal-mid) !important; color: white !important; }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 3rem 6rem 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--teal-light);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--teal);
+}
+
+.hero-subhead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--light-text);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-stat-row {
+  display: flex;
+  gap: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.hero-stat strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1;
+}
+
+.hero-stat span {
+  font-size: 0.78rem;
+  color: var(--light-text);
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(8,80,65,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(26,155,122,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(13,31,26,0.97) 0%, #071412 100%);
+  animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.88; }
+}
+
+.ecosystem-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: fadeIn 1.2s ease 0.8s forwards;
+}
+
+.hero-label {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(26,155,122,0.5);
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeIn 1s ease 2s forwards;
+}
+
+/* ── Section base ─────────────────────────────────────────────────────────── */
+section { padding: 7rem 4rem; }
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.section-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--light-text);
+  max-width: 620px;
+}
+
+.ruled-line {
+  width: 48px;
+  height: 2px;
+  background: var(--teal-light);
+  margin-bottom: 2rem;
+}
+
+/* ── Problem ─────────────────────────────────────────────────────────────── */
+.problem {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.problem-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.problem-card {
+  border-left: 3px solid var(--amber);
+  padding: 1.25rem 1.5rem;
+  background: rgba(250,246,238,0.7);
+  border-radius: 0 4px 4px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(200,137,58,0.04), transparent);
+}
+
+.problem-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.problem-card-body {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--light-text);
+}
+
+/* ── What is RootsTalk ───────────────────────────────────────────────────── */
+.what-is {
+  background: var(--teal);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.what-is::before {
+  content: 'RT';
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 22rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.what-is .section-eyebrow { color: rgba(149,213,178,0.9); }
+.what-is .section-title   { color: white; }
+.what-is .section-body    { color: rgba(255,255,255,0.72); max-width: 680px; }
+.what-is .ruled-line      { background: var(--shoot); }
+
+.rt-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.pillar {
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.04);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.pillar:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(149,213,178,0.3);
+}
+
+.pillar-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+
+.pillar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--shoot);
+  margin-bottom: 0.6rem;
+}
+
+.pillar-body {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.62);
+}
+
+/* ── Ecosystem ───────────────────────────────────────────────────────────── */
+.ecosystem {
+  background: var(--parchment);
+}
+
+.ecosystem-title-row {
+  max-width: 700px;
+  margin-bottom: 4rem;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.role-card {
+  padding: 2rem;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background: white;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.role-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26,18,8,0.09);
+}
+
+.role-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  transition: opacity 0.3s;
+}
+
+.role-farmer::after  { background: var(--leaf); }
+.role-dealer::after  { background: var(--teal); }
+.role-facil::after   { background: var(--ochre-l); }
+.role-fp::after      { background: var(--indigo-l); }
+
+.role-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+}
+
+.badge-farmer  { background: rgba(82,183,136,0.1);  color: var(--fern); }
+.badge-dealer  { background: rgba(8,80,65,0.08);    color: var(--teal); }
+.badge-facil   { background: rgba(125,78,0,0.08);   color: var(--ochre); }
+.badge-fp      { background: rgba(60,52,137,0.08);  color: var(--indigo); }
+
+.role-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.role-body {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: var(--light-text);
+  margin-bottom: 1rem;
+}
+
+.role-detail {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--light-text);
+  font-style: italic;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ── How it Works ────────────────────────────────────────────────────────── */
+.how-it-works {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.flow-diagram {
+  position: relative;
+  padding: 2.5rem;
+  background: var(--bark);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.flow-diagram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(8,80,65,0.3), transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(26,18,8,0.3), transparent 60%);
+}
+
+.flow-inner { position: relative; z-index: 1; }
+
+.flow-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--shoot);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid rgba(149,213,178,0.12);
+  background: rgba(255,255,255,0.03);
+  transition: border-color 0.2s;
+}
+
+.flow-step:hover { border-color: rgba(149,213,178,0.35); }
+
+.flow-step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--teal-light);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+
+.flow-step-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.85);
+}
+
+.flow-step-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.15rem;
+}
+
+.flow-arrow {
+  margin-left: 2.5rem;
+  margin-bottom: 0.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(26,155,122,0.4);
+  letter-spacing: 0.05em;
+}
+
+/* ── Features ────────────────────────────────────────────────────────────── */
+.features {
+  background: var(--parchment);
+}
+
+.features-title-row {
+  max-width: 680px;
+  margin-bottom: 4rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.feature-card {
+  padding: 2.25rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26,18,8,0.08);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--teal-light);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.feature-card:hover::before { transform: scaleX(1); }
+
+.feature-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+
+.feature-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+.feature-body {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--light-text);
+  margin-bottom: 1rem;
+}
+
+.feature-use {
+  font-size: 0.78rem;
+  color: var(--teal);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+
+/* ── Scale / Stats ───────────────────────────────────────────────────────── */
+.scale {
+  background: var(--cream);
+  text-align: center;
+}
+
+.scale .section-title { margin: 0 auto 1rem; }
+.scale .ruled-line    { margin: 0 auto 1.5rem; }
+
+.scale-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.scale-card {
+  padding: 2.5rem 1.5rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.scale-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26,18,8,0.1);
+}
+
+.scale-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--teal-light);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.scale-card:hover::after { transform: scaleX(1); }
+
+.scale-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.scale-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--amber);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.scale-label {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  line-height: 1.4;
+}
+
+/* ── Multilingual ────────────────────────────────────────────────────────── */
+.multilingual {
+  background: var(--soil);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.multilingual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(8,80,65,0.45), transparent 50%),
+    radial-gradient(ellipse at 90% 50%, rgba(200,137,58,0.1), transparent 50%);
+}
+
+.multilingual-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.multilingual .section-eyebrow { color: var(--gold); }
+.multilingual .section-title   { color: white; }
+.multilingual .section-body    { color: rgba(255,255,255,0.65); }
+.multilingual .ruled-line      { background: var(--gold); }
+
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.lang-chip {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  background: rgba(255,255,255,0.04);
+  transition: all 0.25s;
+  cursor: default;
+}
+
+.lang-chip:hover {
+  background: rgba(26,155,122,0.14);
+  border-color: rgba(26,155,122,0.35);
+  transform: scale(1.02);
+}
+
+.lang-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--shoot);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.lang-native {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1;
+}
+
+.multilingual-note {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── Powered by Cosh ─────────────────────────────────────────────────────── */
+.powered-by {
+  background: var(--moss);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.powered-by::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(82,183,136,0.12), transparent 60%);
+}
+
+.powered-by .section-eyebrow { color: var(--shoot); }
+.powered-by .section-title   { color: white; }
+.powered-by .section-body    { color: rgba(255,255,255,0.7); }
+.powered-by .ruled-line      { background: var(--shoot); }
+
+.cosh-link-card {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(149,213,178,0.18);
+  border-radius: 6px;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.cosh-link-card:hover {
+  border-color: rgba(149,213,178,0.4);
+  background: rgba(255,255,255,0.08);
+}
+
+.cosh-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cosh-stat strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--shoot);
+  line-height: 1;
+}
+
+.cosh-stat span {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.05em;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.cosh-link-btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(149,213,178,0.35);
+  color: var(--shoot);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+.cosh-link-btn:hover {
+  background: rgba(149,213,178,0.12);
+  border-color: var(--shoot);
+}
+
+/* ── Who it's for ────────────────────────────────────────────────────────── */
+.who-for {
+  background: var(--parchment);
+}
+
+.who-for-title-row {
+  max-width: 680px;
+  margin-bottom: 4rem;
+}
+
+.org-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.org-card {
+  padding: 2.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background: white;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.org-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(26,18,8,0.08);
+}
+
+.org-icon {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.icon-company  { background: rgba(8,80,65,0.08); }
+.icon-govt     { background: rgba(200,137,58,0.1); }
+.icon-ngo      { background: rgba(82,183,136,0.1); }
+.icon-ext      { background: rgba(60,52,137,0.08); }
+
+.org-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.org-body {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--light-text);
+  margin-bottom: 0.75rem;
+}
+
+.org-use {
+  font-size: 0.78rem;
+  font-family: 'DM Mono', monospace;
+  color: var(--teal);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+/* ── Differentiators ─────────────────────────────────────────────────────── */
+.differentiator { background: var(--cream); }
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.diff-item {
+  padding: 2rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  transition: transform 0.3s;
+}
+
+.diff-item:hover { transform: translateY(-4px); }
+
+.diff-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+
+.diff-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+.diff-body {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--light-text);
+}
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.cta-section {
+  background: var(--teal);
+  text-align: center;
+  padding: 8rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(26,155,122,0.2), transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(8,80,65,0.5), transparent 60%);
+}
+
+.cta-inner { position: relative; z-index: 1; }
+
+.cta-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--shoot);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: white;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.cta-body {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.75;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: white;
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.cta-btn:hover {
+  background: var(--mist);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+.cta-sub {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.35);
+  font-style: italic;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--soil);
+  color: rgba(255,255,255,0.35);
+  padding: 2.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+footer a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Scroll indicator ─────────────────────────────────────────────────────── */
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.5s forwards;
+}
+
+.scroll-line {
+  width: 32px; height: 1px;
+  background: var(--teal-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: white;
+  animation: scrollSlide 2s ease-in-out infinite;
+}
+
+@keyframes scrollSlide {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.scroll-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--teal-light);
+  text-transform: uppercase;
+}
+
+/* ── Footer (shared) ─────────────────────────────────────────────────────── */
+footer {
+  background: var(--soil);
+  color: rgba(255,255,255,0.35);
+  padding: 4rem 4rem 0;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: 0.85rem; color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem; font-style: italic;
+}
+.footer-contact-line {
+  font-size: 0.85rem; margin-bottom: 0.6rem;
+}
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr {
+  font-size: 0.8rem; line-height: 1.6;
+  color: rgba(255,255,255,0.25); margin-top: 0.5rem;
+}
+.footer-col-label {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1rem;
+}
+.footer-link {
+  display: block; font-size: 0.85rem;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  margin-bottom: 0.6rem; transition: color 0.2s;
+}
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  padding: 1.5rem 0; font-size: 0.75rem;
+  color: rgba(255,255,255,0.2);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── Nav ───────────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo">Neytiri Eywafarm</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="rootstalk.html">RootsTalk</a></li>
+    <li><a href="cosh.html">Cosh</a></li>
+    <li><a href="contact.html" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <p class="hero-eyebrow">RootsTalk · Advisory & Delivery Platform</p>
+    <h1 class="hero-headline">
+      Your farmers,<br>
+      your dealers,<br>
+      <em>your experts —<br>all in one place.</em>
+    </h1>
+    <p class="hero-subhead">
+      RootsTalk gives agri organisations the infrastructure to deliver personalised 
+      advisory, track input ordering, and connect their farmers to the right expertise — 
+      in any Indian language, at any scale.
+    </p>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <strong>4</strong>
+        <span>Connected roles</span>
+      </div>
+      <div class="hero-stat">
+        <strong>13</strong>
+        <span>Indian languages</span>
+      </div>
+      <div class="hero-stat">
+        <strong>Cosh</strong>
+        <span>Knowledge engine</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-bg"></div>
+    <canvas class="ecosystem-canvas" id="ecosystemCanvas"></canvas>
+    <p class="hero-label">The RootsTalk ecosystem · Organisation → Farmer → Dealer → Expert</p>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ── Problem ────────────────────────────────────────────────────────────── -->
+<section class="problem reveal" id="problem">
+  <div>
+    <p class="section-eyebrow">The Problem</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Advisory without infrastructure reaches no one.</h2>
+    <p class="section-body">
+      Agri organisations — companies, departments, NGOs — invest heavily in agronomic expertise. 
+      They know what farmers should do. But the path from that knowledge to a farmer's field 
+      has always been broken. Too many gaps. Too many hands. No system connecting them.
+    </p>
+  </div>
+  <div class="problem-cards">
+    <div class="problem-card">
+      <p class="problem-card-title">Knowledge that doesn't travel</p>
+      <p class="problem-card-body">Experts know what farmers should do. But getting the right advice to the right farmer, at the right crop stage, in the right language — that has no system.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-card-title">Orders that get lost in the chain</p>
+      <p class="problem-card-body">A farmer acts on advice but has no reliable path to the correct input, from the right dealer, at the right time. The advisory and the supply chain never meet.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-card-title">Expertise that can't scale</p>
+      <p class="problem-card-body">Agricultural experts exist in abundance. But connecting a farmer's specific problem to the right expert — and routing the answer back — has no infrastructure.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-card-title">Organisations without visibility</p>
+      <p class="problem-card-body">Companies and departments invest in advisory but never know if it reached the farmer. Or worked. There is no feedback loop, no accountability, no proof of impact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── What is RootsTalk ──────────────────────────────────────────────────── -->
+<section class="what-is reveal" id="what">
+  <p class="section-eyebrow">What is RootsTalk</p>
+  <div class="ruled-line"></div>
+  <h2 class="section-title" style="max-width:720px">
+    A complete advisory and delivery platform.<br>End to end.
+  </h2>
+  <p class="section-body">
+    RootsTalk is not a messaging app. It is not a content portal. It is operational infrastructure — 
+    the system through which an organisation's advisory becomes a farmer's action, 
+    and a farmer's need becomes an input delivered. 
+    Every role that matters in the crop advisory chain has a place in RootsTalk.
+  </p>
+  <div class="rt-pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🌱</div>
+      <p class="pillar-title">Advisory Engine</p>
+      <p class="pillar-body">Packages of Practices built by your experts, delivered to each farmer based on their crop, season, and conditions. Personalised. Timely. In their language. Powered by Cosh.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📦</div>
+      <p class="pillar-title">Input Ordering</p>
+      <p class="pillar-body">From advisory to order in one tap. Farmers order recommended inputs. Dealers process and deliver. Every step tracked — from the advisory screen to the farmer's field.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🔬</div>
+      <p class="pillar-title">Expert Queries</p>
+      <p class="pillar-body">When farmers encounter a problem they cannot identify, they ask. Questions route to your FarmPundit experts. Answers flow back within 7 days. Nothing falls through.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ecosystem ──────────────────────────────────────────────────────────── -->
+<section class="ecosystem reveal" id="ecosystem">
+  <div class="ecosystem-title-row">
+    <p class="section-eyebrow">The Ecosystem</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Four roles. One connected platform.</h2>
+    <p class="section-body">
+      RootsTalk is built around the four people who matter in the crop advisory chain. 
+      Each has their own view, their own responsibilities, and their own tools — 
+      all speaking to each other within the same system.
+    </p>
+  </div>
+  <div class="role-grid">
+    <div class="role-card role-farmer">
+      <span class="role-badge badge-farmer">PWA · Mobile</span>
+      <p class="role-name">Farmer</p>
+      <p class="role-body">Receives personalised advisory based on their crop, season, and farm conditions. Orders recommended inputs directly. Raises queries when something goes wrong.</p>
+      <p class="role-detail">Advisory in their language. Brand details revealed only after order approval. Crop history stored and exportable as a QR code.</p>
+    </div>
+    <div class="role-card role-dealer">
+      <span class="role-badge badge-dealer">PWA · Mobile</span>
+      <p class="role-name">Dealer</p>
+      <p class="role-body">Receives and processes farmer orders. Selects brands, enters volumes and prices, packs and delivers. The supply chain partner who turns advisory into action.</p>
+      <p class="role-detail">Sees practice type and quantity — never the company's brand recommendations until the order is confirmed. Volume calculated automatically.</p>
+    </div>
+    <div class="role-card role-facil">
+      <span class="role-badge badge-facil">PWA · Mobile</span>
+      <p class="role-name">Facilitator</p>
+      <p class="role-body">The field intermediary. Helps farmers who need support placing orders, routes orders to dealers, and ensures delivery reaches the last mile.</p>
+      <p class="role-detail">Acts as a trusted bridge for farmers who are less digitally fluent. Carries no order content visibility — only routing and delivery coordination.</p>
+    </div>
+    <div class="role-card role-fp">
+      <span class="role-badge badge-fp">PWA · Mobile</span>
+      <p class="role-name">FarmPundit</p>
+      <p class="role-body">Agricultural experts who answer farmer queries. Onboarded by organisations, routed queries by round-robin, respond within 7 days. Can forward to specialists.</p>
+      <p class="role-detail">Profile carries education, experience, expertise domains, and crop groups. Primary and Panel Expert types. In-app calling with farmers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works ───────────────────────────────────────────────────────── -->
+<section class="how-it-works reveal" id="flow">
+  <div>
+    <p class="section-eyebrow">How It Works</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">From advisory to field — in one system.</h2>
+    <p class="section-body">
+      RootsTalk turns your organisation's agronomic expertise into a complete operational loop. 
+      Your Subject Experts build the advisory once. Every farmer in your network receives it 
+      personalised to their conditions. Every order flows back to the right dealer. 
+      Every question finds the right expert.
+    </p>
+    <br><br>
+    <p class="section-body">
+      For your organisation, this means one Client Portal — where your team manages advisory, 
+      experts, subscriptions, and analytics. For your farmers, 
+      this means one app — in their language, built around their crop.
+    </p>
+  </div>
+  <div class="flow-diagram">
+    <div class="flow-inner">
+      <p class="flow-label">Advisory to delivery · Simplified flow</p>
+
+      <div class="flow-step">
+        <span class="flow-step-num">01</span>
+        <div>
+          <p class="flow-step-name">Organisation builds Package of Practices</p>
+          <p class="flow-step-desc">Subject Expert designs advisory for each crop, season, and condition</p>
+        </div>
+      </div>
+      <p class="flow-arrow">── delivers to ──▶</p>
+
+      <div class="flow-step">
+        <span class="flow-step-num">02</span>
+        <div>
+          <p class="flow-step-name">Farmer subscribes and sets crop start date</p>
+          <p class="flow-step-desc">Guided elimination selects the right Package. Advisory activates.</p>
+        </div>
+      </div>
+      <p class="flow-arrow">── recommends ──▶</p>
+
+      <div class="flow-step">
+        <span class="flow-step-num">03</span>
+        <div>
+          <p class="flow-step-name">Input practice due — farmer places order</p>
+          <p class="flow-step-desc">Alert sent. Farmer taps Order Now. Order goes to dealer or facilitator.</p>
+        </div>
+      </div>
+      <p class="flow-arrow">── routes to ──▶</p>
+
+      <div class="flow-step">
+        <span class="flow-step-num">04</span>
+        <div>
+          <p class="flow-step-name">Dealer processes, packs, and delivers</p>
+          <p class="flow-step-desc">Brand selected, volume entered, packing list generated, farmer approves</p>
+        </div>
+      </div>
+      <p class="flow-arrow">── confirms to ──▶</p>
+
+      <div class="flow-step">
+        <span class="flow-step-num">05</span>
+        <div>
+          <p class="flow-step-name">Farmer receives and crop history is recorded</p>
+          <p class="flow-step-desc">Complete input history stored. Exportable as QR code for buyers and auditors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ───────────────────────────────────────────────────────────── -->
+<section class="features reveal" id="features">
+  <div class="features-title-row">
+    <p class="section-eyebrow">Platform Features</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Everything a field advisory operation needs.</h2>
+    <p class="section-body">
+      Built from the ground up for Indian agri organisations — with every feature designed 
+      around real field conditions, real language barriers, and real supply chain complexity.
+    </p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <p class="feature-title">Package of Practices</p>
+      <p class="feature-body">A structured advisory programme for a crop — timelines, practices, inputs, instructions — delivered to each farmer personalised to their season, irrigation type, and conditions.</p>
+      <p class="feature-use">Built by Subject Experts · Guided elimination selects the right package · Active alerts and reminders</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <p class="feature-title">Crop Health Advisory</p>
+      <p class="feature-body">A diagnosis engine that walks farmers through symptoms — plant part, symptom type, progression — to identify the pest or disease and recommend the right intervention.</p>
+      <p class="feature-use">Built on Cosh knowledge graph · Problem Group and Specific Problem levels · Company management plans</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <p class="feature-title">FarmPundit Expert Queries</p>
+      <p class="feature-body">When a farmer doesn't know what's wrong, they ask. Queries route to your experts by round-robin, with a 7-day response window, forwarding, and in-app calling.</p>
+      <p class="feature-use">Primary and Panel Expert types · Forwarding chain with remarks · Expired query accountability to CA</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛒</div>
+      <p class="feature-title">Input Ordering System</p>
+      <p class="feature-body">A complete ordering infrastructure. Farmers order recommended inputs. Dealers select brands, enter volumes and prices, generate packing lists, and deliver. Brand revealed only at farmer approval.</p>
+      <p class="feature-use">Volume auto-calculated from 304 formulas · Locked and unlocked brand logic · Facilitator routing</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌾</div>
+      <p class="feature-title">Seed Variety Browsing</p>
+      <p class="feature-body">Farmers explore varieties within a crop, compare performance attributes and DUS characters, and place seed orders through the same dealer network. Seed companies manage their portfolio from the Client Portal.</p>
+      <p class="feature-use">Variety comparison · DUS character display · Seed order flow integrated with main ordering</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <p class="feature-title">Subscription Management</p>
+      <p class="feature-body">Organisations manage subscription pools — how many farmers can subscribe, from which regions, for which crops. Farmers subscribe, wait when pools are full, and get confirmed automatically when space opens.</p>
+      <p class="feature-use">Self-subscription and Promoter-assisted · ₹199 per subscription · Waitlist and activation flow</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Scale ──────────────────────────────────────────────────────────────── -->
+<section class="scale reveal" id="scale">
+  <p class="section-eyebrow" style="text-align:center">Built for Scale</p>
+  <div class="ruled-line"></div>
+  <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 1rem">
+    Designed to reach every farmer an organisation serves.
+  </h2>
+  <p class="section-body" style="text-align:center;margin:0 auto 3.5rem">
+    From a single crop in one district to a nationwide advisory programme — 
+    the same infrastructure, the same quality, the same language support.
+  </p>
+  <div class="scale-grid">
+    <div class="scale-card">
+      <p class="scale-number">4</p>
+      <span class="scale-unit">User Roles</span>
+      <p class="scale-label">Farmer, Dealer, Facilitator, and FarmPundit — each with their own interface</p>
+    </div>
+    <div class="scale-card">
+      <p class="scale-number">13</p>
+      <span class="scale-unit">Languages</span>
+      <p class="scale-label">English + 12 Indian languages. Advisory in the farmer's mother tongue.</p>
+    </div>
+    <div class="scale-card">
+      <p class="scale-number">304</p>
+      <span class="scale-unit">Volume Formulas</span>
+      <p class="scale-label">Auto-calculating input quantities for every practice type, method, and unit</p>
+    </div>
+    <div class="scale-card">
+      <p class="scale-number">3</p>
+      <span class="scale-unit">Advisory Types</span>
+      <p class="scale-label">Packages of Practices, Crop Health Diagnosis, and FarmPundit Expert Queries</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Multilingual ────────────────────────────────────────────────────────── -->
+<section class="multilingual reveal" id="languages">
+  <div class="multilingual-inner">
+    <div>
+      <p class="section-eyebrow">Multilingual by Design</p>
+      <div class="ruled-line"></div>
+      <h2 class="section-title">Advisory that speaks every farmer's language.</h2>
+      <p class="section-body">
+        Language is not a translation layer we apply on top. It is woven into how 
+        RootsTalk works at every level — advisory content, input names, practice instructions, 
+        notifications, and the entire app interface.
+      </p>
+      <br>
+      <p class="section-body">
+        A farmer in Odisha receives the same quality of advisory as a farmer in Karnataka. 
+        In Odia. In Kannada. Both personalised. Both exact.
+      </p>
+      <p class="multilingual-note">
+        + Assamese · Language registry is extensible — new languages enabled without code changes.
+      </p>
+    </div>
+    <div>
+      <div class="lang-grid">
+        <div class="lang-chip"><p class="lang-name">Hindi</p><p class="lang-native">हिन्दी</p></div>
+        <div class="lang-chip"><p class="lang-name">Tamil</p><p class="lang-native">தமிழ்</p></div>
+        <div class="lang-chip"><p class="lang-name">Telugu</p><p class="lang-native">తెలుగు</p></div>
+        <div class="lang-chip"><p class="lang-name">Kannada</p><p class="lang-native">ಕನ್ನಡ</p></div>
+        <div class="lang-chip"><p class="lang-name">Malayalam</p><p class="lang-native">മലയാളം</p></div>
+        <div class="lang-chip"><p class="lang-name">Marathi</p><p class="lang-native">मराठी</p></div>
+        <div class="lang-chip"><p class="lang-name">Bengali</p><p class="lang-native">বাংলা</p></div>
+        <div class="lang-chip"><p class="lang-name">Gujarati</p><p class="lang-native">ગુજરાતી</p></div>
+        <div class="lang-chip"><p class="lang-name">Punjabi</p><p class="lang-native">ਪੰਜਾਬੀ</p></div>
+        <div class="lang-chip"><p class="lang-name">Odia</p><p class="lang-native">ଓଡ଼ିଆ</p></div>
+        <div class="lang-chip"><p class="lang-name">Urdu</p><p class="lang-native" dir="rtl">اردو</p></div>
+        <div class="lang-chip"><p class="lang-name">Assamese</p><p class="lang-native">অসমীয়া</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Powered by Cosh ─────────────────────────────────────────────────────── -->
+<section class="powered-by reveal" id="cosh">
+  <div style="position:relative;z-index:1">
+    <p class="section-eyebrow">Powered by Cosh</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Knowledge at the root of every recommendation.</h2>
+    <p class="section-body">
+      RootsTalk's advisory engine runs on Cosh — our proprietary agricultural knowledge graph. 
+      Every crop, every pest, every product, every symptom, every relationship 
+      is structured in Cosh and flows directly into RootsTalk's advisory logic.
+    </p>
+    <br>
+    <p class="section-body">
+      This means that when a farmer in Tamil Nadu scans a symptom on their tomato leaf, 
+      the diagnosis they receive is not a generic lookup. It is a traversal through 
+      50,000+ knowledge nodes — verified, translated, and contextualised 
+      for their exact crop stage and conditions.
+    </p>
+  </div>
+  <div>
+    <div class="cosh-link-card">
+      <div class="cosh-stat-row">
+        <div class="cosh-stat">
+          <strong>50,000+</strong>
+          <span>Knowledge nodes</span>
+        </div>
+        <div class="cosh-stat">
+          <strong>140K+</strong>
+          <span>Relationships</span>
+        </div>
+        <div class="cosh-stat">
+          <strong>12</strong>
+          <span>Languages</span>
+        </div>
+      </div>
+      <p style="font-size:0.88rem;line-height:1.65;color:rgba(255,255,255,0.55);margin-bottom:1.5rem">
+        Cosh is a proprietary knowledge engine built and curated by Neytiri's agronomy team 
+        — not scraped, not auto-generated. Every entry placed with purpose. 
+        RootsTalk is its first and primary powered product.
+      </p>
+      <a href="#" class="cosh-link-btn">Explore Cosh →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Who it's for ────────────────────────────────────────────────────────── -->
+<section class="who-for reveal" id="who">
+  <div class="who-for-title-row">
+    <p class="section-eyebrow">Who Uses RootsTalk</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Any organisation that helps farmers — this is your infrastructure.</h2>
+    <p class="section-body">
+      RootsTalk is built for organisations, not individual users. If you have farmers you serve, 
+      dealers you work with, and experts whose knowledge should reach the field — 
+      RootsTalk is the platform that connects them.
+    </p>
+  </div>
+  <div class="org-grid">
+    <div class="org-card">
+      <div class="org-icon icon-company">🏢</div>
+      <div>
+        <p class="org-name">Agri Input Companies</p>
+        <p class="org-body">Seed companies, pesticide manufacturers, fertiliser brands — organisations that want their advisory and products to reach farmers through a trusted, trackable platform.</p>
+        <p class="org-use">Packages of Practices · Locked brand advisory · Dealer network management · Subscription pool · QR code authentication</p>
+      </div>
+    </div>
+    <div class="org-card">
+      <div class="org-icon icon-govt">🏛️</div>
+      <div>
+        <p class="org-name">Government Departments</p>
+        <p class="org-body">State agriculture departments and commodity boards that need to deliver scheme-specific advisory at scale, across districts, in local languages — with accountability on what reached which farmer.</p>
+        <p class="org-use">Large subscription pools · Multi-location advisory · Field facilitator network · Farmer registration and crop history</p>
+      </div>
+    </div>
+    <div class="org-card">
+      <div class="org-icon icon-ngo">🌱</div>
+      <div>
+        <p class="org-name">NGOs and Development Organisations</p>
+        <p class="org-body">Organisations running farmer programmes — sustainable agriculture, income improvement, climate adaptation — who need advisory infrastructure without building it themselves.</p>
+        <p class="org-use">Non-chemical support option · FarmPundit network · Advisory in tribal and local languages · Impact tracking</p>
+      </div>
+    </div>
+    <div class="org-card">
+      <div class="org-icon icon-ext">🎓</div>
+      <div>
+        <p class="org-name">Extension Services and KVKs</p>
+        <p class="org-body">Agricultural universities, KVKs, and extension bodies that translate research into farmer practice — and need a channel to reach farmers who aren't in a classroom.</p>
+        <p class="org-use">Expert-built Packages of Practices · Crop Health Advisory module · FarmPundit registration · Research-to-field pathway</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Differentiators ────────────────────────────────────────────────────── -->
+<section class="differentiator reveal" id="why">
+  <p class="section-eyebrow">Why RootsTalk</p>
+  <div class="ruled-line"></div>
+  <h2 class="section-title" style="max-width:600px">
+    What makes this different from everything else.
+  </h2>
+  <div class="diff-grid">
+    <div class="diff-item">
+      <p class="diff-number">01</p>
+      <p class="diff-title">Personalised, not broadcast</p>
+      <p class="diff-body">Most agri advisory platforms push the same content to all farmers. RootsTalk delivers a different Package of Practices to each farmer based on their exact crop, season, duration, and irrigation type. The advisory is theirs.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">02</p>
+      <p class="diff-title">Advisory that leads to a delivered input</p>
+      <p class="diff-body">Most advisory tools stop at the recommendation. RootsTalk closes the loop — from the advisory notification, through the order, through the dealer, to delivery confirmation. One system, end to end.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">03</p>
+      <p class="diff-title">Every farmer's language, not English</p>
+      <p class="diff-body">The farmer who grows India's food often does not read English. RootsTalk works entirely in the farmer's chosen language — advisory, instructions, notifications, and the app itself. 13 languages, no trade-offs.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">04</p>
+      <p class="diff-title">Brand integrity at every step</p>
+      <p class="diff-body">Organisations invest in specific products for specific reasons. RootsTalk's locked brand system ensures recommended brands reach farmers through authorised dealers — not substituted, not bypassed.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">05</p>
+      <p class="diff-title">Knowledge from Cosh, not scraped data</p>
+      <p class="diff-body">RootsTalk's advisory and diagnosis engine runs on Cosh — 50,000+ human-curated knowledge nodes built by Neytiri's agronomy team. Not approximated by AI, not scraped from the internet. Verified agricultural knowledge.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">06</p>
+      <p class="diff-title">Built exclusively for Indian agriculture</p>
+      <p class="diff-body">Not adapted from a global product. Designed from the first line of code for Indian crops, Indian languages, Indian supply chains, and Indian farmers. The last mile here is different — and we built for it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────────────────── -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Talk to Us</p>
+    <h2 class="cta-title">
+      Ready to connect your farmers<br>to the advisory they deserve?
+    </h2>
+    <p class="cta-body">
+      Whether you are an agri input company, a government department, an NGO, 
+      or an extension body — if you have farmers to serve, we would like to talk. 
+      No forms. No pitch deck. Just a conversation about what you are trying to build.
+    </p>
+    <a href="mailto:hello@eywa.farm" class="cta-btn">Start a Conversation</a>
+    <p class="cta-sub">No forms. No sales pitch. Just a conversation.</p>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri Eywafarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">·</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru 560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="rootstalk.html" class="footer-link">RootsTalk</a>
+      <a href="cosh.html" class="footer-link">Cosh</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="index.html#about" class="footer-link">About Neytiri</a>
+      <a href="index.html#team" class="footer-link">Team</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+      <a href="cancellations.html" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri Eywafarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+
+<!-- ── Scripts ─────────────────────────────────────────────────────────────── -->
+<script>
+// ── Ecosystem hero canvas animation ──────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('ecosystemCanvas');
+  if (!canvas) return;
+
+  const container = canvas.parentElement;
+  canvas.width  = container.offsetWidth  || 700;
+  canvas.height = container.offsetHeight || 700;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+
+  // Role nodes
+  const nodes = [
+    { id: 'org',    label: 'Organisation',  sub: 'Client Portal',  x: W*0.50, y: H*0.22, r: 28, color: '#1A9B7A', glow: '#1A9B7A', textColor: '#ffffff' },
+    { id: 'farmer', label: 'Farmer',        sub: 'PWA',            x: W*0.50, y: H*0.74, r: 22, color: '#52B788', glow: '#52B788', textColor: '#ffffff' },
+    { id: 'dealer', label: 'Dealer',        sub: 'PWA',            x: W*0.80, y: H*0.50, r: 20, color: '#085041', glow: '#1A9B7A', textColor: '#95D5B2' },
+    { id: 'facil',  label: 'Facilitator',   sub: 'PWA',            x: W*0.20, y: H*0.50, r: 18, color: '#7D4E00', glow: '#C47B00', textColor: '#FFD588' },
+    { id: 'fp',     label: 'FarmPundit',    sub: 'PWA',            x: W*0.50, y: H*0.50, r: 20, color: '#3C3489', glow: '#6B63C4', textColor: '#B8B4FF' },
+  ];
+
+  // Edges: [from_id, to_id, label, dashed]
+  const edges = [
+    { a: 'org',    b: 'farmer', label: 'Advisory',  color: 'rgba(26,155,122,0.45)',  dashed: false },
+    { a: 'org',    b: 'fp',     label: 'Expert',    color: 'rgba(107,99,196,0.35)',  dashed: false },
+    { a: 'farmer', b: 'dealer', label: 'Order',     color: 'rgba(82,183,136,0.35)',  dashed: true  },
+    { a: 'farmer', b: 'facil',  label: 'Route',     color: 'rgba(196,123,0,0.35)',   dashed: true  },
+    { a: 'farmer', b: 'fp',     label: 'Query',     color: 'rgba(107,99,196,0.4)',   dashed: true  },
+    { a: 'facil',  b: 'dealer', label: 'Forward',   color: 'rgba(196,123,0,0.3)',    dashed: true  },
+    { a: 'fp',     b: 'farmer', label: 'Answer',    color: 'rgba(149,213,178,0.35)', dashed: false },
+  ];
+
+  // Flowing packets on edges
+  const packets = edges.map((e, i) => ({
+    edgeIdx: i,
+    t: Math.random(),
+    speed: 0.003 + Math.random() * 0.003,
+    size: 3 + Math.random() * 2,
+    color: e.color.replace('0.', '0.9').replace('0.35','0.9').replace('0.45','0.9').replace('0.4','0.9').replace('0.3','0.9'),
+  }));
+
+  function getNode(id) { return nodes.find(n => n.id === id); }
+
+  function drawGlow(cx, cy, r, color) {
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 2.5);
+    g.addColorStop(0, color.replace(')', ',0.25)').replace('rgb','rgba').replace('#', 'rgba(').replace('1A9B7A','26,155,122,').replace('52B788','82,183,136,').replace('085041','8,80,65,').replace('7D4E00','125,78,0,').replace('3C3489','60,52,137,'));
+    g.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = g;
+    ctx.fill();
+  }
+
+  let animId;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw edges
+    edges.forEach(e => {
+      const a = getNode(e.a), b = getNode(e.b);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = e.color;
+      ctx.lineWidth = 1.2;
+      if (e.dashed) {
+        ctx.setLineDash([5, 8]);
+      } else {
+        ctx.setLineDash([]);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // Draw edge labels at midpoint
+    edges.forEach(e => {
+      const a = getNode(e.a), b = getNode(e.b);
+      const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      ctx.font = '500 9px "DM Mono", monospace';
+      ctx.fillStyle = 'rgba(149,213,178,0.4)';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(e.label, mx, my - 8);
+    });
+
+    // Animate packets along edges
+    packets.forEach(p => {
+      p.t += p.speed;
+      if (p.t > 1) p.t = 0;
+      const e = edges[p.edgeIdx];
+      const a = getNode(e.a), b = getNode(e.b);
+      const px = a.x + (b.x - a.x) * p.t;
+      const py = a.y + (b.y - a.y) * p.t;
+      ctx.beginPath();
+      ctx.arc(px, py, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(149,213,178,0.85)';
+      ctx.fill();
+    });
+
+    // Draw node glows
+    nodes.forEach(n => {
+      const hexToRgb = (h) => {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);
+        return result ? `${parseInt(result[1],16)},${parseInt(result[2],16)},${parseInt(result[3],16)}` : '26,155,122';
+      };
+      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 3);
+      g.addColorStop(0, `rgba(${hexToRgb(n.glow)},0.2)`);
+      g.addColorStop(1, 'transparent');
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+    });
+
+    // Draw nodes
+    nodes.forEach(n => {
+      // Node circle
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(149,213,178,0.3)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Node label
+      ctx.font = `600 ${n.id === 'org' ? 11 : 9}px "DM Sans", sans-serif`;
+      ctx.fillStyle = n.textColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, n.x, n.y - 1);
+
+      // Sub label
+      ctx.font = '400 7px "DM Mono", monospace';
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.fillText(n.sub, n.x, n.y + n.r + 12);
+    });
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  draw();
+
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(animId);
+    canvas.width  = container.offsetWidth  || 700;
+    canvas.height = container.offsetHeight || 700;
+    draw();
+  });
+})();
+
+// ── Scroll reveal ─────────────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      Array.from(e.target.children).forEach((child, i) => {
+        child.style.transitionDelay = (i * 0.08) + 's';
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

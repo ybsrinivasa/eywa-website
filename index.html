@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neytiri Eywafarm Agritech · We build infrastructure for Indian agriculture.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --soil:       #1A1208;
+  --bark:       #2C1F0E;
+  --moss:       #1B4332;
+  --fern:       #2D6A4F;
+  --leaf:       #52B788;
+  --shoot:      #95D5B2;
+  --mist:       #D8F3DC;
+  --parchment:  #FAF6EE;
+  --amber:      #C8893A;
+  --gold:       #E8B84B;
+  --cream:      #F5EDD8;
+  --ink:        #1A1208;
+  --body-text:  #3D2E1A;
+  --light-text: #6B5740;
+  --rule:       rgba(44,31,14,0.12);
+  --teal:       #085041;
+  --teal-mid:   #0D6B56;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--parchment);
+  color: var(--body-text);
+  overflow-x: hidden;
+}
+
+/* ── Nav ──────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.93);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--moss);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--moss); }
+.nav-cta {
+  background: var(--moss);
+  color: white !important;
+  padding: 0.55rem 1.3rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.nav-cta:hover { background: var(--fern) !important; }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 3rem 6rem 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+  line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 1.75rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--moss);
+}
+
+.hero-subhead {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: var(--light-text);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-lozenge-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.hero-lozenge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba(27,67,50,0.2);
+  border-radius: 2px;
+  background: rgba(27,67,50,0.04);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--moss);
+  text-transform: uppercase;
+}
+
+.lozenge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--leaf);
+}
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 40% 35%, rgba(27,67,50,0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 65% 65%, rgba(82,183,136,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(26,18,8,0.96) 0%, #0C0905 100%);
+  animation: breathe 9s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.88; }
+}
+
+#eywaCanvas {
+  position: absolute; inset: 0;
+  opacity: 0;
+  animation: fadeIn 1.4s ease 0.8s forwards;
+}
+
+.hero-label {
+  position: absolute;
+  bottom: 3rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: rgba(149,213,178,0.4);
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeIn 1s ease 2.2s forwards;
+}
+
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 4rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.5s forwards;
+}
+.scroll-line {
+  width: 32px; height: 1px;
+  background: var(--amber);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: white;
+  animation: scrollSlide 2s ease-in-out infinite;
+}
+@keyframes scrollSlide { 0% { left: -100%; } 100% { left: 100%; } }
+.scroll-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  color: var(--amber); text-transform: uppercase;
+}
+
+/* ── Section base ─────────────────────────────────────────────────────────── */
+section { padding: 7rem 4rem; }
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.2em;
+  color: var(--amber); text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15; color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.section-body {
+  font-size: 1.05rem; line-height: 1.8;
+  color: var(--light-text); max-width: 620px;
+}
+.ruled-line {
+  width: 48px; height: 2px;
+  background: var(--amber); margin-bottom: 2rem;
+}
+
+/* ── The Name — Eywa ─────────────────────────────────────────────────────── */
+.the-name {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.eywa-quote {
+  padding: 3rem;
+  background: var(--moss);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.eywa-quote::before {
+  content: 'EYWA';
+  position: absolute;
+  right: -1rem; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 7rem; font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.eywa-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--shoot);
+  line-height: 1;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.eywa-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: white;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.eywa-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--shoot);
+  opacity: 0.6;
+}
+
+/* ── Mission ─────────────────────────────────────────────────────────────── */
+.mission {
+  background: var(--parchment);
+}
+
+.mission-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.mission-body-grid .section-body { max-width: 100%; }
+
+.principles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-left: 2px solid var(--amber);
+  background: rgba(200,137,58,0.03);
+  border-radius: 0 3px 3px 0;
+}
+
+.principle-do {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  min-width: 2.5rem;
+}
+
+.principle-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--body-text);
+}
+
+.principle-text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── Products ────────────────────────────────────────────────────────────── */
+.products {
+  background: var(--moss);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.products::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(82,183,136,0.12), transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(27,67,50,0.4), transparent 60%);
+}
+
+.products .section-eyebrow { color: var(--shoot); }
+.products .section-title   { color: white; }
+.products .section-body    { color: rgba(255,255,255,0.68); }
+.products .ruled-line      { background: var(--shoot); }
+
+.products-inner { position: relative; z-index: 1; }
+
+.products-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+
+.product-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.product-card {
+  padding: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.04);
+  text-decoration: none;
+  display: block;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.product-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(149,213,178,0.3);
+  transform: translateY(-3px);
+}
+
+.product-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.product-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.6rem;
+}
+
+.product-tagline {
+  font-size: 0.82rem;
+  color: var(--shoot);
+  margin-bottom: 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-desc {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.58);
+  margin-bottom: 1.25rem;
+}
+
+.product-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--shoot);
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.product-card:hover .product-link { opacity: 0.7; }
+
+/* ── Team ────────────────────────────────────────────────────────────────── */
+.team {
+  background: var(--cream);
+}
+
+.team-story {
+  max-width: 820px;
+  margin-bottom: 5rem;
+}
+
+.team-story p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--light-text);
+  margin-bottom: 1.25rem;
+}
+
+.team-story p:last-child { margin-bottom: 0; }
+
+.team-story em {
+  font-style: italic;
+  color: var(--moss);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.team-card {
+  padding: 2.25rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26,18,8,0.09);
+}
+
+.team-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--leaf);
+}
+
+.team-initial {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--moss);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--shoot);
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.team-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.team-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.9rem;
+}
+
+.team-bio {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: var(--light-text);
+}
+
+.advisor-row {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.advisor-card {
+  flex: 1;
+  padding: 1.75rem 2.25rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: transform 0.3s;
+}
+
+.advisor-card:hover { transform: translateY(-3px); }
+
+.advisor-card::before {
+  content: 'ADVISOR';
+  display: none;
+}
+
+.advisor-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.advisor-initial {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(27,67,50,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--moss);
+  flex-shrink: 0;
+}
+
+.advisor-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.15rem;
+}
+
+.advisor-bio {
+  font-size: 0.85rem; line-height: 1.6;
+  color: var(--light-text);
+}
+
+/* ── Traction ────────────────────────────────────────────────────────────── */
+.traction {
+  background: var(--parchment);
+}
+
+.traction-title-row { max-width: 640px; margin-bottom: 4rem; }
+
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.client-card {
+  padding: 2rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.client-card:hover { transform: translateY(-3px); }
+
+.client-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.client-card:hover::before { transform: scaleX(1); }
+
+.client-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  color: var(--amber); text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.client-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.6rem;
+}
+
+.client-desc {
+  font-size: 0.87rem; line-height: 1.6;
+  color: var(--light-text);
+}
+
+.status-bar {
+  display: flex;
+  gap: 2rem;
+  padding: 1.75rem 2rem;
+  background: var(--cream);
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  align-items: center;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--body-text);
+}
+
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--leaf);
+  box-shadow: 0 0 8px var(--leaf);
+  animation: statusPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.cta-section {
+  background: var(--soil);
+  color: white;
+  padding: 8rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(27,67,50,0.5), transparent 55%),
+    radial-gradient(ellipse at 80% 50%, rgba(200,137,58,0.08), transparent 55%);
+}
+
+.cta-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.cta-body {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+.cta-contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cta-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.cta-contact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--shoot);
+  opacity: 0.7;
+  min-width: 5rem;
+  padding-top: 0.1rem;
+}
+
+.cta-contact-value {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+  line-height: 1.5;
+}
+
+.cta-contact-value:hover { color: var(--shoot); }
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--fern);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  transition: all 0.3s;
+  margin-top: 2rem;
+}
+
+.cta-btn:hover {
+  background: var(--leaf);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--soil);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.3);
+  padding: 2.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+footer a { color: rgba(255,255,255,0.3); text-decoration: none; }
+footer a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Footer (shared) ─────────────────────────────────────────────────────── */
+footer {
+  background: var(--soil);
+  color: rgba(255,255,255,0.35);
+  padding: 4rem 4rem 0;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: 0.85rem; color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem; font-style: italic;
+}
+.footer-contact-line {
+  font-size: 0.85rem; margin-bottom: 0.6rem;
+}
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr {
+  font-size: 0.8rem; line-height: 1.6;
+  color: rgba(255,255,255,0.25); margin-top: 0.5rem;
+}
+.footer-col-label {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1rem;
+}
+.footer-link {
+  display: block; font-size: 0.85rem;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  margin-bottom: 0.6rem; transition: color 0.2s;
+}
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  padding: 1.5rem 0; font-size: 0.75rem;
+  color: rgba(255,255,255,0.2);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── Nav ───────────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo">Neytiri Eywafarm</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="rootstalk.html">RootsTalk</a></li>
+    <li><a href="cosh.html">Cosh</a></li>
+    <li><a href="contact.html" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Neytiri Eywafarm · Bengaluru</p>
+    <h1 class="hero-headline">
+      We named it after<br>
+      a living, connected world.<br>
+      <em>Then we set out<br>to build one.</em>
+    </h1>
+    <p class="hero-subhead">
+      Neytiri builds infrastructure for Indian agriculture — 
+      the tools, the knowledge, and the connections 
+      that help organisations reach every farmer they serve.
+    </p>
+    <div class="hero-lozenge-row">
+      <span class="hero-lozenge"><span class="lozenge-dot"></span>Bengaluru, India</span>
+      <span class="hero-lozenge"><span class="lozenge-dot"></span>Founded 2021</span>
+      <span class="hero-lozenge"><span class="lozenge-dot"></span>3 Clients Live</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-bg"></div>
+    <canvas id="eywaCanvas"></canvas>
+    <p class="hero-label">The Eywa network · Agricultural knowledge · Connecting the people who help farmers</p>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ── The Name ───────────────────────────────────────────────────────────── -->
+<section class="the-name reveal" id="about">
+  <div>
+    <p class="section-eyebrow">The Name</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Why Eywa.</h2>
+    <p class="section-body">
+      In the world of Avatar, Eywa is the living neural network that connects 
+      every creature, every plant, every being on Pandora. Every root, every branch, 
+      every living thing — part of one vast, breathing whole.
+    </p>
+    <br>
+    <p class="section-body">
+      That idea never left us. Agricultural knowledge works exactly like this 
+      — interconnected, layered, alive. A crop does not exist in isolation. 
+      A pest does not arrive without cause. A farmer does not succeed alone.
+      The knowledge that helps a farmer is a network — and we named our company after it.
+    </p>
+    <br>
+    <p class="section-body">
+      Everything we build at Neytiri is an attempt to honour that connection —
+      to make it visible, structured, and useful for every organisation 
+      that helps India's farmers.
+    </p>
+  </div>
+  <div class="eywa-quote">
+    <div class="eywa-mark">"</div>
+    <p class="eywa-text">
+      Every living thing is connected. We built the infrastructure 
+      for agriculture's connection.
+    </p>
+    <p class="eywa-sub">Neytiri Eywafarm · Est. 2021</p>
+  </div>
+</section>
+
+<!-- ── Mission ───────────────────────────────────────────────────────────── -->
+<section class="mission reveal" id="mission">
+  <p class="section-eyebrow">Our Mission</p>
+  <div class="ruled-line"></div>
+  <h2 class="section-title" style="max-width:720px">
+    Build the platform India's agricultural organisations need — so they can focus on their farmers.
+  </h2>
+  <br>
+  <div class="mission-body-grid">
+    <div>
+      <p class="section-body">
+        Agricultural diversity in India is unimaginably vast. Different crops, different seasons, 
+        different soils, different languages, different supply chains — and a different kind of 
+        knowledge needed for each combination.
+      </p>
+      <br>
+      <p class="section-body">
+        We built Neytiri because we believed a platform that covered this diversity could make 
+        a real difference. Not by becoming active participants in agriculture ourselves — 
+        but by giving every organisation that already is an active participant 
+        the infrastructure to do their work better, at scale.
+      </p>
+      <br>
+      <p class="section-body">
+        That conviction has not changed. Every decision we make — in product design, 
+        in how we build knowledge, in how advice flows to farmers — 
+        comes back to this purpose.
+      </p>
+    </div>
+    <div>
+      <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--amber);text-transform:uppercase;margin-bottom:1.25rem">How We Think</p>
+      <div class="principles">
+        <div class="principle">
+          <span class="principle-do">Ask</span>
+          <p class="principle-text"><strong>Don't guess field conditions.</strong> Ask the farmer. Every advisory adapts to the conditions the farmer declares — not to what a model assumes.</p>
+        </div>
+        <div class="principle">
+          <span class="principle-do">Guide</span>
+          <p class="principle-text"><strong>Don't overload farmers.</strong> Guide them. The right information at the right crop stage — nothing more, nothing earlier.</p>
+        </div>
+        <div class="principle">
+          <span class="principle-do">Structure</span>
+          <p class="principle-text"><strong>Don't bypass dealer channels.</strong> Structure them. Existing dealer relationships are an asset — RootsTalk works through them, not around them.</p>
+        </div>
+        <div class="principle">
+          <span class="principle-do">Demand</span>
+          <p class="principle-text"><strong>Don't push products.</strong> Create demand. Advisory that earns a farmer's trust naturally leads to action — without pressure.</p>
+        </div>
+        <div class="principle">
+          <span class="principle-do">Assist</span>
+          <p class="principle-text"><strong>Don't let AI decide alone.</strong> Assist human judgment. Technology supports expertise — it does not replace it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Products ───────────────────────────────────────────────────────────── -->
+<section class="products reveal" id="products">
+  <div class="products-inner">
+    <div class="products-intro">
+      <div>
+        <p class="section-eyebrow">What We Build</p>
+        <div class="ruled-line"></div>
+        <h2 class="section-title">Two products. One mission.</h2>
+      </div>
+      <div>
+        <p class="section-body">
+          Before we could build RootsTalk, we had to build the knowledge it runs on. 
+          Cosh came first — years of methodical work to structure agricultural knowledge 
+          at its roots. RootsTalk followed, built on that foundation.
+          Each product is complete in itself. Together, they are the infrastructure 
+          for intelligent agricultural advisory at scale.
+        </p>
+      </div>
+    </div>
+    <div class="product-cards">
+      <a href="#" class="product-card">
+        <p class="product-year">Since 2021 · Knowledge Engine</p>
+        <p class="product-name">Cosh</p>
+        <p class="product-tagline">Agricultural Knowledge Graph</p>
+        <p class="product-desc">
+          A proprietary knowledge engine with 50,000+ human-curated nodes 
+          and 140,000+ semantic relationships — covering crops, pests, products, 
+          symptoms, and their connections. In 12 Indian languages. 
+          The knowledge that powers RootsTalk, and more.
+        </p>
+        <span class="product-link">Explore Cosh →</span>
+      </a>
+      <a href="#" class="product-card">
+        <p class="product-year">Advisory & Delivery Platform</p>
+        <p class="product-name">RootsTalk</p>
+        <p class="product-tagline">Agricultural Business Infrastructure</p>
+        <p class="product-desc">
+          A complete platform through which agri organisations deliver personalised 
+          advisory to farmers, track input ordering through dealer networks, 
+          and connect farmers to agricultural experts — in any Indian language, at any scale.
+        </p>
+        <span class="product-link">Explore RootsTalk →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Team ───────────────────────────────────────────────────────────────── -->
+<section class="team reveal" id="team">
+  <p class="section-eyebrow">The Team</p>
+  <div class="ruled-line"></div>
+  <h2 class="section-title">Built by people who have worked in Indian agriculture — not just studied it.</h2>
+
+  <div class="team-story">
+    <p>
+      Y.B. Srinivasa and Dr. Sanjay Dwivedi have known each other since 1989 — 
+      from the first days of their college years. One became an agricultural entomologist, 
+      grounded in research and field reality. The other became a seed technologist 
+      who went on to lead multinational agri-businesses across South and Southeast Asia. 
+      Decades of different paths, converging on the same belief:
+    </p>
+    <p>
+      <em>That Indian agriculture deserved a platform built for the full complexity 
+      of its ecosystem — and that two people with their combined experience 
+      had both the obligation and the ability to build it.</em>
+    </p>
+    <p>
+      They are joined by Mr. Nagendra Shukla, whose two decades of global software experience 
+      — including a long tenure at IBM — grounds the technology in the rigour 
+      that infrastructure-grade software demands. Together, the three founders 
+      bring exactly the combination that a platform like this requires: 
+      deep agronomy, sharp commercial understanding, and engineering discipline.
+    </p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-initial">YB</div>
+      <p class="team-name">Y.B. Srinivasa</p>
+      <p class="team-role">Managing Director</p>
+      <p class="team-bio">Agricultural entomologist with 15+ years of research. Co-founder of Tene Agricultural Solutions (eSAP). Brings deep agronomic expertise together with product design and data-driven insight. The architect of how RootsTalk thinks about field knowledge.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-initial">SD</div>
+      <p class="team-name">Dr. Sanjay Dwivedi</p>
+      <p class="team-role">Director — Business</p>
+      <p class="team-bio">Seed technologist with 25+ years in agri-business. Former CEO of a multinational covering South and Southeast Asia. Co-founder of multiple ventures. Brings global commercial networks and the sharp understanding of what input companies actually need.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-initial">NS</div>
+      <p class="team-name">Mr. Nagendra Shukla</p>
+      <p class="team-role">Director — Technology</p>
+      <p class="team-bio">Software developer with 20+ years of global experience, including a long tenure at IBM leading projects across multiple countries. Full-stack developer and mentor with hands-on agri-tech experience. The engineering foundation the platform stands on.</p>
+    </div>
+  </div>
+
+  <div class="advisor-row">
+    <div class="advisor-card">
+      <div class="advisor-initial">RP</div>
+      <div>
+        <p class="advisor-badge">Advisor</p>
+        <p class="advisor-name">Dr. S. Rajendra Prasad</p>
+        <p class="advisor-bio">Former Vice Chancellor, University of Agricultural Sciences, Bengaluru, and former Director, Indian Institute of Seed Research, Mau. Decades of leadership in Indian agriculture. Brings unmatched institutional depth and the agri networks that give RootsTalk its credibility in the field.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Traction ───────────────────────────────────────────────────────────── -->
+<section class="traction reveal" id="traction">
+  <div class="traction-title-row">
+    <p class="section-eyebrow">Where We Are</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Three organisations. Live. In the field.</h2>
+    <p class="section-body">
+      RootsTalk is not a concept or a pilot. Three credible organisations have onboarded, 
+      built their advisory packages, and begun deploying to their farmers and dealers.
+    </p>
+  </div>
+
+  <div class="client-grid">
+    <div class="client-card">
+      <p class="client-type">Seed Company</p>
+      <p class="client-name">Indo American Hybrid Seeds</p>
+      <p class="client-desc">One of India's leading seed companies. Advisory package built. Dealer and farmer onboarding in progress.</p>
+    </div>
+    <div class="client-card">
+      <p class="client-type">Seed Company</p>
+      <p class="client-name">Arunodaya Seeds</p>
+      <p class="client-desc">An established Indian seed company. Advisory package built. Dealer and farmer onboarding in progress.</p>
+    </div>
+    <div class="client-card">
+      <p class="client-type">Development Organisation</p>
+      <p class="client-name">Initiatives for Development Foundation</p>
+      <p class="client-desc">A respected non-profit working with more than 100,000 farmers across 25+ FPOs. Advisory package in development.</p>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="status-item">
+      <div class="status-dot"></div>
+      <span>Platform live and operational</span>
+    </div>
+    <div class="status-item" style="color:var(--light-text);font-size:0.8rem;font-family:'DM Mono',monospace;letter-spacing:0.06em">
+      English · Kannada · Hindi · Field rollout underway · Expanding
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA / Contact ──────────────────────────────────────────────────────── -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div>
+      <p class="section-eyebrow" style="color:var(--shoot)">Talk to Us</p>
+      <h2 class="cta-title">If you work in Indian agriculture, we would like to know you.</h2>
+      <p class="cta-body">
+        Whether you are an agri input company, a government department, an NGO, 
+        a research institution, or an extension body — if you serve farmers, 
+        we are building for you. We would like to understand your work 
+        and show you what RootsTalk can do.
+      </p>
+      <a href="mailto:info@eywa.farm" class="cta-btn">Start a Conversation</a>
+    </div>
+    <div class="cta-contact-block">
+      <div class="cta-contact-item">
+        <span class="cta-contact-label">Email</span>
+        <a href="mailto:info@eywa.farm" class="cta-contact-value">info@eywa.farm</a>
+      </div>
+      <div class="cta-contact-item">
+        <span class="cta-contact-label">Phone</span>
+        <a href="tel:08042107702" class="cta-contact-value">080 4210 7702</a>
+      </div>
+      <div class="cta-contact-item">
+        <span class="cta-contact-label">Office</span>
+        <span class="cta-contact-value">Bengaluru, Karnataka<br>India · 560064</span>
+      </div>
+      <div class="cta-contact-item">
+        <span class="cta-contact-label">Registered</span>
+        <span class="cta-contact-value" style="font-size:0.85rem;color:rgba(255,255,255,0.45)">Neytiri Eywafarm Agritech<br>Private Limited</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri Eywafarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">·</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru 560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="rootstalk.html" class="footer-link">RootsTalk</a>
+      <a href="cosh.html" class="footer-link">Cosh</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="index.html#about" class="footer-link">About Neytiri</a>
+      <a href="index.html#team" class="footer-link">Team</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+      <a href="cancellations.html" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri Eywafarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+
+<!-- ── Scripts ─────────────────────────────────────────────────────────────── -->
+<script>
+// ── Eywa living network canvas ────────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('eywaCanvas');
+  const container = canvas.parentElement;
+  canvas.width  = container.offsetWidth  || 700;
+  canvas.height = container.offsetHeight || 700;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+
+  // Node types — representing agricultural world elements
+  const nodeTypes = [
+    { color: '#52B788', glow: '#52B788', r: 7,  minOp: 0.5, label: '' },  // leaf  — crops
+    { color: '#E8B84B', glow: '#E8B84B', r: 5,  minOp: 0.4, label: '' },  // gold  — organisations
+    { color: '#95D5B2', glow: '#95D5B2', r: 4,  minOp: 0.3, label: '' },  // shoot — farmers
+    { color: '#C8893A', glow: '#C8893A', r: 6,  minOp: 0.45,label: '' },  // amber — knowledge
+    { color: 'rgba(82,183,136,0.4)', glow:'#52B788', r:3, minOp:0.2, label:'' }, // tiny
+  ];
+
+  // Generate organically distributed nodes
+  const nodes = [];
+  const nodeCount = 90;
+
+  // Cluster centres — like a living organism
+  const clusters = [
+    { cx: W*0.28, cy: H*0.25, spread: 120, count: 16 },
+    { cx: W*0.72, cy: H*0.22, spread: 100, count: 13 },
+    { cx: W*0.15, cy: H*0.60, spread: 90,  count: 12 },
+    { cx: W*0.50, cy: H*0.50, spread: 130, count: 18 },
+    { cx: W*0.82, cy: H*0.58, spread: 100, count: 13 },
+    { cx: W*0.35, cy: H*0.78, spread: 110, count: 14 },
+    { cx: W*0.68, cy: H*0.80, spread: 90,  count: 12 },
+  ];
+
+  clusters.forEach(cl => {
+    for (let i = 0; i < cl.count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const dist  = Math.pow(Math.random(), 0.6) * cl.spread;
+      const type  = nodeTypes[Math.floor(Math.random() * nodeTypes.length)];
+      const phase = Math.random() * Math.PI * 2;
+      nodes.push({
+        x: cl.cx + Math.cos(angle) * dist,
+        y: cl.cy + Math.sin(angle) * dist,
+        r: type.r + Math.random() * 2,
+        color: type.color,
+        glow: type.glow,
+        minOp: type.minOp,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        phase: phase,
+        breatheSpeed: 0.008 + Math.random() * 0.006,
+        pulseAmp: 0.3 + Math.random() * 0.3,
+      });
+    }
+  });
+
+  // Build edge list (connect nearby nodes)
+  const edges = [];
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      const d  = Math.sqrt(dx*dx + dy*dy);
+      if (d < 160 && Math.random() > 0.52) {
+        edges.push({ i, j, maxOp: Math.max(0.04, 0.22 - d/900) });
+      }
+    }
+  }
+
+  let t = 0;
+  let animId;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.012;
+
+    // Draw edges
+    edges.forEach(e => {
+      const a = nodes[e.i], b = nodes[e.j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      const op = e.maxOp * (1 - d / 200) * 0.8;
+      if (op <= 0) return;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = `rgba(82,183,136,${Math.max(0,op)})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    });
+
+    // Draw nodes with organic breathing
+    nodes.forEach(n => {
+      const breath = Math.sin(t * n.breatheSpeed * 80 + n.phase);
+      const opacity = n.minOp + (1 - n.minOp) * (0.5 + 0.5 * breath) * n.pulseAmp;
+      const r = n.r * (1 + 0.15 * breath * 0.5);
+
+      // Glow
+      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 3.5);
+      g.addColorStop(0, n.glow.startsWith('rgba') ? n.glow.replace(/[\d.]+\)$/, `${opacity * 0.3})`) : `${n.glow}${Math.round(opacity*0.25*255).toString(16).padStart(2,'0')}`);
+      g.addColorStop(1, 'transparent');
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r * 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+
+      // Node
+      ctx.globalAlpha = opacity;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      // Move
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 10 || n.x > W-10) n.vx *= -1;
+      if (n.y < 10 || n.y > H-10) n.vy *= -1;
+    });
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  draw();
+
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(animId);
+    canvas.width  = container.offsetWidth  || 700;
+    canvas.height = container.offsetHeight || 700;
+    draw();
+  });
+})();
+
+// ── Scroll reveal ─────────────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      Array.from(e.target.children).forEach((child, i) => {
+        child.style.transitionDelay = (i * 0.08) + 's';
+      });
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

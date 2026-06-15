@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosh — The Agricultural Knowledge Engine · Neytiri Eywafarm Agritech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --soil:       #1A1208;
+  --bark:       #2C1F0E;
+  --moss:       #1B4332;
+  --fern:       #2D6A4F;
+  --leaf:       #52B788;
+  --shoot:      #95D5B2;
+  --mist:       #D8F3DC;
+  --parchment:  #FAF6EE;
+  --amber:      #C8893A;
+  --gold:       #E8B84B;
+  --cream:      #F5EDD8;
+  --ink:        #1A1208;
+  --body-text:  #3D2E1A;
+  --light-text: #6B5740;
+  --rule:       rgba(44,31,14,0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  background: var(--parchment);
+  color: var(--body-text);
+  overflow-x: hidden;
+}
+
+/* ── Typography ───────────────────────────────────────────────────────────── */
+.display { font-family: 'Playfair Display', serif; }
+.mono    { font-family: 'DM Mono', monospace; }
+
+/* ── Nav ──────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--moss);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--moss); }
+.nav-cta {
+  background: var(--moss);
+  color: white !important;
+  padding: 0.55rem 1.3rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.nav-cta:hover { background: var(--fern) !important; color: white !important; }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 3rem 6rem 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--moss);
+}
+
+.hero-subhead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--light-text);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-stat-row {
+  display: flex;
+  gap: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.hero-stat strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--moss);
+  line-height: 1;
+}
+
+.hero-stat span {
+  font-size: 0.78rem;
+  color: var(--light-text);
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Deep space background */
+.hero-space {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(27,67,50,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(82,183,136,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(26,18,8,0.95) 0%, #0A0F0D 100%);
+  animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* Animated star-nodes */
+.space-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: fadeIn 1.5s ease 1s forwards;
+}
+
+.node {
+  position: absolute;
+  border-radius: 50%;
+  animation: twinkle var(--dur, 3s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: var(--min-op, 0.3); transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.node-large  { width: 8px; height: 8px; background: var(--leaf); box-shadow: 0 0 12px var(--leaf); }
+.node-medium { width: 5px; height: 5px; background: var(--shoot); box-shadow: 0 0 8px var(--shoot); }
+.node-small  { width: 3px; height: 3px; background: rgba(149,213,178,0.7); }
+.node-amber  { width: 5px; height: 5px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+
+/* SVG connections */
+.connections {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+}
+
+.hero-label {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(149,213,178,0.5);
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease 2s forwards;
+}
+
+/* ── Section base ─────────────────────────────────────────────────────────── */
+section { padding: 7rem 4rem; }
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.section-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--light-text);
+  max-width: 620px;
+}
+
+.ruled-line {
+  width: 48px;
+  height: 2px;
+  background: var(--leaf);
+  margin-bottom: 2rem;
+}
+
+/* ── Problem section ─────────────────────────────────────────────────────── */
+.problem {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.problem-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.problem-card {
+  border-left: 3px solid var(--amber);
+  padding: 1.25rem 1.5rem;
+  background: rgba(250,246,238,0.7);
+  border-radius: 0 4px 4px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(200,137,58,0.04), transparent);
+}
+
+.problem-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.problem-card-body {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--light-text);
+}
+
+/* ── What is Cosh ─────────────────────────────────────────────────────────── */
+.what-is-cosh {
+  background: var(--moss);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.what-is-cosh::before {
+  content: 'COSH';
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 20rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.what-is-cosh .section-eyebrow { color: var(--shoot); }
+.what-is-cosh .section-title   { color: white; }
+.what-is-cosh .section-body    { color: rgba(255,255,255,0.75); max-width: 680px; }
+.what-is-cosh .ruled-line      { background: var(--shoot); }
+
+.cosh-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.pillar {
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 2rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.04);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.pillar:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(149,213,178,0.3);
+}
+
+.pillar-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.pillar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--shoot);
+  margin-bottom: 0.6rem;
+}
+
+.pillar-body {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ── Knowledge architecture ───────────────────────────────────────────────── */
+.architecture {
+  background: var(--parchment);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.arch-diagram {
+  position: relative;
+  padding: 2.5rem;
+  background: var(--bark);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.arch-diagram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(82,183,136,0.15), transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(27,67,50,0.3), transparent 60%);
+}
+
+.arch-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.arch-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--shoot);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.arch-node {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 0.75rem;
+  border-radius: 3px;
+  border: 1px solid rgba(149,213,178,0.15);
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.2s;
+}
+
+.arch-node:hover { border-color: rgba(149,213,178,0.4); }
+
+.arch-node-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-core    { background: var(--leaf); box-shadow: 0 0 8px var(--leaf); }
+.dot-connect { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+.dot-folder  { background: var(--shoot); opacity: 0.6; }
+
+.arch-node-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.85);
+}
+
+.arch-node-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.1rem;
+}
+
+.arch-connector {
+  margin-left: 1.7rem;
+  padding-left: 1.1rem;
+  border-left: 1px dashed rgba(149,213,178,0.2);
+  margin-bottom: 0.75rem;
+}
+
+.arch-example {
+  margin-top: 1.5rem;
+  padding: 1rem 1.2rem;
+  background: rgba(82,183,136,0.08);
+  border-radius: 3px;
+  border: 1px solid rgba(82,183,136,0.2);
+}
+
+.arch-example-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--leaf);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.arch-example-chain {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+}
+
+.arch-example-chain .rel {
+  color: var(--gold);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── Scale section ───────────────────────────────────────────────────────── */
+.scale {
+  background: var(--cream);
+  text-align: center;
+}
+
+.scale .section-title { margin: 0 auto 1rem; }
+.scale .section-body  { margin: 0 auto 4rem; text-align: left; max-width: 600px; }
+.scale .ruled-line    { margin: 0 auto 1.5rem; }
+
+.scale-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.scale-card {
+  padding: 2.5rem 1.5rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.scale-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26,18,8,0.1);
+}
+
+.scale-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--leaf);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.scale-card:hover::after { transform: scaleX(1); }
+
+.scale-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--moss);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.scale-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--amber);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.scale-label {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  line-height: 1.4;
+}
+
+.scale-note {
+  font-size: 0.82rem;
+  color: var(--light-text);
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Multilingual ────────────────────────────────────────────────────────── */
+.multilingual {
+  background: var(--soil);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.multilingual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(27,67,50,0.4), transparent 50%),
+    radial-gradient(ellipse at 90% 50%, rgba(200,137,58,0.1), transparent 50%);
+}
+
+.multilingual-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.multilingual .section-eyebrow { color: var(--gold); }
+.multilingual .section-title   { color: white; }
+.multilingual .section-body    { color: rgba(255,255,255,0.65); }
+.multilingual .ruled-line      { background: var(--gold); }
+
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.lang-chip {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  background: rgba(255,255,255,0.04);
+  transition: all 0.25s;
+  cursor: default;
+}
+
+.lang-chip:hover {
+  background: rgba(82,183,136,0.12);
+  border-color: rgba(82,183,136,0.3);
+  transform: scale(1.02);
+}
+
+.lang-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--shoot);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.lang-native {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1;
+}
+
+.multilingual-note {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── Media section ───────────────────────────────────────────────────────── */
+.media-section {
+  background: var(--parchment);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.media-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.media-type {
+  padding: 1.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: white;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.media-type::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--leaf);
+  transform: scaleY(0);
+  transition: transform 0.3s;
+}
+
+.media-type:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,18,8,0.08); }
+.media-type:hover::before { transform: scaleY(1); }
+
+.media-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+
+.media-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.media-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--light-text);
+}
+
+/* ── Visualisation ───────────────────────────────────────────────────────── */
+.visualisation {
+  background: #080D0A;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.vis-header {
+  padding: 5rem 4rem 2rem;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+}
+
+.visualisation .section-eyebrow { color: var(--gold); }
+.visualisation .section-title   { color: white; font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.visualisation .section-body    { color: rgba(255,255,255,0.55); font-size: 0.95rem; }
+.visualisation .ruled-line      { background: var(--gold); }
+
+.vis-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-self: end;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  width: 4rem;
+  flex-shrink: 0;
+}
+
+.filter-select {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 2px;
+  color: rgba(255,255,255,0.8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-select:hover { border-color: rgba(82,183,136,0.4); }
+
+.filter-btn {
+  padding: 0.6rem 1.5rem;
+  background: var(--fern);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+
+.filter-btn:hover { background: var(--leaf); }
+
+/* Simulated graph canvas */
+.vis-canvas {
+  flex: 1;
+  position: relative;
+  min-height: 55vh;
+  margin: 1rem 0;
+}
+
+.vis-canvas-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animated graph nodes */
+.graph-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.vis-footer-note {
+  padding: 1.5rem 4rem 3rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Differentiator section ──────────────────────────────────────────────── */
+.differentiator {
+  background: var(--cream);
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.diff-item {
+  padding: 2rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  transition: transform 0.3s;
+}
+
+.diff-item:hover { transform: translateY(-4px); }
+
+.diff-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+
+.diff-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+.diff-body {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--light-text);
+}
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.cta-section {
+  background: var(--moss);
+  text-align: center;
+  padding: 8rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(82,183,136,0.15), transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(27,67,50,0.5), transparent 60%);
+}
+
+.cta-inner { position: relative; z-index: 1; }
+
+.cta-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--shoot);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: white;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.cta-body {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: white;
+  color: var(--moss);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.cta-btn:hover {
+  background: var(--mist);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+.cta-sub {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.35);
+  font-style: italic;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--soil);
+  color: rgba(255,255,255,0.35);
+  padding: 2.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+footer a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Scroll indicator ─────────────────────────────────────────────────────── */
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.5s forwards;
+}
+
+.scroll-line {
+  width: 32px; height: 1px;
+  background: var(--amber);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: white;
+  animation: scrollSlide 2s ease-in-out infinite;
+}
+
+@keyframes scrollSlide {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.scroll-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+/* ── Footer (shared) ─────────────────────────────────────────────────────── */
+footer {
+  background: var(--soil);
+  color: rgba(255,255,255,0.35);
+  padding: 4rem 4rem 0;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: 0.85rem; color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem; font-style: italic;
+}
+.footer-contact-line {
+  font-size: 0.85rem; margin-bottom: 0.6rem;
+}
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr {
+  font-size: 0.8rem; line-height: 1.6;
+  color: rgba(255,255,255,0.25); margin-top: 0.5rem;
+}
+.footer-col-label {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1rem;
+}
+.footer-link {
+  display: block; font-size: 0.85rem;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  margin-bottom: 0.6rem; transition: color 0.2s;
+}
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  padding: 1.5rem 0; font-size: 0.75rem;
+  color: rgba(255,255,255,0.2);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── Nav ───────────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo">Neytiri Eywafarm</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="rootstalk.html">RootsTalk</a></li>
+    <li><a href="cosh.html">Cosh</a></li>
+    <li><a href="contact.html" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Cosh · Knowledge Engine</p>
+    <h1 class="hero-headline">
+      We spent years doing what<br>
+      no one else has —<br>
+      <em>organising agricultural<br>knowledge at its roots.</em>
+    </h1>
+    <p class="hero-subhead">
+      Cosh is our proprietary knowledge engine. It structures what farmers need to know — 
+      every crop, every pest, every product, every relationship — 
+      into a living, multilingual knowledge graph that powers intelligent advisory at scale.
+    </p>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <strong>50,000+</strong>
+        <span>Knowledge nodes</span>
+      </div>
+      <div class="hero-stat">
+        <strong>140,000+</strong>
+        <span>Relationships mapped</span>
+      </div>
+      <div class="hero-stat">
+        <strong>12</strong>
+        <span>Indian languages</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-space"></div>
+    <div class="space-canvas" id="spaceCanvas"></div>
+    <svg class="connections" id="connections" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p class="hero-label">Live preview of Cosh knowledge graph · Tap to explore →</p>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ── Problem ────────────────────────────────────────────────────────────── -->
+<section class="problem reveal" id="problem">
+  <div>
+    <p class="section-eyebrow">The Problem</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Agricultural knowledge exists. It just doesn't hold together.</h2>
+    <p class="section-body">
+      Across India's farming landscape, the knowledge that helps a farmer protect a crop — 
+      which pest attacks which crop at which stage, what to apply, how much, in what language — 
+      has never been structured in one place. It exists in fragments: in experts' heads, 
+      in scattered documents, in advice that gets lost in translation.
+    </p>
+  </div>
+  <div class="problem-cards">
+    <div class="problem-card">
+      <p class="problem-card-title">Disconnected expertise</p>
+      <p class="problem-card-body">Agronomists know what works. But that knowledge lives in silos — unstructured, hard to transfer, and impossible to scale.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-card-title">Advisory without context</p>
+      <p class="problem-card-body">Generic recommendations don't account for crop stage, local pest pressures, or the specific product a farmer can actually access.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-card-title">Language as a barrier</p>
+      <p class="problem-card-body">India's farming communities speak dozens of languages. Knowledge in English doesn't reach the farmer who needs it in Kannada or Odia.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-card-title">Products without meaning</p>
+      <p class="problem-card-body">Thousands of agri-input products exist — but understanding what each one does, when, and why, is buried in technical language that nobody translates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── What is Cosh ────────────────────────────────────────────────────────── -->
+<section class="what-is-cosh reveal" id="what">
+  <p class="section-eyebrow">What is Cosh</p>
+  <div class="ruled-line"></div>
+  <h2 class="section-title" style="max-width:700px">
+    A knowledge graph built for the complexity of Indian agriculture.
+  </h2>
+  <p class="section-body">
+    Cosh doesn't store facts. It stores <em>relationships</em>. It knows that Root Knot Nematode 
+    affects Tomato during the vegetative stage, producing root galls — and it knows this 
+    in Hindi, Tamil, and Telugu. That is the difference between data and knowledge.
+  </p>
+  <div class="cosh-pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🌿</div>
+      <p class="pillar-title">Agronomic Knowledge</p>
+      <p class="pillar-body">Crops, growth stages, pests, diseases, symptoms, soil conditions, nutrition requirements, intervention timing — structured and interconnected.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📦</div>
+      <p class="pillar-title">Product Knowledge</p>
+      <p class="pillar-body">Agri-input products, dosages, manufacturers, application conditions, compatibility — connected to the agronomic context where they apply.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🔗</div>
+      <p class="pillar-title">Semantic Relationships</p>
+      <p class="pillar-body">Every connection carries meaning. IS A. AFFECTS. PRODUCES. IS APPLIED DURING. The graph doesn't just link — it understands.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Architecture ────────────────────────────────────────────────────────── -->
+<section class="architecture reveal" id="architecture">
+  <div>
+    <p class="section-eyebrow">Knowledge Architecture</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Structured like a hypergraph. Designed for depth.</h2>
+    <p class="section-body">
+      Cosh is built on a hypergraph model — similar in spirit to Neo4J, but purpose-built 
+      for agricultural knowledge. Cores hold the knowledge. Connects express the relationships. 
+      A single relationship can simultaneously express: which pest, at which stage, 
+      affects which crop, and produces which symptom. One statement. Complete meaning.
+    </p>
+    <br><br>
+    <p class="section-body">
+      This architecture is what makes Cosh's knowledge not just <em>storable</em> — but 
+      <em>queryable</em>, <em>traversable</em>, and ready to power advisory logic 
+      that no flat database could approach.
+    </p>
+  </div>
+  <div class="arch-diagram">
+    <div class="arch-inner">
+      <p class="arch-label">Knowledge graph · simplified</p>
+
+      <div class="arch-node">
+        <div class="arch-node-dot dot-folder"></div>
+        <div>
+          <p class="arch-node-name">Folder — Crop Stages</p>
+          <p class="arch-node-desc">Organisational container</p>
+        </div>
+      </div>
+
+      <div class="arch-connector">
+        <div class="arch-node">
+          <div class="arch-node-dot dot-core"></div>
+          <div>
+            <p class="arch-node-name">Core — "Vegetative"</p>
+            <p class="arch-node-desc">Text node · 12 languages</p>
+          </div>
+        </div>
+        <div class="arch-node">
+          <div class="arch-node-dot dot-core"></div>
+          <div>
+            <p class="arch-node-name">Core — "Flowering"</p>
+            <p class="arch-node-desc">Text node · 12 languages</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-node" style="margin-top:1rem">
+        <div class="arch-node-dot dot-connect"></div>
+        <div>
+          <p class="arch-node-name">Connect — Pest–Stage–Crop–Symptom</p>
+          <p class="arch-node-desc">4-position hyperedge · Relationship types</p>
+        </div>
+      </div>
+
+      <div class="arch-example">
+        <p class="arch-example-label">Example relationship chain</p>
+        <p class="arch-example-chain">
+          Root Knot Nematode - Tomato<br>
+          <span class="rel">── IS ACTIVE DURING ──▶</span> Early Stage<br>
+          <span class="rel">── AFFECTS ──────────▶</span> Tomato<br>
+          <span class="rel">── PRODUCES ─────────▶</span> Root Galls
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Scale ──────────────────────────────────────────────────────────────── -->
+<section class="scale reveal" id="scale">
+  <p class="section-eyebrow" style="text-align:center">The Scale</p>
+  <div class="ruled-line" style="margin:0 auto 1.5rem"></div>
+  <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 1rem">
+    Years of agronomic expertise, structured into one asset.
+  </h2>
+  <p class="section-body" style="text-align:center;margin:0 auto 3.5rem">
+    Built and curated by our internal agronomy team — not scraped, 
+    not auto-generated, not approximated. Every entry placed with purpose.
+  </p>
+  <div class="scale-grid">
+    <div class="scale-card">
+      <p class="scale-number">50,000<span style="font-size:1.5rem">+</span></p>
+      <span class="scale-unit">Knowledge Nodes</span>
+      <p class="scale-label">Core data items covering crops, pests, nutrients, products, stages, and more</p>
+    </div>
+    <div class="scale-card">
+      <p class="scale-number">140,000<span style="font-size:1.5rem">+</span></p>
+      <span class="scale-unit">Relationships</span>
+      <p class="scale-label">Semantic connections that give the knowledge its meaning and traversability</p>
+    </div>
+    <div class="scale-card">
+      <p class="scale-number">12</p>
+      <span class="scale-unit">Indian Languages</span>
+      <p class="scale-label">Every knowledge node translated and expert-validated for farmer-facing use</p>
+    </div>
+    <div class="scale-card">
+      <p class="scale-number">2</p>
+      <span class="scale-unit">Products Powered</span>
+      <p class="scale-label">RootsTalk and PesTest — with architecture ready for more</p>
+    </div>
+  </div>
+  <p class="scale-note">
+    ↳ These numbers grow continuously as our agronomy team extends coverage 
+    across more crops, regions, and product categories.
+  </p>
+</section>
+
+<!-- ── Multilingual ────────────────────────────────────────────────────────── -->
+<section class="multilingual reveal" id="languages">
+  <div class="multilingual-inner">
+    <div>
+      <p class="section-eyebrow">Multilingual by Design</p>
+      <div class="ruled-line"></div>
+      <h2 class="section-title">Knowledge that speaks every farmer's language.</h2>
+      <p class="section-body">
+        Translation is not a feature we added. It is part of the data model. 
+        Every knowledge node in Cosh exists simultaneously in English and in 12 Indian languages — 
+        curated with domain expertise, not just machine-translated.
+      </p>
+      <br>
+      <p class="section-body">
+        When a farmer in Karnataka asks about a pest on their tomato crop, 
+        the advisory they receive is not a Google-translated approximation. 
+        It is expert-verified agricultural knowledge, in Kannada.
+      </p>
+      <p class="multilingual-note">
+        + Assamese · Language registry is extensible — new languages added without code changes.
+      </p>
+    </div>
+    <div>
+      <div class="lang-grid">
+        <div class="lang-chip"><p class="lang-name">Hindi</p><p class="lang-native">हिन्दी</p></div>
+        <div class="lang-chip"><p class="lang-name">Tamil</p><p class="lang-native">தமிழ்</p></div>
+        <div class="lang-chip"><p class="lang-name">Telugu</p><p class="lang-native">తెలుగు</p></div>
+        <div class="lang-chip"><p class="lang-name">Kannada</p><p class="lang-native">ಕನ್ನಡ</p></div>
+        <div class="lang-chip"><p class="lang-name">Malayalam</p><p class="lang-native">മലയാളം</p></div>
+        <div class="lang-chip"><p class="lang-name">Marathi</p><p class="lang-native">मराठी</p></div>
+        <div class="lang-chip"><p class="lang-name">Bengali</p><p class="lang-native">বাংলা</p></div>
+        <div class="lang-chip"><p class="lang-name">Gujarati</p><p class="lang-native">ગુજરાતી</p></div>
+        <div class="lang-chip"><p class="lang-name">Punjabi</p><p class="lang-native">ਪੰਜਾਬੀ</p></div>
+        <div class="lang-chip"><p class="lang-name">Odia</p><p class="lang-native">ଓଡ଼ିଆ</p></div>
+        <div class="lang-chip"><p class="lang-name">Urdu</p><p class="lang-native" dir="rtl">اردو</p></div>
+        <div class="lang-chip"><p class="lang-name">Gujarati</p><p class="lang-native">ગુજરાતી</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Media ──────────────────────────────────────────────────────────────── -->
+<section class="media-section reveal" id="media">
+  <div>
+    <p class="section-eyebrow">Not Just Text</p>
+    <div class="ruled-line"></div>
+    <h2 class="section-title">Knowledge has many forms. Cosh holds all of them.</h2>
+    <p class="section-body">
+      Agricultural knowledge doesn't live only in words. 
+      A photograph of a pest. A video of correct spray technique. 
+      A document showing dosage tables. Cosh organises multimedia knowledge 
+      alongside text — tagged, language-aware, and ready to deliver.
+    </p>
+  </div>
+  <div class="media-types">
+    <div class="media-type">
+      <div class="media-icon">🖼</div>
+      <p class="media-name">Images</p>
+      <p class="media-desc">Pest identification photos, crop symptom images, product visuals — referenced in context.</p>
+    </div>
+    <div class="media-type">
+      <div class="media-icon">🎬</div>
+      <p class="media-name">Videos</p>
+      <p class="media-desc">Instructional content in multiple languages. A different video per language where needed.</p>
+    </div>
+    <div class="media-type">
+      <div class="media-icon">🎵</div>
+      <p class="media-name">Audio</p>
+      <p class="media-desc">Advisory content for farmers who prefer to listen — language-tagged and accessible.</p>
+    </div>
+    <div class="media-type">
+      <div class="media-icon">📄</div>
+      <p class="media-name">Documents</p>
+      <p class="media-desc">Technical sheets, label scans, application guides — structured and retrievable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Visualisation ──────────────────────────────────────────────────────── -->
+<section class="visualisation" id="explore">
+  <div class="vis-header">
+    <div>
+      <p class="section-eyebrow">Explore Cosh</p>
+      <div class="ruled-line"></div>
+      <h2 class="section-title">See the knowledge. Navigate the graph.</h2>
+      <p class="section-body">
+        Every dot is a knowledge node. Every connection carries meaning. 
+        Filter by domain, category, or crop — and watch the knowledge graph 
+        unfold around your point of interest. Hold it. Rotate it. Follow a connection.
+      </p>
+    </div>
+    <div class="vis-filters">
+      <div class="filter-row">
+        <span class="filter-label">Domain</span>
+        <select class="filter-select">
+          <option>Agronomy</option>
+          <option>Products</option>
+          <option>Both</option>
+        </select>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Category</span>
+        <select class="filter-select">
+          <option>All Categories</option>
+          <option>Crops</option>
+          <option>Pests</option>
+          <option>Nutrients</option>
+          <option>Pesticides</option>
+        </select>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Specific</span>
+        <select class="filter-select">
+          <option>All</option>
+          <option>Tomato</option>
+          <option>Paddy</option>
+          <option>Cotton</option>
+        </select>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label"></span>
+        <button class="filter-btn">Explore →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated graph preview -->
+  <div class="vis-canvas" id="visCanvas">
+    <svg id="graphSvg" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0"></svg>
+  </div>
+
+  <p class="vis-footer-note">
+    Interactive 3D graph · 50,000+ nodes · 140,000+ connections · Hold · Rotate · Expand
+  </p>
+</section>
+
+<!-- ── Differentiators ────────────────────────────────────────────────────── -->
+<section class="differentiator reveal" id="why">
+  <p class="section-eyebrow">Why Cosh is Different</p>
+  <div class="ruled-line"></div>
+  <h2 class="section-title" style="max-width:600px">
+    What took years to build cannot be replicated overnight.
+  </h2>
+  <div class="diff-grid">
+    <div class="diff-item">
+      <p class="diff-number">01</p>
+      <p class="diff-title">Human-curated, not machine-generated</p>
+      <p class="diff-body">Every entry in Cosh was placed by our agronomy team. Not scraped, not approximated. This is verified agricultural knowledge — and its quality shows in the advisory it produces.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">02</p>
+      <p class="diff-title">Relationships, not records</p>
+      <p class="diff-body">Most agricultural databases store facts. Cosh stores the connections between them — the semantic relationships that let a system reason about what a farmer should do, not just what exists.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">03</p>
+      <p class="diff-title">Multilingual at the core</p>
+      <p class="diff-body">Language is not a layer we apply on top. Every knowledge node exists natively in 12 Indian languages, with expert validation — not just automated translation.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">04</p>
+      <p class="diff-title">Built to power products</p>
+      <p class="diff-body">Cosh already powers RootsTalk and PesTest. It is a tested, production-grade knowledge engine — not a prototype or a proof of concept.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">05</p>
+      <p class="diff-title">Extensible by design</p>
+      <p class="diff-body">New crops, new languages, new product categories — the architecture grows without rebuilding. The same knowledge engine that powers today's products can power tomorrow's.</p>
+    </div>
+    <div class="diff-item">
+      <p class="diff-number">06</p>
+      <p class="diff-title">A proprietary asset, not infrastructure</p>
+      <p class="diff-body">Cosh is not a framework or a tool. It is a body of knowledge — structured, validated, and domain-specific. That makes it a genuine competitive moat, not just a technical advantage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────────────────── -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Talk to Us</p>
+    <h2 class="cta-title">
+      Curious about what Cosh<br>could mean for your work?
+    </h2>
+    <p class="cta-body">
+      We are exploring how Cosh's knowledge can create value beyond our own products — 
+      for researchers, agri-input companies, technology builders, and others working 
+      to improve outcomes for Indian farmers. If you see a possibility, so do we.
+    </p>
+    <a href="mailto:hello@eywa.farm" class="cta-btn">Start a Conversation</a>
+    <p class="cta-sub">No forms. No sales pitch. Just a conversation.</p>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri Eywafarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">·</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru 560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="rootstalk.html" class="footer-link">RootsTalk</a>
+      <a href="cosh.html" class="footer-link">Cosh</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="index.html#about" class="footer-link">About Neytiri</a>
+      <a href="index.html#team" class="footer-link">Team</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+      <a href="cancellations.html" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri Eywafarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+
+<!-- ── Scripts ─────────────────────────────────────────────────────────────── -->
+<script>
+// ── Space canvas hero nodes ───────────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('spaceCanvas');
+  const svg    = document.getElementById('connections');
+  const nodes  = [];
+
+  const nodeConfigs = [
+    { cls:'node node-large',  x:15, y:20, dur:3.2, delay:0 },
+    { cls:'node node-medium', x:28, y:45, dur:2.8, delay:0.5 },
+    { cls:'node node-large',  x:50, y:15, dur:3.8, delay:1 },
+    { cls:'node node-amber',  x:70, y:30, dur:2.5, delay:0.3 },
+    { cls:'node node-medium', x:85, y:55, dur:3.5, delay:0.8 },
+    { cls:'node node-large',  x:60, y:70, dur:2.9, delay:1.2 },
+    { cls:'node node-small',  x:35, y:75, dur:4.0, delay:0.2 },
+    { cls:'node node-medium', x:20, y:60, dur:3.1, delay:0.7 },
+    { cls:'node node-large',  x:45, y:85, dur:2.7, delay:1.5 },
+    { cls:'node node-amber',  x:78, y:80, dur:3.3, delay:0.4 },
+    { cls:'node node-small',  x:10, y:40, dur:4.2, delay:0.9 },
+    { cls:'node node-medium', x:90, y:20, dur:3.0, delay:1.1 },
+    { cls:'node node-large',  x:55, y:50, dur:2.6, delay:0.6 },
+    { cls:'node node-small',  x:40, y:30, dur:3.7, delay:1.3 },
+    { cls:'node node-medium', x:72, y:60, dur:3.4, delay:0.1 },
+    { cls:'node node-amber',  x:25, y:85, dur:2.8, delay:1.4 },
+    { cls:'node node-small',  x:65, y:10, dur:4.1, delay:0.3 },
+    { cls:'node node-medium', x:88, y:40, dur:3.6, delay:0.8 },
+  ];
+
+  nodeConfigs.forEach(cfg => {
+    const el = document.createElement('div');
+    el.className = cfg.cls;
+    el.style.left = cfg.x + '%';
+    el.style.top  = cfg.y + '%';
+    el.style.setProperty('--dur',    cfg.dur + 's');
+    el.style.setProperty('--delay',  cfg.delay + 's');
+    el.style.setProperty('--min-op', '0.3');
+    canvas.appendChild(el);
+    nodes.push({ x: cfg.x, y: cfg.y });
+  });
+
+  // Draw connections between nearby nodes
+  const svgW = 100, svgH = 100;
+  svg.setAttribute('viewBox', '0 0 100 100');
+  svg.setAttribute('preserveAspectRatio', 'none');
+
+  const edges = [
+    [0,1],[1,7],[7,6],[6,8],[8,2],[2,3],[3,4],[4,9],[9,5],
+    [5,12],[12,13],[13,1],[0,10],[10,7],[3,11],[4,14],[14,5],
+    [2,12],[6,15],[8,9],[1,13],[16,2],[17,14]
+  ];
+
+  edges.forEach(([a, b]) => {
+    if (!nodes[a] || !nodes[b]) return;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', nodes[a].x);
+    line.setAttribute('y1', nodes[a].y);
+    line.setAttribute('x2', nodes[b].x);
+    line.setAttribute('y2', nodes[b].y);
+    line.setAttribute('stroke', 'rgba(82,183,136,0.4)');
+    line.setAttribute('stroke-width', '0.3');
+    svg.appendChild(line);
+  });
+})();
+
+// ── Graph visualisation preview ──────────────────────────────────────────
+(function() {
+  const svg = document.getElementById('graphSvg');
+  const W = svg.parentElement.offsetWidth  || 800;
+  const H = svg.parentElement.offsetHeight || 500;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  // Generate a beautiful random graph
+  const numNodes = 80;
+  const gnodes = [];
+  const center = { x: W/2, y: H/2 };
+  
+  // Types with colors
+  const types = [
+    { color: '#52B788', glow: '#52B788', r: 6 },  // core leaf
+    { color: '#E8B84B', glow: '#E8B84B', r: 5 },  // amber connect
+    { color: '#95D5B2', glow: '#95D5B2', r: 4 },  // shoot
+    { color: '#2D6A4F', glow: '#52B788', r: 7 },  // moss hub
+    { color: 'rgba(149,213,178,0.5)', glow:'#95D5B2', r:3 }, // small
+  ];
+
+  // Cluster arrangement
+  const clusters = [
+    { cx: W*0.25, cy: H*0.3,  spread: 140, count: 16 },
+    { cx: W*0.75, cy: H*0.3,  spread: 120, count: 14 },
+    { cx: W*0.5,  cy: H*0.65, spread: 150, count: 18 },
+    { cx: W*0.15, cy: H*0.7,  spread: 100, count: 12 },
+    { cx: W*0.85, cy: H*0.7,  spread: 110, count: 12 },
+    { cx: W*0.5,  cy: H*0.2,  spread: 90,  count: 8  },
+  ];
+
+  clusters.forEach(cl => {
+    for (let i = 0; i < cl.count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const dist  = Math.random() * cl.spread;
+      const type  = types[Math.floor(Math.random() * types.length)];
+      gnodes.push({
+        x: cl.cx + Math.cos(angle) * dist,
+        y: cl.cy + Math.sin(angle) * dist,
+        r: type.r + Math.random() * 2,
+        color: type.color,
+        glow: type.glow,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+      });
+    }
+  });
+
+  // Draw edges first
+  const edgeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  svg.appendChild(edgeGroup);
+
+  // Draw nodes
+  const nodeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  svg.appendChild(nodeGroup);
+
+  const edgeEls = [];
+  const nodeEls = [];
+
+  // Connect nodes within and between clusters
+  for (let i = 0; i < gnodes.length; i++) {
+    for (let j = i + 1; j < gnodes.length; j++) {
+      const dx = gnodes[i].x - gnodes[j].x;
+      const dy = gnodes[i].y - gnodes[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 180 && Math.random() > 0.55) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        const opacity = Math.max(0.05, 0.25 - dist/900);
+        line.setAttribute('stroke', `rgba(82,183,136,${opacity})`);
+        line.setAttribute('stroke-width', '0.6');
+        edgeGroup.appendChild(line);
+        edgeEls.push({ el: line, i, j });
+      }
+    }
+  }
+
+  gnodes.forEach((n, idx) => {
+    // Glow
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+    filter.setAttribute('id', `glow${idx}`);
+    const feGlow = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+    feGlow.setAttribute('stdDeviation', '3');
+    feGlow.setAttribute('result', 'coloredBlur');
+    const feMerge = document.createElementNS('http://www.w3.org/2000/svg', 'feMerge');
+    const m1 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+    m1.setAttribute('in', 'coloredBlur');
+    const m2 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+    m2.setAttribute('in', 'SourceGraphic');
+    feMerge.appendChild(m1); feMerge.appendChild(m2);
+    filter.appendChild(feGlow); filter.appendChild(feMerge);
+    defs.appendChild(filter);
+    svg.insertBefore(defs, edgeGroup);
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', n.x);
+    circle.setAttribute('cy', n.y);
+    circle.setAttribute('r', n.r);
+    circle.setAttribute('fill', n.color);
+    circle.setAttribute('filter', `url(#glow${idx})`);
+    circle.style.cursor = 'pointer';
+    nodeGroup.appendChild(circle);
+    nodeEls.push(circle);
+  });
+
+  // Animate
+  function animate() {
+    gnodes.forEach((n, i) => {
+      n.x += n.vx; n.y += n.vy;
+      // Soft boundary
+      if (n.x < 20 || n.x > W-20) n.vx *= -1;
+      if (n.y < 20 || n.y > H-20) n.vy *= -1;
+      nodeEls[i].setAttribute('cx', n.x);
+      nodeEls[i].setAttribute('cy', n.y);
+    });
+    edgeEls.forEach(({ el, i, j }) => {
+      el.setAttribute('x1', gnodes[i].x); el.setAttribute('y1', gnodes[i].y);
+      el.setAttribute('x2', gnodes[j].x); el.setAttribute('y2', gnodes[j].y);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ── Scroll reveal ─────────────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Stagger children
+      Array.from(e.target.children).forEach((child, i) => {
+        child.style.transitionDelay = (i * 0.1) + 's';
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancellation & Refund · Neytiri Eywafarm &middot; Neytiri Eywafarm Agritech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --soil: #1A1208; --bark: #2C1F0E; --moss: #1B4332; --fern: #2D6A4F;
+  --leaf: #52B788; --shoot: #95D5B2; --mist: #D8F3DC; --parchment: #FAF6EE;
+  --amber: #C8893A; --gold: #E8B84B; --cream: #F5EDD8;
+  --ink: #1A1208; --body-text: #3D2E1A; --light-text: #6B5740;
+  --rule: rgba(44,31,14,0.12); --teal: #085041;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--body-text); overflow-x: hidden; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.93); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--moss); text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.85rem; color: var(--light-text); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--moss); }
+.nav-cta { background: var(--moss); color: white !important; padding: 0.55rem 1.3rem; border-radius: 2px; font-weight: 500; }
+.nav-cta:hover { background: var(--fern) !important; }
+footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4rem 0; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-style: italic; }
+.footer-contact-line { font-size: 0.85rem; margin-bottom: 0.6rem; }
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.25); margin-top: 0.5rem; }
+.footer-col-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+.footer-link { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { display: flex; justify-content: space-between; padding: 1.5rem 0; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+
+.legal-hero {
+  background: var(--soil);
+  padding: 10rem 4rem 5rem;
+  position: relative; overflow: hidden;
+}
+.legal-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(27,67,50,0.4), transparent 55%),
+              radial-gradient(ellipse at 80% 20%, rgba(200,137,58,0.06), transparent 50%);
+}
+.legal-hero-inner { position: relative; z-index: 1; }
+.legal-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--shoot); text-transform: uppercase; margin-bottom: 1rem; }
+.legal-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,4vw,3.2rem); color: white; margin-bottom: 1rem; }
+.legal-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 620px; }
+.legal-updated { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); text-transform: uppercase; margin-top: 1.5rem; }
+.legal-body { max-width: 860px; margin: 0 auto; padding: 6rem 4rem; }
+.legal-section { margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--rule); }
+.legal-section:last-child { border-bottom: none; }
+.legal-section-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.75rem; }
+.legal-section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 1.25rem; }
+.legal-section-sub { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 1.5rem 0 0.75rem; }
+.legal-p { font-size: 0.95rem; line-height: 1.8; color: var(--body-text); margin-bottom: 0.9rem; }
+.legal-list { list-style: none; margin: 0.75rem 0 1rem 0; }
+.legal-list li { font-size: 0.9rem; line-height: 1.7; color: var(--body-text); padding: 0.3rem 0 0.3rem 1.5rem; position: relative; }
+.legal-list li::before { content: '·'; position: absolute; left: 0; color: var(--amber); font-weight: 700; }
+.legal-contact-box { background: var(--cream); padding: 2rem 2.5rem; border-radius: 4px; border-left: 3px solid var(--amber); margin-top: 1.5rem; }
+.legal-contact-box p { font-size: 0.9rem; line-height: 1.7; color: var(--body-text); margin-bottom: 0.4rem; }
+.legal-contact-box a { color: var(--moss); text-decoration: none; }
+.legal-highlight { background: var(--cream); padding: 1.5rem 2rem; border-radius: 4px; margin: 1.25rem 0; font-size: 0.92rem; line-height: 1.7; color: var(--body-text); font-style: italic; border-left: 3px solid var(--moss); }
+.rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+.right-card { padding: 1.25rem; background: white; border: 1px solid var(--rule); border-radius: 4px; }
+.right-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.right-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+.right-body { font-size: 0.82rem; color: var(--light-text); line-height: 1.55; }
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Neytiri Eywafarm</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="rootstalk.html">RootsTalk</a></li>
+    <li><a href="cosh.html">Cosh</a></li>
+    <li><a href="contact.html" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<div class="legal-hero">
+  <div class="legal-hero-inner">
+    <p class="legal-eyebrow">Cancellation &amp; Refund</p>
+    <h1 class="legal-title">Cancellation and Refund Policy</h1>
+    <p class="legal-sub">Our policy regarding cancellations and refunds for RootsTalk subscriptions and services.</p>
+    <p class="legal-updated">Last updated: February 5, 2026</p>
+  </div>
+</div>
+
+<div style="background:var(--cream);padding:2rem 4rem;border-bottom:1px solid var(--rule)">
+  <p style="font-size:0.95rem;line-height:1.7;color:var(--body-text);max-width:860px;margin:0 auto">
+    <strong>Important Notice:</strong> This Policy governs the terms relating to cancellation, refunds, and forfeiture of payments made for subscriptions and services offered through the RootsTalk platform. <strong>Subscriptions are treated as digital service products and are generally non-refundable once activated.</strong>
+  </p>
+</div>
+
+<div class="legal-body">
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 01</p>
+    <h2 class="legal-section-title">Introduction and Scope</h2>
+    <p class="legal-p">This Cancellation and Refund Policy ("Policy") governs the terms relating to cancellation, refunds, and forfeiture of payments made for subscriptions and services offered through the RootsTalk platform ("Platform"), operated by Neytiri Eywafarm Agritech Private Limited ("Company").</p>
+     <p class="legal-p">This Policy applies to Client organisations using the Platform and to individual users and farmers subscribing through the Platform. It forms an integral part of the Terms and Conditions.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 02</p>
+    <h2 class="legal-section-title">Nature of Services and Subscriptions</h2>
+    <ul class="legal-list">
+      <li>(a) RootsTalk operates on a prepaid, subscription-based model.</li>
+      <li>(b) Subscriptions activate advisory workflows, expert services, system resources, and operational processes upon purchase or assignment.</li>
+      <li>(c) Once activated, such services involve committed resources and ongoing obligations.</li>
+    </ul>
+    <p class="legal-p">Accordingly, subscriptions are treated as digital service products and not as returnable goods.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 03</p>
+    <h2 class="legal-section-title">Client Subscriptions — Company Pays Model</h2>
+    <h3 class="legal-section-sub">Purchase of Subscription Credits</h3>
+    <ul class="legal-list">
+      <li>(a) Clients may purchase Subscription credits in advance.</li>
+      <li>(b) Such purchases are prepaid and non-refundable.</li>
+      <li>(c) Subscription credits do not expire unless otherwise specified.</li>
+    </ul>
+    <h3 class="legal-section-sub">Non-Refundability</h3>
+    <ul class="legal-list">
+      <li>(a) Once Subscription credits are purchased, they cannot be cancelled, returned, or refunded.</li>
+      <li>(b) Unused, partially used, or forfeited credits shall not be eligible for refund.</li>
+      <li>(c) Termination of the Agreement does not entitle the Client to refund of unused credits.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 04</p>
+    <h2 class="legal-section-title">Farmer Subscriptions — Farmer Pays Model</h2>
+    <h3 class="legal-section-sub">Subscription to Crop Advisory Packages</h3>
+    <ul class="legal-list">
+      <li>(a) Farmers may subscribe to crop advisory packages through the Platform.</li>
+      <li>(b) Such subscriptions provide access to customised, time-bound agricultural guidance and support.</li>
+    </ul>
+    <h3 class="legal-section-sub">Non-Refundability</h3>
+    <ul class="legal-list">
+      <li>(a) Once a farmer subscription is activated, the corresponding fee is non-refundable.</li>
+      <li>(b) No refunds shall be issued for: (i) early discontinuation; (ii) partial usage; (iii) change of mind; (iv) crop stage completion.</li>
+      <li>(c) Subscription fees are deemed earned upon activation.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 05</p>
+    <h2 class="legal-section-title">Continuation of Services After Termination</h2>
+    <ul class="legal-list">
+      <li>(a) In order to maintain advisory coherence and farmer welfare, the Company may continue active subscriptions until completion of the applicable crop cycle, even after termination by the Client.</li>
+      <li>(b) Such continuation does not entitle any party to refunds, credits, or compensation.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 06</p>
+    <h2 class="legal-section-title">Exceptional Circumstances</h2>
+    <p class="legal-p">Refunds may be considered only in exceptional circumstances, including:</p>
+    <ul class="legal-list">
+      <li>(a) duplicate payments;</li>
+      <li>(b) verified technical errors attributable to the Company;</li>
+      <li>(c) wrongful debits caused by system malfunction.</li>
+    </ul>
+    <p class="legal-p">Such refunds shall be processed at the Company's sole discretion, after verification.</p>
+    <p class="legal-p">No refunds shall be granted for dissatisfaction with advisory outcomes, crop losses, or commercial results.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 07</p>
+    <h2 class="legal-section-title">Payment Disputes and Chargebacks</h2>
+    <ul class="legal-list">
+      <li>(a) Users shall first contact the Company for resolution of payment-related disputes.</li>
+      <li>(b) Unauthorised chargebacks without prior communication may result in suspension of services.</li>
+      <li>(c) The Company reserves the right to contest unjustified chargebacks.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 08</p>
+    <h2 class="legal-section-title">Cancellation of Accounts</h2>
+    <ul class="legal-list">
+      <li>(a) Users may cancel their accounts in accordance with the Terms and Conditions.</li>
+      <li>(b) Account cancellation does not affect the non-refundable nature of subscriptions.</li>
+      <li>(c) Ongoing services may continue as provided under applicable policies.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 09</p>
+    <h2 class="legal-section-title">Taxes and Transaction Fees</h2>
+    <ul class="legal-list">
+      <li>(a) Fees paid are inclusive of applicable taxes unless stated otherwise.</li>
+      <li>(b) Transaction charges levied by payment gateways are non-refundable.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 10</p>
+    <h2 class="legal-section-title">Amendments</h2>
+    <p class="legal-p">The Company reserves the right to modify this Policy in accordance with Section 12 of the Privacy Policy and Section 21 of the Terms and Conditions.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 11</p>
+    <h2 class="legal-section-title">Contact Information</h2>
+    <p class="legal-p">For questions regarding this Policy, Users may contact:</p>
+    <div class="legal-contact-box">
+      <p><strong>Email:</strong> <a href="mailto:support@eywa.farm">support@eywa.farm</a></p>
+      <p><strong>Address:</strong> #1238, 4th Floor, HIG, B Sector, Yelahanka New Town, Bangalore 560064, Karnataka, India</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 12</p>
+    <h2 class="legal-section-title">Governing Law</h2>
+    <p class="legal-p">This Policy shall be governed by the laws of India.</p>
+  </div>
+
+  <div class="legal-contact-box" style="margin-top:2rem">
+    <p><strong>Questions about this Policy?</strong></p>
+    <p>Neytiri Eywafarm Agritech Pvt. Ltd., #1238, 4th Floor, HIG, B Sector, Yelahanka New Town, Bengaluru 560064</p>
+    <p>Email: <a href="mailto:support@eywa.farm">support@eywa.farm</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri Eywafarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">&middot;</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru&nbsp;560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="rootstalk.html" class="footer-link">RootsTalk</a>
+      <a href="cosh.html" class="footer-link">Cosh</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="index.html#about" class="footer-link">About Neytiri</a>
+      <a href="index.html#team" class="footer-link">Team</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+      <a href="cancellations.html" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri Eywafarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+</body>
+</html>

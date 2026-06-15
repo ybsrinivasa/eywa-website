@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy · Neytiri Eywafarm &middot; Neytiri Eywafarm Agritech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --soil: #1A1208; --bark: #2C1F0E; --moss: #1B4332; --fern: #2D6A4F;
+  --leaf: #52B788; --shoot: #95D5B2; --mist: #D8F3DC; --parchment: #FAF6EE;
+  --amber: #C8893A; --gold: #E8B84B; --cream: #F5EDD8;
+  --ink: #1A1208; --body-text: #3D2E1A; --light-text: #6B5740;
+  --rule: rgba(44,31,14,0.12); --teal: #085041;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--body-text); overflow-x: hidden; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.93); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--moss); text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.85rem; color: var(--light-text); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--moss); }
+.nav-cta { background: var(--moss); color: white !important; padding: 0.55rem 1.3rem; border-radius: 2px; font-weight: 500; }
+.nav-cta:hover { background: var(--fern) !important; }
+footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4rem 0; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-style: italic; }
+.footer-contact-line { font-size: 0.85rem; margin-bottom: 0.6rem; }
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.25); margin-top: 0.5rem; }
+.footer-col-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+.footer-link { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { display: flex; justify-content: space-between; padding: 1.5rem 0; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+
+.legal-hero {
+  background: var(--soil);
+  padding: 10rem 4rem 5rem;
+  position: relative; overflow: hidden;
+}
+.legal-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(27,67,50,0.4), transparent 55%),
+              radial-gradient(ellipse at 80% 20%, rgba(200,137,58,0.06), transparent 50%);
+}
+.legal-hero-inner { position: relative; z-index: 1; }
+.legal-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--shoot); text-transform: uppercase; margin-bottom: 1rem; }
+.legal-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,4vw,3.2rem); color: white; margin-bottom: 1rem; }
+.legal-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 620px; }
+.legal-updated { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); text-transform: uppercase; margin-top: 1.5rem; }
+.legal-body { max-width: 860px; margin: 0 auto; padding: 6rem 4rem; }
+.legal-section { margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--rule); }
+.legal-section:last-child { border-bottom: none; }
+.legal-section-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.75rem; }
+.legal-section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 1.25rem; }
+.legal-section-sub { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 1.5rem 0 0.75rem; }
+.legal-p { font-size: 0.95rem; line-height: 1.8; color: var(--body-text); margin-bottom: 0.9rem; }
+.legal-list { list-style: none; margin: 0.75rem 0 1rem 0; }
+.legal-list li { font-size: 0.9rem; line-height: 1.7; color: var(--body-text); padding: 0.3rem 0 0.3rem 1.5rem; position: relative; }
+.legal-list li::before { content: '·'; position: absolute; left: 0; color: var(--amber); font-weight: 700; }
+.legal-contact-box { background: var(--cream); padding: 2rem 2.5rem; border-radius: 4px; border-left: 3px solid var(--amber); margin-top: 1.5rem; }
+.legal-contact-box p { font-size: 0.9rem; line-height: 1.7; color: var(--body-text); margin-bottom: 0.4rem; }
+.legal-contact-box a { color: var(--moss); text-decoration: none; }
+.legal-highlight { background: var(--cream); padding: 1.5rem 2rem; border-radius: 4px; margin: 1.25rem 0; font-size: 0.92rem; line-height: 1.7; color: var(--body-text); font-style: italic; border-left: 3px solid var(--moss); }
+.rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+.right-card { padding: 1.25rem; background: white; border: 1px solid var(--rule); border-radius: 4px; }
+.right-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.right-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+.right-body { font-size: 0.82rem; color: var(--light-text); line-height: 1.55; }
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Neytiri Eywafarm</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="rootstalk.html">RootsTalk</a></li>
+    <li><a href="cosh.html">Cosh</a></li>
+    <li><a href="contact.html" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<div class="legal-hero">
+  <div class="legal-hero-inner">
+    <p class="legal-eyebrow">Privacy Policy</p>
+    <h1 class="legal-title">Your Privacy Matters</h1>
+    <p class="legal-sub">This Privacy Policy describes how Neytiri Eywafarm Agritech Private Limited collects, uses, processes, stores, shares, and protects personal data in connection with the RootsTalk platform.</p>
+    <p class="legal-updated">Last updated: February 5, 2026</p>
+  </div>
+</div>
+
+<div class="legal-body">
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 01</p>
+    <h2 class="legal-section-title">Introduction and Scope</h2>
+    <p class="legal-p">This Privacy Policy describes how <strong>Neytiri Eywafarm Agritech Private Limited</strong> ("Company", "we", "us", "our") collects, uses, processes, stores, shares, and protects personal data and other information in connection with the RootsTalk platform ("Platform").</p>
+    <ul class="legal-list">
+      <li>This Policy applies to all users of the Platform, including farmers, dealers, facilitators, experts, Client representatives, and visitors.</li>
+      <li>This Policy forms an integral part of the Terms and Conditions governing use of the Platform.</li>
+      <li>By accessing or using the Platform, Users acknowledge that they have read, understood, and agreed to this Policy.</li>
+      <li>If a User does not agree to this Policy, such User should refrain from accessing or using the Platform.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 02</p>
+    <h2 class="legal-section-title">Legal Framework and Definitions</h2>
+    <h3 class="legal-section-sub">Applicable Law</h3>
+    <p class="legal-p">This Policy is framed in accordance with:</p>
+    <ul class="legal-list">
+      <li>The Digital Personal Data Protection Act, 2023</li>
+      <li>The Information Technology Act, 2000</li>
+      <li>Applicable rules, regulations, and guidelines</li>
+      <li>Other relevant laws in force in India</li>
+    </ul>
+    <h3 class="legal-section-sub">Data Fiduciary and Data Processor</h3>
+    <p class="legal-p"><strong>Data Fiduciary:</strong> The Company acts as a "Data Fiduciary" in relation to Personal Data collected directly by it.</p>
+    <p class="legal-p"><strong>Data Processor:</strong> In relation to Client-controlled data, the Company acts as a "Data Processor" on behalf of the Client.</p>
+    <h3 class="legal-section-sub">Key Definitions</h3>
+    <ul class="legal-list">
+      <li><strong>Personal Data:</strong> Any data relating to an identified or identifiable individual.</li>
+      <li><strong>Sensitive Personal Data:</strong> Such data as may be notified under applicable law.</li>
+      <li><strong>Client Data:</strong> Business and operational data provided by Clients.</li>
+      <li><strong>Usage Data:</strong> Anonymised and aggregated data relating to Platform usage.</li>
+      <li><strong>Processing:</strong> Any operation performed on data, including collection, storage, use, disclosure, or deletion.</li>
+      <li><strong>Consent:</strong> Freely given, specific, informed, and unambiguous indication of the User's agreement to data processing.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 03</p>
+    <h2 class="legal-section-title">Data We Collect</h2>
+    <p class="legal-p">The Company collects only such data as is reasonably necessary to provide, operate, improve, and secure the Platform.</p>
+    <h3 class="legal-section-sub">Personal Identification</h3>
+    <ul class="legal-list">
+      <li>Name</li>
+      <li>Mobile number</li>
+      <li>Email address (where provided)</li>
+      <li>Age or date of birth</li>
+      <li>Profile photographs (voluntary)</li>
+    </ul>
+    <h3 class="legal-section-sub">Account &amp; Role Information</h3>
+    <ul class="legal-list">
+      <li>User role (farmer, dealer, facilitator, expert)</li>
+      <li>Organisation affiliation</li>
+      <li>Designation and responsibilities</li>
+      <li>Account preferences and settings</li>
+    </ul>
+    <h3 class="legal-section-sub">Agricultural &amp; Farm Information</h3>
+    <ul class="legal-list">
+      <li>Crop details</li>
+      <li>Sowing and harvesting dates</li>
+      <li>Land and field identifiers</li>
+      <li>Soil and nutrient information</li>
+      <li>Pest and disease observations</li>
+      <li>Farm practice records</li>
+    </ul>
+    <h3 class="legal-section-sub">Transaction Information</h3>
+    <ul class="legal-list">
+      <li>Subscription details</li>
+      <li>Order and purchase records</li>
+      <li>Payment confirmations</li>
+      <li>Allocation and usage history</li>
+    </ul>
+    <div class="legal-highlight">We do not store full payment card or banking details.</div>
+    <h3 class="legal-section-sub">Device &amp; Technical Information</h3>
+    <ul class="legal-list">
+      <li>Device type and model</li>
+      <li>Operating system and app version</li>
+      <li>IP address</li>
+      <li>Network connectivity information</li>
+      <li>System logs and error reports</li>
+    </ul>
+    <h3 class="legal-section-sub">Media Content</h3>
+    <ul class="legal-list">
+      <li>Photos of crops, pests, or fields</li>
+      <li>Audio recordings for support</li>
+      <li>Videos (where voluntarily contributed)</li>
+      <li>Location data (with consent)</li>
+    </ul>
+    <div class="legal-highlight">Users may grant, withdraw, and restrict consent for media collection.</div>
+    <h3 class="legal-section-sub">Data Minimisation Principle</h3>
+    <p class="legal-p">We endeavour to collect only such data as is necessary for the stated purposes and avoid excessive or irrelevant data collection.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 04</p>
+    <h2 class="legal-section-title">Purpose of Collection and Use of Data</h2>
+    <p class="legal-p">The Company collects and processes data only for legitimate, lawful, and transparent purposes connected with operation of the Platform.</p>
+    <h3 class="legal-section-sub">Provision of Services</h3>
+    <ul class="legal-list">
+      <li>Create and manage user accounts</li>
+      <li>Enable access to Platform features</li>
+      <li>Deliver agricultural advisories</li>
+      <li>Manage subscriptions and orders</li>
+    </ul>
+    <h3 class="legal-section-sub">Personalisation</h3>
+    <ul class="legal-list">
+      <li>Tailor advisories to specific crops</li>
+      <li>Maintain advisory consistency over time</li>
+      <li>Avoid repetitive recommendations</li>
+      <li>Align with past actions</li>
+    </ul>
+    <h3 class="legal-section-sub">Security &amp; Compliance</h3>
+    <ul class="legal-list">
+      <li>Ensure system security</li>
+      <li>Enforce Terms and Conditions</li>
+      <li>Comply with legal requirements</li>
+    </ul>
+    <h3 class="legal-section-sub">Business Operations</h3>
+    <ul class="legal-list">
+      <li>Manage billing and payments</li>
+      <li>Maintain records and audits</li>
+      <li>Conduct internal reporting</li>
+      <li>Manage contractual relationships</li>
+    </ul>
+    <h3 class="legal-section-sub">No Unauthorised Commercial Exploitation</h3>
+    <p class="legal-p">We do NOT use Personal Data for:</p>
+    <ul class="legal-list">
+      <li>Third-party advertising</li>
+      <li>Sale of user profiles</li>
+      <li>Unsolicited marketing</li>
+      <li>Behavioural profiling unrelated to Platform services</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 05</p>
+    <h2 class="legal-section-title">Consent and User Rights</h2>
+    <h3 class="legal-section-sub">Lawful Basis and Consent</h3>
+    <ul class="legal-list">
+      <li>The Company processes Personal Data only on lawful grounds, including user consent, contractual necessity, and legal obligations.</li>
+      <li>Where required by law, explicit consent is obtained before collecting or processing Personal Data.</li>
+      <li>Users may withdraw consent at any time, subject to legal and contractual limitations.</li>
+    </ul>
+    <h3 class="legal-section-sub">Your Rights</h3>
+    <div class="rights-grid">
+      <div class="right-card"><p class="right-num">RIGHT 01</p><p class="right-title">Right to Access</p><p class="right-body">Request confirmation of whether your Personal Data is being processed and obtain access to such data.</p></div>
+      <div class="right-card"><p class="right-num">RIGHT 02</p><p class="right-title">Right to Correction</p><p class="right-body">Correct inaccurate or incomplete Personal Data and update outdated information.</p></div>
+      <div class="right-card"><p class="right-num">RIGHT 03</p><p class="right-title">Right to Erasure</p><p class="right-body">Request deletion of your Personal Data when permitted by law, subject to legal and operational requirements.</p></div>
+      <div class="right-card"><p class="right-num">RIGHT 04</p><p class="right-title">Right to Grievance Redressal</p><p class="right-body">Raise grievances relating to data processing which will be addressed within reasonable timeframes.</p></div>
+      <div class="right-card"><p class="right-num">RIGHT 05</p><p class="right-title">Right to Nominate</p><p class="right-body">Nominate another individual to exercise your rights in the event of death or incapacity.</p></div>
+      <div class="right-card"><p class="right-num">RIGHT 06</p><p class="right-title">Right to Restrict Processing</p><p class="right-body">Request restriction of processing in specific circumstances where permitted by law.</p></div>
+    </div>
+    <div class="legal-highlight"><strong>No Retaliation:</strong> The Company shall not deny services, impose unreasonable conditions, or discriminate against Users for exercising their lawful data rights.</div>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 06</p>
+    <h2 class="legal-section-title">Data Sharing and Disclosure</h2>
+    <p class="legal-p">The Company does not sell, rent, or trade Personal Data to third parties.</p>
+    <p class="legal-p">We share data only in limited and lawful circumstances:</p>
+    <h3 class="legal-section-sub">With Clients and Authorised Participants</h3>
+    <p class="legal-p">Personal Data may be shared with relevant Clients and their authorised ecosystem participants (dealers, facilitators, experts) solely for delivering services through the Platform.</p>
+    <h3 class="legal-section-sub">With Service Providers</h3>
+    <p class="legal-p">We may engage trusted third-party providers for cloud hosting, payment processing, messaging, analytics, and customer support. They are contractually bound to process data only in accordance with this Policy.</p>
+    <h3 class="legal-section-sub">For Legal and Regulatory Purposes</h3>
+    <p class="legal-p">We may disclose data to comply with laws, respond to lawful requests from authorities, enforce legal rights, or protect safety and security.</p>
+    <h3 class="legal-section-sub">In Corporate Transactions</h3>
+    <p class="legal-p">In the event of merger, acquisition, or sale of assets, data may be transferred. Any recipient shall be bound by similar data protection obligations.</p>
+    <h3 class="legal-section-sub">Aggregated and Anonymised Data</h3>
+    <p class="legal-p">We may share anonymised and aggregated data for research and analytical purposes. Such data shall not identify any individual user.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 07</p>
+    <h2 class="legal-section-title">Data Storage and Security</h2>
+    <h3 class="legal-section-sub">Data Storage</h3>
+    <p class="legal-p">Personal Data and Client Data are primarily stored on secure servers located in India. Where required for technical or operational reasons, limited data may be stored or processed outside India in compliance with applicable laws.</p>
+    <h3 class="legal-section-sub">Security Safeguards</h3>
+    <ul class="legal-list">
+      <li><strong>Access Controls:</strong> Authentication mechanisms &amp; need-to-know basis</li>
+      <li><strong>Encryption:</strong> Data encryption where appropriate</li>
+      <li><strong>Secure Servers:</strong> Protected storage environments</li>
+      <li><strong>Monitoring:</strong> System monitoring &amp; intrusion detection</li>
+      <li><strong>Backups:</strong> Regular backups &amp; recovery procedures</li>
+      <li><strong>Reviews:</strong> Periodic security reviews</li>
+    </ul>
+    <h3 class="legal-section-sub">User Responsibilities</h3>
+    <ul class="legal-list">
+      <li>Safeguarding your login credentials</li>
+      <li>Using secure devices and networks</li>
+      <li>Promptly reporting suspected misuse</li>
+    </ul>
+    <div class="legal-highlight">While the Company uses reasonable efforts to protect data, no system can be guaranteed to be completely secure. Users acknowledge and accept residual risks inherent in digital systems.</div>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 08</p>
+    <h2 class="legal-section-title">Data Retention and Deletion</h2>
+    <p class="legal-p">The Company retains Personal Data and Client Data only for as long as is necessary to fulfil the purposes for which it was collected.</p>
+    <h3 class="legal-section-sub">Retention Principles</h3>
+    <p class="legal-p">Retention periods are determined based on contractual obligations, legal requirements, operational needs, and dispute resolution requirements.</p>
+    <h3 class="legal-section-sub">Active Account Retention</h3>
+    <p class="legal-p">Data associated with active user accounts shall be retained for the duration of the account's activity.</p>
+    <h3 class="legal-section-sub">Post-Termination Retention</h3>
+    <p class="legal-p">Upon termination, data may be retained for a reasonable period to complete services, comply with legal obligations, resolve disputes, and support audits. Thereafter, data shall be securely deleted or anonymised.</p>
+    <h3 class="legal-section-sub">Anonymisation</h3>
+    <p class="legal-p">Where feasible, data may be anonymised and retained for analytical and research purposes. Such data shall not identify individual users.</p>
+    <h3 class="legal-section-sub">Backup Data</h3>
+    <p class="legal-p">Deleted data may remain in backup systems for limited periods, securely protected and not used for active processing.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 09</p>
+    <h2 class="legal-section-title">Cross-Border Data Transfers</h2>
+    <div class="legal-highlight"><strong>Primary Data Storage in India:</strong> The Company stores and processes Personal Data and Client Data primarily on servers located within India, reflecting our commitment to data sovereignty and compliance with Indian law.</div>
+    <h3 class="legal-section-sub">Limited Cross-Border Processing</h3>
+    <p class="legal-p">In certain circumstances, limited data may be processed or accessed outside India for technical, operational, or support purposes. Such processing shall occur only where necessary and permissible under applicable law.</p>
+    <h3 class="legal-section-sub">Legal and Contractual Safeguards</h3>
+    <p class="legal-p">Where cross-border processing occurs, we ensure appropriate contractual protections, reasonable technical safeguards, and data protection at standards substantively equivalent to Indian law.</p>
+    <h3 class="legal-section-sub">Regulatory Compliance</h3>
+    <p class="legal-p">All cross-border transfers comply with the Digital Personal Data Protection Act, 2023 and related regulations. We monitor regulatory developments and update practices accordingly.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 10</p>
+    <h2 class="legal-section-title">Children and Minors</h2>
+    <p class="legal-p">The Platform is intended for use by individuals who are legally capable of entering into binding contracts under applicable law. As a general rule, the Platform is designed for adult users.</p>
+    <h3 class="legal-section-sub">Processing of Minor Data</h3>
+    <p class="legal-p">Where Personal Data of a minor is collected, it shall be carried out in accordance with the Digital Personal Data Protection Act, 2023. We shall obtain verifiable consent from a parent or lawful guardian where required by law.</p>
+    <h3 class="legal-section-sub">Limited Collection</h3>
+    <p class="legal-p">The Company does not knowingly collect Personal Data from minors without appropriate legal basis. Data relating to minors shall be limited to what is strictly necessary for Platform functionality.</p>
+    <h3 class="legal-section-sub">Prohibited Uses</h3>
+    <p class="legal-p">The Company does NOT:</p>
+    <ul class="legal-list">
+      <li>Engage in targeted advertising directed at minors</li>
+      <li>Undertake behavioural profiling of minors</li>
+      <li>Profile minors for commercial purposes</li>
+    </ul>
+    <p class="legal-p">Parents or lawful guardians may exercise data rights on behalf of minors. If we become aware that Personal Data has been collected in violation of applicable law, we shall take reasonable steps to delete or restrict such data.</p>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 11</p>
+    <h2 class="legal-section-title">Grievance Redressal and Contact</h2>
+    <p class="legal-p">In accordance with applicable law, the Company has appointed a Grievance Officer to address concerns relating to data protection and privacy.</p>
+    <h3 class="legal-section-sub">Grievance Officer Contact</h3>
+    <div class="legal-contact-box">
+      <p><strong>Designation:</strong> Grievance Officer — Data Protection</p>
+      <p><strong>Company:</strong> Neytiri Eywafarm Agritech Private Limited</p>
+      <p><strong>Email:</strong> <a href="mailto:support@eywa.farm">support@eywa.farm</a></p>
+      <p><strong>Address:</strong> #1238, 4th Floor, HIG, B Sector, Yelahanka New Town, Bengaluru 560064, Karnataka, India</p>
+      <p><strong>Phone:</strong> <a href="tel:08042107702">080 4210 7702</a></p>
+    </div>
+    <h3 class="legal-section-sub">Filing a Grievance</h3>
+    <p class="legal-p">Users may submit grievances relating to:</p>
+    <ul class="legal-list">
+      <li>Collection or use of Personal Data</li>
+      <li>Denial of data rights</li>
+      <li>Security incidents</li>
+      <li>Unauthorised disclosures</li>
+      <li>Policy violations</li>
+    </ul>
+    <div class="legal-highlight"><strong>Response Timeline:</strong> Acknowledgement within 7 business days. Resolution within 30 days or as prescribed by law.</div>
+    <div class="legal-highlight"><strong>No Retaliation:</strong> The Company shall not take adverse action against any User for raising a genuine grievance.</div>
+  </div>
+
+  <div class="legal-section">
+    <p class="legal-section-num">Section 12</p>
+    <h2 class="legal-section-title">Policy Updates and Governance</h2>
+    <h3 class="legal-section-sub">Policy Review and Updates</h3>
+    <p class="legal-p">The Company may review and update this Privacy Policy to reflect changes in law, Platform functionality, technological developments, or business practices. Material changes shall be communicated through the Platform.</p>
+    <h3 class="legal-section-sub">Effective Date</h3>
+    <p class="legal-p">This Policy is effective from the date published. Continued use of the Platform after updates constitutes acceptance of the updated Policy.</p>
+    <h3 class="legal-section-sub">Internal Governance</h3>
+    <p class="legal-p">The Company maintains internal policies, procedures, and controls to support compliance. Relevant personnel are trained on data protection and privacy obligations.</p>
+    <h3 class="legal-section-sub">Consistency with Other Documents</h3>
+    <p class="legal-p">This Policy shall be read in conjunction with the Terms and Conditions. In the event of inconsistency, the Terms and Conditions shall prevail, subject to applicable law.</p>
+    <h3 class="legal-section-sub">Governing Law</h3>
+    <p class="legal-p">This Policy shall be governed by and construed in accordance with the laws of India.</p>
+  </div>
+
+  <div class="legal-contact-box" style="margin-top:2rem">
+    <p><strong>Questions about this Privacy Policy?</strong></p>
+    <p>Neytiri Eywafarm Agritech Pvt. Ltd., #1238, 4th Floor, HIG, B Sector, Yelahanka New Town, Bengaluru 560064, Karnataka, India</p>
+    <p>Email: <a href="mailto:support@eywa.farm">support@eywa.farm</a> &nbsp;·&nbsp; Phone: <a href="tel:08042107702">080 4210 7702</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri Eywafarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">&middot;</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru&nbsp;560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="rootstalk.html" class="footer-link">RootsTalk</a>
+      <a href="cosh.html" class="footer-link">Cosh</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="index.html#about" class="footer-link">About Neytiri</a>
+      <a href="index.html#team" class="footer-link">Team</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+      <a href="cancellations.html" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri Eywafarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+</body>
+</html>
