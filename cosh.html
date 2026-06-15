@@ -802,10 +802,12 @@ section { padding: 7rem 4rem; }
   background: #05080a;
 }
 @media (max-width: 880px) {
-  .vis-canvas-iframe > iframe { height: 55vh; min-height: 380px; }
+  /* Mobile needs more iframe height because the inner filter panel
+     spans the full width and the graph has to sit below it. */
+  .vis-canvas-iframe > iframe { height: 78vh; min-height: 560px; }
 }
 @media (max-width: 480px) {
-  .vis-canvas-iframe > iframe { height: 50vh; min-height: 320px; }
+  .vis-canvas-iframe > iframe { height: 78vh; min-height: 560px; }
 }
 @media (max-width: 880px) {
   .vis-canvas-iframe { height: 55vh; min-height: 380px; }
