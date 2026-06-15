@@ -287,23 +287,23 @@ footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4
       <div class="form-grid">
         <div class="form-field">
           <label class="form-label">Name<span class="form-req">*</span></label>
-          <input class="form-input" type="text" placeholder="Your full name">
+          <input id="demo-name" class="form-input" type="text" placeholder="Your full name">
         </div>
         <div class="form-field">
           <label class="form-label">Email<span class="form-req">*</span></label>
-          <input class="form-input" type="email" placeholder="Work email">
+          <input id="demo-email" class="form-input" type="email" placeholder="Work email">
         </div>
         <div class="form-field">
           <label class="form-label">Company<span class="form-req">*</span></label>
-          <input class="form-input" type="text" placeholder="Organisation name">
+          <input id="demo-company" class="form-input" type="text" placeholder="Organisation name">
         </div>
         <div class="form-field">
           <label class="form-label">Phone<span class="form-req">*</span></label>
-          <input class="form-input" type="tel" placeholder="Mobile number">
+          <input id="demo-phone" class="form-input" type="tel" placeholder="Mobile number">
         </div>
         <div class="form-field full">
           <label class="form-label">Organisation Type<span class="form-req">*</span></label>
-          <select class="form-select">
+          <select id="demo-orgtype" class="form-select">
             <option value="">Select type…</option>
             <option>Seed Company</option>
             <option>Pesticide Company</option>
@@ -316,14 +316,14 @@ footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4
         </div>
         <div class="form-field full">
           <label class="form-label">Approximate Number of Farmers Reached</label>
-          <input class="form-input" type="text" placeholder="e.g. 5,000 or 1,00,000">
+          <input id="demo-farmers" class="form-input" type="text" placeholder="e.g. 5,000 or 1,00,000">
         </div>
         <div class="form-field full">
           <label class="form-label">Additional Notes</label>
-          <textarea class="form-textarea" placeholder="Tell us about your crops, regions, and what you are hoping to achieve…"></textarea>
+          <textarea id="demo-notes" class="form-textarea" placeholder="Tell us about your crops, regions, and what you are hoping to achieve…"></textarea>
         </div>
       </div>
-      <button class="form-btn" onclick="alert('Thank you. We will be in touch within 24 hours.')">Request Demo</button>
+      <button class="form-btn" onclick="sendDemoRequest()">Request Demo</button>
     </div>
 
     <div class="form-card">
@@ -332,21 +332,95 @@ footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4
       <div class="form-grid">
         <div class="form-field">
           <label class="form-label">Name<span class="form-req">*</span></label>
-          <input class="form-input" type="text" placeholder="Your name">
+          <input id="msg-name" class="form-input" type="text" placeholder="Your name">
         </div>
         <div class="form-field">
           <label class="form-label">Email<span class="form-req">*</span></label>
-          <input class="form-input" type="email" placeholder="Your email">
+          <input id="msg-email" class="form-input" type="email" placeholder="Your email">
         </div>
         <div class="form-field full">
           <label class="form-label">Message<span class="form-req">*</span></label>
-          <textarea class="form-textarea" style="min-height:120px" placeholder="Your message…"></textarea>
+          <textarea id="msg-message" class="form-textarea" style="min-height:120px" placeholder="Your message…"></textarea>
         </div>
       </div>
-      <button class="form-btn" onclick="alert('Thank you for your message. We will respond within 24 hours.')">Send Message</button>
+      <button class="form-btn" onclick="sendQuickMessage()">Send Message</button>
     </div>
   </div>
 </div>
+
+<script>
+  // Forms submit by opening the visitor's email client pre-filled with the
+  // collected fields, addressed to info@eywa.farm. No backend, no third-party
+  // service. The visitor reviews and sends from their own email account so we
+  // also know their genuine reply-to address.
+  const TO = 'info@eywa.farm';
+
+  function v(id) {
+    const el = document.getElementById(id);
+    return el ? (el.value || '').trim() : '';
+  }
+
+  function openMailto(subject, body) {
+    const url = 'mailto:' + TO
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+    window.location.href = url;
+  }
+
+  function sendDemoRequest() {
+    const name = v('demo-name');
+    const email = v('demo-email');
+    const company = v('demo-company');
+    const phone = v('demo-phone');
+    const orgtype = v('demo-orgtype');
+    const farmers = v('demo-farmers');
+    const notes = v('demo-notes');
+
+    if (!name || !email || !company || !phone || !orgtype) {
+      alert('Please fill in Name, Email, Company, Phone, and Organisation Type.');
+      return;
+    }
+
+    const body = [
+      'Name: ' + name,
+      'Email: ' + email,
+      'Company: ' + company,
+      'Phone: ' + phone,
+      'Organisation Type: ' + orgtype,
+      'Approximate Farmers Reached: ' + (farmers || '(not provided)'),
+      '',
+      'Additional Notes:',
+      notes || '(none)',
+      '',
+      '— Sent from eywa.farm/contact'
+    ].join('\n');
+
+    openMailto('Demo Request — ' + company, body);
+  }
+
+  function sendQuickMessage() {
+    const name = v('msg-name');
+    const email = v('msg-email');
+    const message = v('msg-message');
+
+    if (!name || !email || !message) {
+      alert('Please fill in Name, Email, and Message.');
+      return;
+    }
+
+    const body = [
+      'Name: ' + name,
+      'Email: ' + email,
+      '',
+      'Message:',
+      message,
+      '',
+      '— Sent from eywa.farm/contact'
+    ].join('\n');
+
+    openMailto('Message from ' + name + ' via eywa.farm', body);
+  }
+</script>
 
 <footer>
   <div class="footer-inner">
