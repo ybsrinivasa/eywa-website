@@ -785,10 +785,59 @@ section { padding: 7rem 4rem; }
   box-shadow: 0 18px 60px rgba(0,0,0,0.18);
 }
 @media (max-width: 880px) {
-  .vis-canvas-iframe { height: 65vh; min-height: 440px; }
+  .vis-canvas-iframe { height: 55vh; min-height: 380px; }
 }
 @media (max-width: 480px) {
-  .vis-canvas-iframe { height: 60vh; min-height: 380px; }
+  .vis-canvas-iframe { height: 50vh; min-height: 320px; }
+}
+
+/* Tap-to-interact overlay (mobile only).
+   The 3D canvas iframe captures touch events for rotate/drag, which makes
+   it impossible to scroll past on a phone. The overlay sits on top so
+   regular taps + touch-scrolls pass through to the page; only an explicit
+   tap on the overlay hands control to the iframe. */
+.vis-tap-overlay {
+  display: none;
+}
+@media (max-width: 880px) {
+  .vis-tap-overlay {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 8, 10, 0.45);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.25s ease;
+    padding: 1rem;
+  }
+  .vis-tap-overlay-hint {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 0.65rem 1.1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+  .vis-tap-overlay-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+  }
+  .vis-tap-overlay.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .vis-canvas-inner {
@@ -1486,8 +1535,11 @@ footer {
     </div>
   </div>
 
-  <!-- Live Cosh visualization embedded from cosh2.eywa.farm/embed/explore -->
-  <div class="vis-canvas vis-canvas-iframe">
+  <!-- Live Cosh visualization embedded from cosh2.eywa.farm/embed/explore.
+       On mobile the iframe gets a tap-to-interact overlay: touches pass
+       through (so the user can scroll past), and only an explicit tap
+       hands control over to the 3D canvas. -->
+  <div class="vis-canvas vis-canvas-iframe" id="vis-canvas">
     <iframe
       src="https://cosh2.eywa.farm/embed/explore"
       title="Cosh Knowledge Graph — live visualization"
@@ -1495,6 +1547,10 @@ footer {
       allow="fullscreen"
       style="width:100%; height:100%; border:0; display:block; background:#05080a;">
     </iframe>
+    <button type="button" class="vis-tap-overlay" id="vis-tap-overlay" aria-label="Tap to interact with the 3D graph">
+      <span class="vis-tap-overlay-hint">Tap to interact with the 3D graph</span>
+      <span class="vis-tap-overlay-sub">(scroll the page first, then tap when ready)</span>
+    </button>
   </div>
 
   <p class="vis-footer-note">
@@ -1677,6 +1733,20 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Tap-to-interact overlay for the visualization iframe (mobile only) ────
+// The overlay is visible on phones until the user taps it. While visible
+// it absorbs all touches but does nothing — taps + scrolls pass to the
+// browser as normal page interactions, so users can scroll past the
+// visualization. An intentional tap hides the overlay and hands control
+// to the 3D canvas.
+(function () {
+  var overlay = document.getElementById('vis-tap-overlay');
+  if (!overlay) return;
+  overlay.addEventListener('click', function () {
+    overlay.classList.add('is-hidden');
+  });
+})();
 </script>
 </body>
 </html>
