@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About RootsTalk · Neytiri EywaFarm Agritech</title>
+<meta name="description" content="RootsTalk brings trusted agricultural knowledge closer to every farmer — a digital platform connecting farmers with organisations, experts, facilitators and input dealers across the crop cycle.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --soil: #1A1208; --bark: #2C1F0E; --moss: #1B4332; --fern: #2D6A4F;
+  --leaf: #52B788; --shoot: #95D5B2; --mist: #D8F3DC; --parchment: #FAF6EE;
+  --amber: #C8893A; --gold: #E8B84B; --cream: #F5EDD8;
+  --ink: #1A1208; --body-text: #3D2E1A; --light-text: #6B5740;
+  --rule: rgba(44,31,14,0.12);
+  --teal: #085041; --teal-mid: #0D6B56; --teal-light: #1A9B7A;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--body-text); overflow-x: hidden; }
+
+/* ── Nav ─────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(250,246,238,0.93); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--moss); text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.85rem; color: var(--light-text); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--teal); }
+.nav-cta { background: var(--teal); color: white !important; padding: 0.55rem 1.3rem; border-radius: 2px; font-weight: 500; }
+.nav-cta:hover { background: var(--teal-mid) !important; }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+.page-hero {
+  background: var(--teal);
+  padding: 10rem 4rem 6rem;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 40%, rgba(26,155,122,0.18), transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(8,80,65,0.55), transparent 60%);
+}
+.page-hero-inner { position: relative; z-index: 1; max-width: 780px; }
+.page-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--shoot); text-transform: uppercase; margin-bottom: 1rem; }
+.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4vw, 3.5rem); color: white; line-height: 1.15; margin-bottom: 1.25rem; font-weight: 700; }
+.page-lede { font-size: 1.15rem; color: rgba(255,255,255,0.78); line-height: 1.65; margin-bottom: 2rem; font-family: 'Playfair Display', serif; font-style: italic; }
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1.5rem; }
+.hero-cta-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  background: var(--gold); color: var(--ink) !important;
+  border-radius: 2px; font-weight: 500; text-decoration: none;
+  font-size: 0.95rem; letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.2s;
+}
+.hero-cta-primary:hover { background: #F0C662; transform: translateY(-1px); }
+.hero-cta-arrow { transition: transform 0.2s; }
+.hero-cta-primary:hover .hero-cta-arrow { transform: translateX(3px); }
+.hero-cta-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  color: rgba(255,255,255,0.85) !important;
+  text-decoration: none; font-size: 0.9rem; letter-spacing: 0.04em;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.hero-cta-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.35); }
+
+/* ── Article body ─────────────────────────────────────────────────────────── */
+.article { padding: 6rem 4rem 4rem; }
+.article-inner { max-width: 760px; margin: 0 auto; }
+.intro-para {
+  font-size: 1.1rem; line-height: 1.75; color: var(--body-text);
+  margin-bottom: 4rem;
+}
+.section { margin-bottom: 3.5rem; }
+.section-eyebrow {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700;
+  color: var(--ink); line-height: 1.25; margin-bottom: 1.25rem;
+}
+.section-body {
+  font-size: 1.02rem; line-height: 1.75; color: var(--body-text);
+  margin-bottom: 1rem;
+}
+.section-body:last-child { margin-bottom: 0; }
+
+/* Roles list for the "Built around relationships" section */
+.roles-list {
+  margin: 1.5rem 0 1rem;
+  padding: 1.75rem 2rem;
+  background: white;
+  border-left: 3px solid var(--teal-light);
+  border-radius: 2px;
+}
+.roles-list li {
+  list-style: none;
+  font-size: 1rem; color: var(--body-text);
+  line-height: 1.6; padding: 0.55rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.roles-list li:last-child { border-bottom: none; }
+.roles-list li strong { color: var(--teal); font-weight: 500; }
+.centre-note {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.1rem; color: var(--teal); text-align: center;
+  margin-top: 1.75rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Closing block ────────────────────────────────────────────────────────── */
+.closing {
+  background: var(--soil);
+  padding: 5rem 4rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.closing::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(26,155,122,0.16), transparent 65%);
+}
+.closing-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+.closing-brand {
+  font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.75rem); color: white;
+  letter-spacing: -0.01em; margin-bottom: 0.75rem;
+}
+.closing-motto {
+  font-family: 'DM Mono', monospace; font-size: 0.78rem;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2.25rem;
+}
+.closing-motto span { margin: 0 0.4rem; opacity: 0.5; }
+.closing-promise {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.8);
+  margin-bottom: 2.5rem;
+}
+.closing-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 1rem 2.25rem;
+  background: var(--gold); color: var(--ink) !important;
+  border-radius: 2px; font-weight: 500; text-decoration: none;
+  font-size: 1rem; letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.2s;
+}
+.closing-cta:hover { background: #F0C662; transform: translateY(-1px); }
+.closing-attribution {
+  margin-top: 3rem; font-size: 0.8rem; color: rgba(255,255,255,0.4);
+  font-family: 'DM Mono', monospace; letter-spacing: 0.1em;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+footer { background: var(--soil); color: rgba(255,255,255,0.35); padding: 4rem 4rem 0; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-style: italic; }
+.footer-contact-line { font-size: 0.85rem; margin-bottom: 0.6rem; }
+.footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-contact-line a:hover { color: var(--shoot); }
+.footer-sep { margin: 0 0.4rem; color: rgba(255,255,255,0.2); }
+.footer-addr { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.25); margin-top: 0.5rem; }
+.footer-col-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+.footer-link { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { display: flex; justify-content: space-between; padding: 1.5rem 0; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 880px) {
+  nav { padding: 0.85rem 1.25rem !important; }
+  .nav-links { gap: 1rem !important; }
+  .nav-links a { font-size: 0.72rem !important; }
+  .nav-cta { padding: 0.42rem 0.9rem !important; font-size: 0.72rem !important; }
+
+  .page-hero { padding: 8rem 1.5rem 4rem !important; }
+  .page-title { font-size: clamp(1.9rem, 6vw, 2.6rem) !important; }
+  .page-lede { font-size: 1rem !important; }
+  .hero-cta-row { flex-direction: column; align-items: stretch; }
+  .hero-cta-primary, .hero-cta-secondary { justify-content: center; }
+
+  .article { padding: 4rem 1.5rem 3rem !important; }
+  .intro-para { font-size: 1rem !important; margin-bottom: 2.75rem !important; }
+  .section { margin-bottom: 2.75rem !important; }
+  .section-title { font-size: 1.4rem !important; }
+  .section-body { font-size: 0.98rem !important; }
+  .roles-list { padding: 1.25rem 1.5rem !important; }
+
+  .closing { padding: 4rem 1.5rem !important; }
+  .closing-brand { font-size: clamp(2rem, 8vw, 2.75rem) !important; }
+  .closing-motto { font-size: 0.68rem !important; letter-spacing: 0.18em !important; }
+  .closing-promise { font-size: 1rem !important; }
+
+  footer { padding: 3rem 1.5rem 1rem !important; }
+  .footer-inner { grid-template-columns: 1fr !important; gap: 2rem !important; padding-bottom: 2rem !important; }
+  .footer-bottom { flex-direction: column !important; gap: 0.5rem !important; text-align: center !important; padding: 1.25rem 0 !important; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0.65rem 0.85rem !important; }
+  .nav-logo { font-size: 0.55rem !important; letter-spacing: 0.08em !important; }
+  .nav-links { gap: 0.6rem !important; }
+  .nav-links a { font-size: 0.62rem !important; letter-spacing: 0.02em !important; }
+  .nav-cta { padding: 0.35rem 0.7rem !important; font-size: 0.62rem !important; letter-spacing: 0.02em !important; }
+
+  .page-hero { padding-top: 6.5rem !important; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Neytiri EywaFarm</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/rootstalk">RootsTalk</a></li>
+    <li><a href="/cosh">Cosh</a></li>
+    <li><a href="/contact" class="nav-cta">Talk to Us</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">About RootsTalk</p>
+    <h1 class="page-title">
+      RootsTalk brings trusted agricultural knowledge closer to every farmer.
+    </h1>
+    <p class="page-lede">
+      A digital platform that connects farmers with agricultural organisations,
+      experts, facilitators and input dealers — helping them access the right
+      guidance and support throughout the crop cycle.
+    </p>
+    <div class="hero-cta-row">
+      <a href="https://rootstalk.in" class="hero-cta-primary" target="_blank" rel="noopener">
+        Open RootsTalk <span class="hero-cta-arrow">→</span>
+      </a>
+      <a href="/rootstalk" class="hero-cta-secondary">
+        For organisations →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Article ───────────────────────────────────────────────────────────── -->
+<article class="article">
+  <div class="article-inner">
+
+    <p class="intro-para">
+      RootsTalk is a digital platform that connects farmers with agricultural
+      organisations, experts, facilitators and input dealers — helping them
+      access the right guidance and support throughout the crop cycle.
+    </p>
+
+    <div class="section">
+      <p class="section-eyebrow">Advisories</p>
+      <h2 class="section-title">Guidance throughout your crop journey</h2>
+      <p class="section-body">
+        Farmers can subscribe to crop advisories created by agricultural
+        universities, research institutions, companies and other recognised
+        organisations.
+      </p>
+      <p class="section-body">
+        These advisories guide farmers from land preparation and sowing to crop
+        management and harvest, with practices suited to the crop, farm
+        conditions and stage of cultivation.
+      </p>
+      <p class="section-body">
+        RootsTalk helps farmers know <em>what</em> to do, <em>when</em> to do
+        it, <em>how</em> to do it, and <em>what inputs</em> may be required.
+      </p>
+    </div>
+
+    <div class="section">
+      <p class="section-eyebrow">Diagnosis</p>
+      <h2 class="section-title">Help when your crop has a problem</h2>
+      <p class="section-body">
+        RootsTalk helps farmers identify crop-health problems through a guided
+        diagnosis system. Farmers can also use images and AI-assisted diagnosis
+        where appropriate.
+      </p>
+      <p class="section-body">
+        Once a problem is identified, RootsTalk provides management
+        recommendations from the organisation whose advisory the farmer follows.
+      </p>
+    </div>
+
+    <div class="section">
+      <p class="section-eyebrow">Expert Help</p>
+      <h2 class="section-title">Ask an Expert</h2>
+      <p class="section-body">
+        Agriculture cannot always be reduced to an advisory.
+      </p>
+      <p class="section-body">
+        Farmers can raise questions, share photographs, voice messages and text
+        notes, and seek help from agricultural experts associated with their
+        organisation.
+      </p>
+    </div>
+
+    <div class="section">
+      <p class="section-eyebrow">Inputs</p>
+      <h2 class="section-title">From advice to action</h2>
+      <p class="section-body">
+        When an advisory or crop-health recommendation requires an input,
+        RootsTalk helps the farmer raise a Purchase Order.
+      </p>
+      <p class="section-body">
+        The order can reach input dealers directly or through facilitators who
+        can help procure and deliver the required inputs.
+      </p>
+      <p class="section-body">
+        This helps connect agricultural advice, timely action and access to
+        inputs in one continuous journey.
+      </p>
+    </div>
+
+    <div class="section">
+      <p class="section-eyebrow">Ecosystem</p>
+      <h2 class="section-title">Built around relationships</h2>
+      <p class="section-body">
+        RootsTalk does not seek to replace the people who already support
+        agriculture. It helps them work together better.
+      </p>
+      <ul class="roles-list">
+        <li><strong>Organisations</strong> create and manage knowledge.</li>
+        <li><strong>Experts</strong> help farmers solve problems.</li>
+        <li><strong>Promoters</strong> stay connected with farmers.</li>
+        <li><strong>Facilitators</strong> help turn advice into action.</li>
+        <li><strong>Dealers</strong> fulfil input requirements.</li>
+      </ul>
+      <p class="centre-note">
+        And the farmer remains at the centre of it all.
+      </p>
+    </div>
+
+    <div class="section">
+      <p class="section-eyebrow">Languages</p>
+      <h2 class="section-title">Knowledge that speaks your language</h2>
+      <p class="section-body">
+        RootsTalk is designed for farmers across India. Advisories and
+        interactions can be made available in farmers' own languages, making
+        agricultural knowledge easier to understand and use.
+      </p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ── Closing / CTA ─────────────────────────────────────────────────────── -->
+<section class="closing">
+  <div class="closing-inner">
+    <p class="closing-brand">RootsTalk</p>
+    <p class="closing-motto">
+      Knowledge<span>·</span>Connects<span>·</span>Grows
+    </p>
+    <p class="closing-promise">
+      Better Crops. Stronger Farmers.<br>Growing Markets. Lasting Relationships.
+    </p>
+    <a href="https://rootstalk.in" class="closing-cta" target="_blank" rel="noopener">
+      Open RootsTalk →
+    </a>
+    <p class="closing-attribution">
+      Developed by Neytiri EywaFarm Agritech Private Limited
+    </p>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">Neytiri EywaFarm</p>
+      <p class="footer-tagline">Built for agriculture. Designed for trust.</p>
+      <p class="footer-contact-line">
+        <a href="mailto:info@eywa.farm">info@eywa.farm</a>
+        <span class="footer-sep">·</span>
+        <a href="tel:08042107702">080&thinsp;4210&thinsp;7702</a>
+      </p>
+      <p class="footer-addr">#1238, 4th Floor, HIG, B Sector<br>Yelahanka New Town, Bengaluru 560064</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Products</p>
+      <a href="/rootstalk" class="footer-link">RootsTalk</a>
+      <a href="/about-rootstalk" class="footer-link">About RootsTalk</a>
+      <a href="/cosh" class="footer-link">Cosh</a>
+      <a href="https://rootstalk.in" class="footer-link" target="_blank" rel="noopener">Open the App ↗</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Company</p>
+      <a href="/#about" class="footer-link">About EywaFarm</a>
+      <a href="/#team" class="footer-link">Team</a>
+      <a href="/contact" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Legal</p>
+      <a href="/privacy" class="footer-link">Privacy Policy</a>
+      <a href="/terms" class="footer-link">Terms &amp; Conditions</a>
+      <a href="/cancellations" class="footer-link">Cancellation &amp; Refund</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Neytiri EywaFarm Agritech Private Limited. All rights reserved.</span>
+    <span>Bengaluru, India</span>
+  </div>
+</footer>
+
+</body>
+</html>
